@@ -1,0 +1,76 @@
+module avalon_mm_master_writer #(
+    parameter ADDR_WIDTH = 32, // Do rong dia chi cua SDRAM
+    parameter DATA_WIDTH = 16  // RGB565 = 16 bit
+)(
+    input  wire                   clk_i,
+    input  wire                   rst_i,
+    
+    // ==========================================
+    // 1. Giao tiep voi Camera DC-FIFO (Read Port)
+    // ==========================================
+    input  wire                   fifo_empty_i,
+    input  wire [DATA_WIDTH-1:0]  fifo_dout_i,
+    output reg                    fifo_re_o,
+    
+    // Tín hiệu đồng bộ khung hình từ Camera
+    input  wire                   vsync_i, 
+    
+    // ==========================================
+    // 2. Giao tiep Avalon-MM Master (Write)
+    // ==========================================
+    output reg  [ADDR_WIDTH-1:0]  amm_address_o,
+    output reg                    amm_write_o,
+    output reg  [DATA_WIDTH-1:0]  amm_writedata_o,
+    input  wire                   amm_waitrequest_i
+);
+
+	localparam STATE_IDLE 	= 2'd0;
+	localparam STATE_READ 	= 2'd1;
+	localparam STATE_WRITE 	= 2'd2;
+	
+	reg [1:0] state_r;
+	
+	reg vsync_d1_r;																		// last vsync
+   wire vsync_rising_edge_w = (vsync_i == 1'b1 && vsync_d1_r == 1'b0);	// Edge detection flag
+	
+	always @(posedge clk_i) begin 
+		if (rst_i) begin
+			fifo_re_o 				<= 1'd0;
+			amm_address_o 			<= {ADDR_WIDTH{1'b0}};
+			amm_write_o 			<= 1'd0;
+			amm_writedata_o 		<= {DATA_WIDTH{1'b0}};
+			vsync_d1_r 				<= 1'd0;
+			state_r 					<= STATE_IDLE;
+		end 
+		else begin
+			vsync_d1_r <= vsync_i;
+			
+			if (vsync_rising_edge_w)											// Phat hien khung hinh moi
+				amm_address_o 		<= {ADDR_WIDTH{1'b0}};
+			case (state_r)
+				STATE_IDLE: begin
+					amm_write_o 	<= 1'd0;
+					if (!fifo_empty_i && !amm_waitrequest_i) begin		// FIFO rong & SDRAM khong ban -> Doc FIFO 1 nhip
+						fifo_re_o 	<= 1'b1;
+						state_r 		<= STATE_WRITE;
+					end else
+						fifo_re_o 	<= 1'b0;
+				end
+				STATE_READ: begin
+					fifo_re_o 			<= 1'b0;
+					amm_writedata_o 	<= fifo_dout_i;
+					amm_write_o 		<= 1'b1;
+					state_r 				<= STATE_READ;
+				end
+				STATE_WRITE: begin
+					if (!amm_waitrequest_i) begin						// Ghi xong
+						amm_write_o 	<= 1'b0;
+						amm_address_o 	<= amm_address_o + 2;
+						state_r 			<= STATE_IDLE;
+					end
+				end
+			endcase
+		end
+	end
+endmodule
+					

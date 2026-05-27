@@ -1,0 +1,9 @@
+09:29:46 **** Incremental Build of configuration Nios II for project OV7670_VGA ****
+make all 
+Info: Building ../OV7670_VGA_bsp/
+D:/Apps/Study/Quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../OV7670_VGA_bsp/
+[BSP build complete]
+[OV7670_VGA build complete]
+
+09:29:47 Build Finished (took 1s.187ms)
+

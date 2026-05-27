@@ -1,0 +1,998 @@
+Archive member included to satisfy reference by file (symbol)
+
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                              obj/default/source.o (__mulsi3)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+                              obj/default/source.o (printf)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+                              obj/default/source.o (puts)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o) (strlen)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o) (___vfprintf_internal_r)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o) (__sfvwrite_small_dev)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o) (_impure_ptr)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o) (_write_r)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o) (errno)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o) (__udivsi3)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+                              ../OV7670_VGA_bsp//obj/HAL/src/crt0.o (alt_load)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+                              ../OV7670_VGA_bsp//obj/HAL/src/crt0.o (alt_main)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+                              obj/default/source.o (usleep)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o) (write)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (alt_irq_init)
+../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o) (altera_avalon_jtag_uart_read_fd)
+../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o) (altera_avalon_jtag_uart_read)
+../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o) (altera_avalon_jtag_uart_write)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o) (alt_busy_sleep)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (close)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o) (alt_dcache_flush_all)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o) (alt_dev_list)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o) (alt_dev_llist_insert)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (_do_ctors)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (_do_dtors)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o) (alt_errno)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o) (alt_icache_flush_all)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (alt_io_redirect)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o) (open)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o) (alt_release_fd)
+../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o) (altera_nios2_gen2_irq_init)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o) (alt_find_dev)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o) (alt_find_file)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o) (alt_get_fd)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (atexit)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o) (exit)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+                              ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o) (memcmp)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o) (__register_exitproc)
+d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o) (__call_exitprocs)
+../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+                              d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o) (_exit)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x4               d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+new_sdram_controller_0 0x0000000000000000 0x0000000004000000
+reset            0x0000000004010000 0x0000000000000020
+onchip_memory2_0 0x0000000004010020 0x0000000000009fe0
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+LOAD obj/default/source.o
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libstdc++.a
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libm.a
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a
+START GROUP
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a
+LOAD ../OV7670_VGA_bsp/\libhal_bsp.a
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libm.a
+END GROUP
+LOAD d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a
+                0x0000000000000000                __alt_mem_new_sdram_controller_0 = 0x0
+                0x0000000004010000                __alt_mem_onchip_memory2_0 = 0x4010000
+
+.entry          0x0000000004010000       0x20
+ *(.entry)
+ .entry         0x0000000004010000       0x20 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+                0x0000000004010000                __reset
+
+.exceptions     0x0000000004010020        0x0
+                0x0000000004010020                PROVIDE (__ram_exceptions_start, ABSOLUTE (.))
+                0x0000000004010020                . = ALIGN (0x20)
+ *(.irq)
+ *(.exceptions.entry.label)
+ *(.exceptions.entry.user)
+ *(.exceptions.entry.ecc_fatal)
+ *(.exceptions.entry)
+ *(.exceptions.irqtest.user)
+ *(.exceptions.irqtest)
+ *(.exceptions.irqhandler.user)
+ *(.exceptions.irqhandler)
+ *(.exceptions.irqreturn.user)
+ *(.exceptions.irqreturn)
+ *(.exceptions.notirq.label)
+ *(.exceptions.notirq.user)
+ *(.exceptions.notirq)
+ *(.exceptions.soft.user)
+ *(.exceptions.soft)
+ *(.exceptions.unknown.user)
+ *(.exceptions.unknown)
+ *(.exceptions.exit.label)
+ *(.exceptions.exit.user)
+ *(.exceptions.exit)
+ *(.exceptions)
+                0x0000000004010020                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
+                0x0000000004010020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
+
+.text           0x0000000004010020     0x2168
+                [!provide]                        PROVIDE (stext, ABSOLUTE (.))
+ *(.interp)
+ *(.hash)
+ *(.dynsym)
+ *(.dynstr)
+ *(.gnu.version)
+ *(.gnu.version_d)
+ *(.gnu.version_r)
+ *(.rel.init)
+ *(.rela.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rela.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rela.ctors)
+ *(.rel.dtors)
+ *(.rela.dtors)
+ *(.rel.got)
+ *(.rela.got)
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rel.plt)
+ *(.rela.plt)
+ *(.rel.dyn)
+ *(.init)
+ *(.plt)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000004010020       0x3c ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+                0x0000000004010020                _start
+ .text          0x000000000401005c      0x2c0 obj/default/source.o
+                0x000000000401005c                clear_screen
+                0x00000000040100e4                draw_test_pattern
+                0x0000000004010284                main
+ .text          0x000000000401031c       0x28 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                0x000000000401031c                __mulsi3
+ .text          0x0000000004010344        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .text._printf_r
+                0x0000000004010344       0x3c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+                0x0000000004010344                _printf_r
+ .text.printf   0x0000000004010380       0x4c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+                0x0000000004010380                printf
+ .text          0x00000000040103cc        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .text._puts_r  0x00000000040103cc       0x80 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+                0x00000000040103cc                _puts_r
+ .text.puts     0x000000000401044c       0x14 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+                0x000000000401044c                puts
+ .text          0x0000000004010460        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .text.strlen   0x0000000004010460       0x1c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x0000000004010460                strlen
+ .text          0x000000000401047c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .text.print_repeat
+                0x000000000401047c       0x6c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .text.___vfprintf_internal_r
+                0x00000000040104e8      0x52c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+                0x00000000040104e8                ___vfprintf_internal_r
+ .text.__vfprintf_internal
+                0x0000000004010a14       0x1c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+                0x0000000004010a14                __vfprintf_internal
+ .text          0x0000000004010a30        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .text.__sfvwrite_small_dev
+                0x0000000004010a30       0xb8 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+                0x0000000004010a30                __sfvwrite_small_dev
+ .text          0x0000000004010ae8        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .text          0x0000000004010ae8        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .text._write_r
+                0x0000000004010ae8       0x58 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+                0x0000000004010ae8                _write_r
+ .text          0x0000000004010b40        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .text          0x0000000004010b40      0x1b4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                0x0000000004010b40                __divsi3
+                0x0000000004010bc4                __modsi3
+                0x0000000004010c38                __udivsi3
+                0x0000000004010c9c                __umodsi3
+ .text          0x0000000004010cf4       0xec ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+                0x0000000004010d5c                alt_load
+ .text          0x0000000004010de0       0x7c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000004010de0                alt_main
+ .text          0x0000000004010e5c       0x30 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+                0x0000000004010e5c                usleep
+ .text          0x0000000004010e8c      0x13c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+                0x0000000004010ec8                write
+ .text          0x0000000004010fc8       0xa0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000004010ffc                alt_irq_init
+                0x0000000004011034                alt_sys_init
+ .text          0x0000000004011068       0xc0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                0x0000000004011068                altera_avalon_jtag_uart_read_fd
+                0x00000000040110c8                altera_avalon_jtag_uart_write_fd
+ .text          0x0000000004011128       0xec ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x0000000004011128                altera_avalon_jtag_uart_read
+ .text          0x0000000004011214       0x94 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0000000004011214                altera_avalon_jtag_uart_write
+ .text          0x00000000040112a8      0x158 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+                0x00000000040112a8                alt_busy_sleep
+ .text          0x0000000004011400      0x114 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+                0x000000000401143c                close
+ .text          0x0000000004011514       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x0000000004011514                alt_dcache_flush_all
+ .text          0x0000000004011534       0x2c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .text          0x0000000004011560       0xe0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                0x000000000401159c                alt_dev_llist_insert
+ .text          0x0000000004011640       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                0x0000000004011640                _do_ctors
+ .text          0x00000000040116a0       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                0x00000000040116a0                _do_dtors
+ .text          0x0000000004011700        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .text          0x0000000004011700       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x0000000004011700                alt_icache_flush_all
+ .text          0x0000000004011720      0x160 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                0x0000000004011804                alt_io_redirect
+ .text          0x0000000004011880      0x284 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+                0x00000000040119a8                open
+ .text          0x0000000004011b04       0x84 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+                0x0000000004011b04                alt_release_fd
+ .text          0x0000000004011b88       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x0000000004011b88                altera_nios2_gen2_irq_init
+ .text          0x0000000004011bac       0x90 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+                0x0000000004011bac                alt_find_dev
+ .text          0x0000000004011c3c      0x108 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+                0x0000000004011c3c                alt_find_file
+ .text          0x0000000004011d44       0xc4 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+                0x0000000004011d44                alt_get_fd
+ .text          0x0000000004011e08        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .text.atexit   0x0000000004011e08       0x14 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+                0x0000000004011e08                atexit
+ .text          0x0000000004011e1c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .text.exit     0x0000000004011e1c       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+                0x0000000004011e1c                exit
+ .text          0x0000000004011e3c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .text.memcmp   0x0000000004011e3c       0x30 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+                0x0000000004011e3c                memcmp
+ .text          0x0000000004011e6c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .text.__register_exitproc
+                0x0000000004011e6c      0x158 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+                0x0000000004011e6c                __register_exitproc
+ .text          0x0000000004011fc4        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x0000000004011fc4      0x190 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+                0x0000000004011fc4                __call_exitprocs
+ .text          0x0000000004012154       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+                0x0000000004012154                _exit
+ *(.gnu.warning.*)
+ *(.fini)
+                [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
+                [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
+                [!provide]                        PROVIDE (etext, ABSOLUTE (.))
+ *(.eh_frame_hdr)
+                0x0000000004012188                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (__init_array_start, ABSOLUTE (.))
+ *(.init_array)
+                [!provide]                        PROVIDE (__init_array_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (__fini_array_start, ABSOLUTE (.))
+ *(.fini_array)
+                [!provide]                        PROVIDE (__fini_array_end, ABSOLUTE (.))
+ *(.eh_frame)
+ *(.gcc_except_table .gcc_except_table.*)
+ *(.dynamic)
+                0x0000000004012188                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
+ *(.ctors)
+ *(SORT(.ctors.*))
+                0x0000000004012188                PROVIDE (__CTOR_END__, ABSOLUTE (.))
+                0x0000000004012188                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
+ *(.dtors)
+ *(SORT(.dtors.*))
+                0x0000000004012188                PROVIDE (__DTOR_END__, ABSOLUTE (.))
+ *(.jcr)
+                0x0000000004012188                . = ALIGN (0x4)
+
+.rodata         0x0000000000000000      0x29c load address 0x0000000004012188
+                0x0000000000000000                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000000000000                . = ALIGN (0x4)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000000000000000      0x264 obj/default/source.o
+ .rodata.str1.4
+                0x0000000000000264        0x4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+                                          0x2 (size before relaxing)
+ .rodata        0x0000000000000268       0x11 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ *fill*         0x0000000000000279        0x3 
+ .rodata        0x000000000000027c       0x11 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ *fill*         0x000000000000028d        0x3 
+ .rodata        0x0000000000000290        0xa ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ *(.rodata1)
+                0x000000000000029c                . = ALIGN (0x4)
+ *fill*         0x000000000000029a        0x2 
+                0x000000000000029c                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000004012188                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+
+.rwdata         0x000000000000029c      0x2d4 load address 0x0000000004012424
+                0x000000000000029c                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x000000000000029c                . = ALIGN (0x4)
+ *(.got.plt)
+ *(.got)
+ *(.data1)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000000000000029c        0x0 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .data          0x000000000000029c        0x0 obj/default/source.o
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .data          0x000000000000029c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .data.impure_data
+                0x000000000000029c       0xe0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .data          0x000000000000037c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .data          0x000000000000037c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .data          0x000000000000037c        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .data          0x000000000000037c        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x000000000000037c        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x000000000000037c        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .data          0x000000000000037c        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .data          0x000000000000037c       0x2c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x00000000000003a8        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .data          0x00000000000003a8        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x00000000000003a8        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x00000000000003a8        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .data          0x00000000000003a8        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .data          0x00000000000003a8        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x00000000000003a8      0x1a8 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+                0x00000000000003a8                alt_dev_null
+                0x00000000000003d0                alt_fd_list
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .data          0x0000000000000550        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .data          0x0000000000000550        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .data          0x0000000000000550        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .data          0x0000000000000550        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .data          0x0000000000000550        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000000550        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+                0x0000000000008550                _gp = ABSOLUTE ((. + 0x8000))
+                [!provide]                        PROVIDE (gp, _gp)
+ *(.rwdata .rwdata.*)
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata._global_impure_ptr
+                0x0000000000000550        0x4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+                0x0000000000000550                _global_impure_ptr
+ .sdata._impure_ptr
+                0x0000000000000554        0x4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+                0x0000000000000554                _impure_ptr
+ .sdata         0x0000000000000558       0x14 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000000558                alt_fs_list
+                0x0000000000000560                alt_dev_list
+                0x0000000000000568                alt_max_fd
+ .sdata         0x000000000000056c        0x4 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+                0x000000000000056c                alt_errno
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+                0x0000000000000570                . = ALIGN (0x4)
+                0x0000000000000570                _edata = ABSOLUTE (.)
+                [!provide]                        PROVIDE (edata, ABSOLUTE (.))
+                0x0000000000000570                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x0000000004012424                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+
+.bss            0x0000000000000570       0x10 load address 0x00000000040126f8
+                0x0000000000000570                __bss_start = ABSOLUTE (.)
+                [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
+                [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss          0x0000000000000570        0x4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+                0x0000000000000570                errno
+ .sbss          0x0000000000000574        0xc ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000000574                alt_argc
+                0x0000000000000578                alt_argv
+                0x000000000000057c                alt_envp
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+ *(.scommon)
+                [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000000000580        0x0 obj/default/source.o
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .bss           0x0000000000000580        0x0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000000580        0x0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+ *(COMMON)
+                0x0000000000000580                . = ALIGN (0x4)
+                0x0000000000000580                __bss_end = ABSOLUTE (.)
+
+.new_sdram_controller_0
+                0x0000000000000580        0x0 load address 0x00000000040126f8
+                [!provide]                        PROVIDE (_alt_partition_new_sdram_controller_0_start, ABSOLUTE (.))
+ *(.new_sdram_controller_0 .new_sdram_controller_0. new_sdram_controller_0.*)
+                0x0000000000000580                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_new_sdram_controller_0_end, ABSOLUTE (.))
+                0x0000000000000580                _end = ABSOLUTE (.)
+                0x0000000000000580                end = ABSOLUTE (.)
+                0x0000000000000580                __alt_stack_base = ABSOLUTE (.)
+                [!provide]                        PROVIDE (_alt_partition_new_sdram_controller_0_load_addr, LOADADDR (.new_sdram_controller_0))
+
+.onchip_memory2_0
+                0x00000000040126f8        0x0
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_start, ABSOLUTE (.))
+ *(.onchip_memory2_0 .onchip_memory2_0. onchip_memory2_0.*)
+                0x00000000040126f8                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_load_addr, LOADADDR (.onchip_memory2_0))
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x23
+ *(.comment)
+ .comment       0x0000000000000000       0x23 obj/default/source.o
+                                         0x24 (size before relaxing)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .comment       0x0000000000000023       0x24 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .comment       0x0000000000000023       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x550
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x28 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .debug_aranges
+                0x0000000000000028       0x20 obj/default/source.o
+ .debug_aranges
+                0x0000000000000048       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_aranges
+                0x0000000000000068       0x28 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_aranges
+                0x0000000000000090       0x28 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_aranges
+                0x00000000000000b8       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_aranges
+                0x00000000000000d8       0x30 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_aranges
+                0x0000000000000108       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_aranges
+                0x0000000000000128       0x18 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .debug_aranges
+                0x0000000000000140       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_aranges
+                0x0000000000000160       0x18 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .debug_aranges
+                0x0000000000000178       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_aranges
+                0x0000000000000198       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_aranges
+                0x00000000000001b8       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_aranges
+                0x00000000000001d8       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_aranges
+                0x00000000000001f8       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_aranges
+                0x0000000000000218       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_aranges
+                0x0000000000000238       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_aranges
+                0x0000000000000258       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_aranges
+                0x0000000000000278       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_aranges
+                0x0000000000000298       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_aranges
+                0x00000000000002b8       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_aranges
+                0x00000000000002d8       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_aranges
+                0x00000000000002f8       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_aranges
+                0x0000000000000318       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_aranges
+                0x0000000000000338       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_aranges
+                0x0000000000000358       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_aranges
+                0x0000000000000378       0x18 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_aranges
+                0x0000000000000390       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_aranges
+                0x00000000000003b0       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_aranges
+                0x00000000000003d0       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_aranges
+                0x00000000000003f0       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_aranges
+                0x0000000000000410       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_aranges
+                0x0000000000000430       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_aranges
+                0x0000000000000450       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_aranges
+                0x0000000000000470       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_aranges
+                0x0000000000000490       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_aranges
+                0x00000000000004b0       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_aranges
+                0x00000000000004d0       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_aranges
+                0x00000000000004f0       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_aranges
+                0x0000000000000510       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_aranges
+                0x0000000000000530       0x20 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x7538
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000       0x66 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .debug_info    0x0000000000000066      0x126 obj/default/source.o
+ .debug_info    0x000000000000018c       0xb4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_info    0x0000000000000240      0x699 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_info    0x00000000000008d9      0x66d d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_info    0x0000000000000f46       0xc9 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x000000000000100f      0xb2b d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_info    0x0000000000001b3a      0x62b d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_info    0x0000000000002165      0x5a9 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .debug_info    0x000000000000270e      0x630 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_info    0x0000000000002d3e       0x8a d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .debug_info    0x0000000000002dc8      0x2c6 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_info    0x000000000000308e      0x145 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x00000000000031d3      0x131 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x0000000000003304       0xb0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_info    0x00000000000033b4      0x4b7 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_info    0x000000000000386b      0x3c9 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000003c34      0x3a7 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_info    0x0000000000003fdb      0x1b2 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_info    0x000000000000418d      0x195 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x0000000000004322       0xd7 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_info    0x00000000000043f9      0x321 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_info    0x000000000000471a       0x92 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x00000000000047ac      0x49c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_info    0x0000000000004c48      0x1a9 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_info    0x0000000000004df1       0x83 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_info    0x0000000000004e74       0x83 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_info    0x0000000000004ef7       0xa6 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_info    0x0000000000004f9d       0x92 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x000000000000502f      0x4a5 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_info    0x00000000000054d4      0x3bb ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_info    0x000000000000588f      0x2b0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_info    0x0000000000005b3f       0x92 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x0000000000005bd1      0x2e9 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_info    0x0000000000005eba      0x2e6 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_info    0x00000000000061a0      0x310 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_info    0x00000000000064b0       0xfe d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_info    0x00000000000065ae       0xe5 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_info    0x0000000000006693       0xf4 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_info    0x0000000000006787      0x64a d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_info    0x0000000000006dd1      0x67b d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_info    0x000000000000744c       0xec ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+
+.debug_abbrev   0x0000000000000000     0x26cc
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x12 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .debug_abbrev  0x0000000000000012       0x96 obj/default/source.o
+ .debug_abbrev  0x00000000000000a8       0x6f d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_abbrev  0x0000000000000117      0x1ee d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_abbrev  0x0000000000000305      0x1d6 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_abbrev  0x00000000000004db       0x7f d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_abbrev  0x000000000000055a      0x2a1 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_abbrev  0x00000000000007fb      0x1bc d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_abbrev  0x00000000000009b7      0x14a d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .debug_abbrev  0x0000000000000b01      0x1a6 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_abbrev  0x0000000000000ca7       0x37 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .debug_abbrev  0x0000000000000cde      0x10e d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_abbrev  0x0000000000000dec       0x9f ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x0000000000000e8b       0xba ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x0000000000000f45       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_abbrev  0x0000000000000fa5      0x133 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_abbrev  0x00000000000010d8      0x157 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x000000000000122f       0xf7 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_abbrev  0x0000000000001326       0xd5 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_abbrev  0x00000000000013fb       0xd5 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x00000000000014d0       0x7e ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_abbrev  0x000000000000154e      0x11f ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_abbrev  0x000000000000166d       0x42 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x00000000000016af       0xd9 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_abbrev  0x0000000000001788      0x114 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_abbrev  0x000000000000189c       0x79 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_abbrev  0x0000000000001915       0x79 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_abbrev  0x000000000000198e       0x5a ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_abbrev  0x00000000000019e8       0x42 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x0000000000001a2a      0x114 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_abbrev  0x0000000000001b3e      0x148 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_abbrev  0x0000000000001c86       0xde ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_abbrev  0x0000000000001d64       0x42 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x0000000000001da6       0xf0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_abbrev  0x0000000000001e96       0xf0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_abbrev  0x0000000000001f86      0x10d ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_abbrev  0x0000000000002093       0xaa d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_abbrev  0x000000000000213d       0x8b d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_abbrev  0x00000000000021c8       0x7f d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_abbrev  0x0000000000002247      0x1e6 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_abbrev  0x000000000000242d      0x1f6 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x0000000000002623       0xa9 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+
+.debug_line     0x0000000000000000     0x2ca6
+ *(.debug_line)
+ .debug_line    0x0000000000000000       0x66 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .debug_line    0x0000000000000066       0xff obj/default/source.o
+ .debug_line    0x0000000000000165       0x80 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_line    0x00000000000001e5      0x203 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_line    0x00000000000003e8      0x206 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_line    0x00000000000005ee      0x15c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_line    0x000000000000074a      0x351 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_line    0x0000000000000a9b      0x1f0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_line    0x0000000000000c8b      0x156 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+ .debug_line    0x0000000000000de1      0x1ed d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_line    0x0000000000000fce       0x5f d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .debug_line    0x000000000000102d      0x105 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_line    0x0000000000001132       0x8e ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x00000000000011c0       0xa4 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x0000000000001264       0xb0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_line    0x0000000000001314      0x1e1 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_line    0x00000000000014f5      0x126 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x000000000000161b      0x112 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_line    0x000000000000172d       0xfd ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x000000000000182a       0xf4 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x000000000000191e       0xa2 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_line    0x00000000000019c0      0x168 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_line    0x0000000000001b28       0x51 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x0000000000001b79       0xfb ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_line    0x0000000000001c74       0xcf ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_line    0x0000000000001d43       0x59 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_line    0x0000000000001d9c       0x59 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_line    0x0000000000001df5       0x51 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_line    0x0000000000001e46       0x4f ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x0000000000001e95      0x138 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_line    0x0000000000001fcd      0x12b ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_line    0x00000000000020f8       0xb0 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_line    0x00000000000021a8       0x51 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x00000000000021f9       0xb5 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_line    0x00000000000022ae       0xd1 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_line    0x000000000000237f       0xd7 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_line    0x0000000000002456       0xe7 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_line    0x000000000000253d      0x159 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_line    0x0000000000002696      0x160 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_line    0x00000000000027f6      0x20d d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_line    0x0000000000002a03      0x232 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_line    0x0000000000002c35       0x71 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+
+.debug_frame    0x0000000000000000      0xa68
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000       0x7c obj/default/source.o
+ .debug_frame   0x000000000000007c       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_frame   0x000000000000009c       0x48 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_frame   0x00000000000000e4       0x48 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_frame   0x000000000000012c       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_frame   0x000000000000014c       0x8c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_frame   0x00000000000001d8       0x58 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_frame   0x0000000000000230       0x38 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_frame   0x0000000000000268       0x50 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_frame   0x00000000000002b8       0x5c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_frame   0x0000000000000314       0x2c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_frame   0x0000000000000340       0x38 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_frame   0x0000000000000378       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_frame   0x00000000000003d8       0x88 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x0000000000000460       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_frame   0x00000000000004c0       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_frame   0x00000000000004f4       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x0000000000000528       0x38 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_frame   0x0000000000000560       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_frame   0x00000000000005c0       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x00000000000005f4       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_frame   0x0000000000000628       0x60 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_frame   0x0000000000000688       0x38 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_frame   0x00000000000006c0       0x38 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_frame   0x00000000000006f8       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x000000000000072c       0x64 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_frame   0x0000000000000790       0x8c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_frame   0x000000000000081c       0x3c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_frame   0x0000000000000858       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_frame   0x000000000000088c       0x38 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_frame   0x00000000000008c4       0x38 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_frame   0x00000000000008fc       0x3c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_frame   0x0000000000000938       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000000958       0x28 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000980       0x20 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_frame   0x00000000000009a0       0x48 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_frame   0x00000000000009e8       0x54 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000000a3c       0x2c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+
+.debug_str      0x0000000000000000     0x1729
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x123 obj/default/source.o
+                                        0x161 (size before relaxing)
+ .debug_str     0x0000000000000123      0x148 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                                        0x193 (size before relaxing)
+ .debug_str     0x000000000000026b      0x429 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+                                        0x504 (size before relaxing)
+ .debug_str     0x0000000000000694       0x63 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+                                        0x4cd (size before relaxing)
+ .debug_str     0x00000000000006f7       0xd2 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                                        0x1e5 (size before relaxing)
+ .debug_str     0x00000000000007c9      0x1f8 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+                                        0x67f (size before relaxing)
+ .debug_str     0x00000000000009c1       0x63 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+                                        0x4d4 (size before relaxing)
+ .debug_str     0x0000000000000a24       0xef d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-impure.o)
+                                        0x4be (size before relaxing)
+ .debug_str     0x0000000000000b13       0x45 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+                                        0x4b8 (size before relaxing)
+ .debug_str     0x0000000000000b58       0x3f d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+                                        0x1d8 (size before relaxing)
+ .debug_str     0x0000000000000b97       0x7f d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                                        0x1d2 (size before relaxing)
+ .debug_str     0x0000000000000c16      0x123 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_load.o)
+                                        0x20a (size before relaxing)
+ .debug_str     0x0000000000000d39       0x70 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_main.o)
+                                        0x195 (size before relaxing)
+ .debug_str     0x0000000000000da9       0x27 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_usleep.o)
+                                        0x140 (size before relaxing)
+ .debug_str     0x0000000000000dd0      0x15f ../OV7670_VGA_bsp/\libhal_bsp.a(alt_write.o)
+                                        0x2f0 (size before relaxing)
+ .debug_str     0x0000000000000f2f      0x105 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+                                        0x2cc (size before relaxing)
+ .debug_str     0x0000000000001034       0x77 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                                        0x2cd (size before relaxing)
+ .debug_str     0x00000000000010ab       0x48 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                                        0x217 (size before relaxing)
+ .debug_str     0x00000000000010f3       0x4a ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                                        0x20d (size before relaxing)
+ .debug_str     0x000000000000113d       0x42 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+                                        0x163 (size before relaxing)
+ .debug_str     0x000000000000117f       0x1b ../OV7670_VGA_bsp/\libhal_bsp.a(alt_close.o)
+                                        0x203 (size before relaxing)
+ .debug_str     0x000000000000119a       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                                        0x14d (size before relaxing)
+ .debug_str     0x00000000000011ce       0x50 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev.o)
+                                        0x2fd (size before relaxing)
+ .debug_str     0x000000000000121e       0x4b ../OV7670_VGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                                        0x1c4 (size before relaxing)
+ .debug_str     0x0000000000001269       0x48 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                                         0xc8 (size before relaxing)
+ .debug_str     0x00000000000012b1       0x4c ../OV7670_VGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                                         0xc7 (size before relaxing)
+ .debug_str     0x00000000000012fd       0x14 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_errno.o)
+                                        0x13d (size before relaxing)
+ .debug_str     0x0000000000001311       0x34 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                                        0x14d (size before relaxing)
+ .debug_str     0x0000000000001345       0x56 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                                        0x30e (size before relaxing)
+ .debug_str     0x000000000000139b       0x36 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_open.o)
+                                        0x243 (size before relaxing)
+ .debug_str     0x00000000000013d1       0x28 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+                                        0x1cb (size before relaxing)
+ .debug_str     0x00000000000013f9       0x3b ../OV7670_VGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                                        0x154 (size before relaxing)
+ .debug_str     0x0000000000001434       0x24 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+                                        0x1e4 (size before relaxing)
+ .debug_str     0x0000000000001458       0x26 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_find_file.o)
+                                        0x1f2 (size before relaxing)
+ .debug_str     0x000000000000147e       0x30 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+                                        0x214 (size before relaxing)
+ .debug_str     0x00000000000014ae      0x116 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+                                        0x21c (size before relaxing)
+ .debug_str     0x00000000000015c4       0x4c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+                                        0x1f0 (size before relaxing)
+ .debug_str     0x0000000000001610       0x44 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+                                        0x1df (size before relaxing)
+ .debug_str     0x0000000000001654       0x46 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+                                        0x4ff (size before relaxing)
+ .debug_str     0x000000000000169a       0x65 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+                                        0x4eb (size before relaxing)
+ .debug_str     0x00000000000016ff       0x2a ../OV7670_VGA_bsp/\libhal_bsp.a(alt_exit.o)
+                                        0x149 (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x15da
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000       0x93 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_loc     0x0000000000000093       0xc6 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_loc     0x0000000000000159       0x97 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_loc     0x00000000000001f0       0x1e d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_loc     0x000000000000020e      0x954 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_loc     0x0000000000000b62      0x110 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_loc     0x0000000000000c72       0xa5 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_loc     0x0000000000000d17      0x4ce d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_loc     0x00000000000011e5       0x2c d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_loc     0x0000000000001211       0x1e d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_loc     0x000000000000122f       0x94 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_loc     0x00000000000012c3      0x1c0 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_loc     0x0000000000001483      0x157 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_alt_sim_info
+                0x0000000000000000       0x40
+ *(.debug_alt_sim_info)
+ .debug_alt_sim_info
+                0x0000000000000000       0x10 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .debug_alt_sim_info
+                0x0000000000000010       0x30 ../OV7670_VGA_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+                0x0000000004000000                __alt_data_end = 0x4000000
+                0x0000000004000000                PROVIDE (__alt_stack_pointer, __alt_data_end)
+                [!provide]                        PROVIDE (__alt_stack_limit, __alt_stack_base)
+                [!provide]                        PROVIDE (__alt_heap_start, end)
+                [!provide]                        PROVIDE (__alt_heap_limit, 0x4000000)
+OUTPUT(OV7670_VGA.elf elf32-littlenios2)
+
+.debug_ranges   0x0000000000000000      0x240
+ .debug_ranges  0x0000000000000000       0x20 ../OV7670_VGA_bsp//obj/HAL/src/crt0.o
+ .debug_ranges  0x0000000000000020       0x18 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-printf.o)
+ .debug_ranges  0x0000000000000038       0x18 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-puts.o)
+ .debug_ranges  0x0000000000000050       0x10 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_ranges  0x0000000000000060       0xc8 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-vfprintf.o)
+ .debug_ranges  0x0000000000000128       0x28 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_ranges  0x0000000000000150       0x10 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-writer.o)
+ .debug_ranges  0x0000000000000160       0x60 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_ranges  0x00000000000001c0       0x18 ../OV7670_VGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_ranges  0x00000000000001d8       0x10 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-atexit.o)
+ .debug_ranges  0x00000000000001e8       0x10 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-exit.o)
+ .debug_ranges  0x00000000000001f8       0x10 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .debug_ranges  0x0000000000000208       0x10 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__atexit.o)
+ .debug_ranges  0x0000000000000218       0x28 d:/apps/study/quartus18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-__call_atexit.o)

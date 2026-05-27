@@ -1,0 +1,130 @@
+module dc_fifo #(
+    parameter DATA_WIDTH = 8,
+    parameter ADDR_WIDTH = 4
+)(
+    // Giao tiep mien Write (wr_clk)
+    input  wire                  wr_clk,
+    input  wire                  wr_rst,
+    input  wire                  we,
+    input  wire [DATA_WIDTH-1:0] din,
+    output reg                   full,
+
+    // Giao tiep mien Read (rd_clk)
+    input  wire                  rd_clk,
+    input  wire                  rd_rst,
+    input  wire                  re,
+    output reg  [DATA_WIDTH-1:0] dout,
+    output reg                   empty
+);
+
+    localparam DEPTH = (1 << ADDR_WIDTH);
+
+    // Bo nho RAM
+    (* ram_style = "block" *)
+    reg [DATA_WIDTH-1:0] mem [0:DEPTH-1];
+
+    // Con tro Binary trong cac thanh ghi (Reg)
+    reg [ADDR_WIDTH:0] wr_ptr_bin;
+    reg [ADDR_WIDTH:0] rd_ptr_bin;
+
+    // Con tro Gray trong cac thanh ghi (Reg) - DE TRU KHOI GLITCH
+    reg [ADDR_WIDTH:0] wr_ptr_gray;
+    reg [ADDR_WIDTH:0] rd_ptr_gray;
+
+    // Tin hieu day (Wire) chua gia tri tinh toan tiep theo
+    wire [ADDR_WIDTH:0] wr_ptr_bin_next;
+    wire [ADDR_WIDTH:0] rd_ptr_bin_next;
+    
+    // Tin hieu day (Wire) lay tu ngo ra cua module bin_to_gray
+    wire [ADDR_WIDTH:0] wr_ptr_gray_next;
+    wire [ADDR_WIDTH:0] rd_ptr_gray_next;
+
+    // Tin hieu day (Wire) lay tu ngo ra cua module synchronizer
+    wire [ADDR_WIDTH:0] wr_ptr_gray_sync;
+    wire [ADDR_WIDTH:0] rd_ptr_gray_sync;
+
+    // =========================================================================
+    // MIEN WRITE (wr_clk)
+    // =========================================================================
+    
+    // Tinh toan dia chi Binary tiep theo
+    assign wr_ptr_bin_next = wr_ptr_bin + (we & ~full);
+
+    // Goi module bin_to_gray de tao ma Gray tiep theo
+    bin_to_gray #(.WIDTH(ADDR_WIDTH + 1)) b2g_wr (
+        .bin(wr_ptr_bin_next),
+        .gray(wr_ptr_gray_next)
+    );
+
+    always @(posedge wr_clk) begin
+        if (wr_rst) begin
+            wr_ptr_bin  <= 0;
+            wr_ptr_gray <= 0;
+            full        <= 0;
+        end else begin
+            // Ghi du lieu vao RAM
+            if (we && !full) begin
+                mem[wr_ptr_bin[ADDR_WIDTH-1:0]] <= din;
+            end
+            
+            // Cap nhat con tro (Luc nay wr_ptr_gray se duoc chot vao D-FF, het glitch)
+            wr_ptr_bin  <= wr_ptr_bin_next;
+            wr_ptr_gray <= wr_ptr_gray_next;
+            
+            // Tinh toan co Full
+            full <= (wr_ptr_gray_next == {~rd_ptr_gray_sync[ADDR_WIDTH:ADDR_WIDTH-1], 
+                                           rd_ptr_gray_sync[ADDR_WIDTH-2:0]});
+        end
+    end
+
+    // Dong bo con tro doc (rd_ptr_gray) vao mien ghi (wr_clk)
+    synchronizer #(.WIDTH(ADDR_WIDTH + 1)) sync_rd2wr (
+        .clk(wr_clk),
+        .rst(wr_rst),
+        .d_in(rd_ptr_gray),      // Chu y: dua REG vao, khong phai wire
+        .d_out(rd_ptr_gray_sync)
+    );
+
+
+    // =========================================================================
+    // MIEN READ (rd_clk)
+    // =========================================================================
+    
+    // Tinh toan dia chi Binary tiep theo
+    assign rd_ptr_bin_next = rd_ptr_bin + (re & ~empty);
+
+    // Goi module bin_to_gray de tao ma Gray tiep theo
+    bin_to_gray #(.WIDTH(ADDR_WIDTH + 1)) b2g_rd (
+        .bin(rd_ptr_bin_next),
+        .gray(rd_ptr_gray_next)
+    );
+
+    always @(posedge rd_clk) begin
+        if (rd_rst) begin
+            rd_ptr_bin  <= 0;
+            rd_ptr_gray <= 0;
+            dout        <= 0;
+            empty       <= 1'b1;
+        end else begin
+            // Doc du lieu tu RAM
+            if (re && !empty) begin
+                dout <= mem[rd_ptr_bin[ADDR_WIDTH-1:0]];
+            end
+            
+            // Cap nhat con tro
+            rd_ptr_bin  <= rd_ptr_bin_next;
+            rd_ptr_gray <= rd_ptr_gray_next;
+            
+            // Tinh toan co Empty
+            empty <= (rd_ptr_gray_next == wr_ptr_gray_sync);
+        end
+    end
+
+    synchronizer #(.WIDTH(ADDR_WIDTH + 1)) sync_wr2rd (
+        .clk(rd_clk),
+        .rst(rd_rst),
+        .d_in(wr_ptr_gray),      
+        .d_out(wr_ptr_gray_sync)
+    );
+
+endmodule

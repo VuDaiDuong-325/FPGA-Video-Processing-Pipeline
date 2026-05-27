@@ -1,0 +1,83 @@
+module camera_system_top #(
+    parameter ADDR_WIDTH = 32,
+    parameter DATA_WIDTH = 16
+)(
+    // ==========================================
+    // 1. Giao tiep voi He thong (Qsys)
+    // ==========================================
+    input  wire                   csi_clk_i,   // Clock he thong (VD: 50MHz)
+    input  wire                   csi_rst_i,   // Reset he thong (Active-High)
+    
+    // ==========================================
+    // 2. Giao tiep Avalon-MM Master (Write to SDRAM)
+    // ==========================================
+    output wire [ADDR_WIDTH-1:0]  amm_address_o,
+    output wire                   amm_write_o,
+    output wire [DATA_WIDTH-1:0]  amm_writedata_o,
+    input  wire                   amm_waitrequest_i,
+    
+    // ==========================================
+    // 3. Giao tiep voi Camera OV7670 ngoai vi (Conduit)
+    // ==========================================
+    input  wire                   cam_pclk_i,
+    input  wire                   cam_vsync_i,
+    input  wire                   cam_href_i,
+    input  wire [7:0]             cam_din_i
+);
+
+    // Cac day dan (wire) noi bo
+    wire [15:0] w_pixel_data;
+    wire        w_pixel_valid;
+    wire        w_fifo_empty;
+    wire [15:0] w_fifo_dout;
+    wire        w_fifo_re;
+
+    // 1. Module Camera Capture
+    camera_capture u_camera_capture (
+        .pclk_i        (cam_pclk_i),
+        .rst_n_i       (~csi_rst_i),     // Chuyen Active-High thanh Active-Low
+        .vsync_i       (cam_vsync_i),
+        .href_i        (cam_href_i),
+        .din_i         (cam_din_i),
+        .pixel_data_o  (w_pixel_data),
+        .pixel_valid_o (w_pixel_valid)
+    );
+
+    // 2. Module DC FIFO (Ghi de DATA_WIDTH = 16, ADDR_WIDTH = 11 cho sau 2048 tang)
+    dc_fifo #(
+        .DATA_WIDTH(16),
+        .ADDR_WIDTH(11)
+    ) u_fifo (
+        .wr_clk_i  (cam_pclk_i),
+        .wr_rst_i  (csi_rst_i),
+        .we_i      (w_pixel_valid),
+        .din_i     (w_pixel_data),
+        .full_o    (),               // Khong can dung co full o day
+        
+        .rd_clk_i  (csi_clk_i),
+        .rd_rst_i  (csi_rst_i),
+        .re_i      (w_fifo_re),
+        .dout_o    (w_fifo_dout),
+        .empty_o   (w_fifo_empty)
+    );
+
+    // 3. Module Avalon-MM Master
+    avalon_mm_master_writer #(
+        .ADDR_WIDTH(ADDR_WIDTH),
+        .DATA_WIDTH(DATA_WIDTH)
+    ) u_master (
+        .clk_i             (csi_clk_i),
+        .rst_i             (csi_rst_i),
+        
+        .fifo_empty_i      (w_fifo_empty),
+        .fifo_dout_i       (w_fifo_dout),
+        .fifo_re_o         (w_fifo_re),
+        .vsync_i           (cam_vsync_i),
+        
+        .amm_address_o     (amm_address_o),
+        .amm_write_o       (amm_write_o),
+        .amm_writedata_o   (amm_writedata_o),
+        .amm_waitrequest_i (amm_waitrequest_i)
+    );
+
+endmodule
