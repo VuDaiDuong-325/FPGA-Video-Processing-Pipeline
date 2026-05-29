@@ -1,0 +1,207 @@
+`timescale 1ns/1ns
+
+module sccb_ov7670_lut_config (
+    input  wire [7:0] lut_index,
+    output reg  [15:0] lut_data
+);
+
+    // Total configuration commands: 167
+    // Ensure you set parameter LUT_SIZE = 167 in your main I2C module!
+
+    always @(*) begin
+        case(lut_index)
+            // =======================================================
+            // 1. Core Format & Resolution Config (VGA, YUV422)
+            // =======================================================
+            8'd0   : lut_data = 16'h1280; // COM7: Reset all registers
+            8'd1   : lut_data = 16'h1200; // COM7: VGA resolution, YUV format
+            8'd2   : lut_data = 16'h3a00; // TSLB: YUYV sequence (00: YUYV)
+            8'd3   : lut_data = 16'h40c0; // COM15: YUV full range [00-FF] (was 40d0)
+            8'd4   : lut_data = 16'h8c00; // RGB444: Disable RGB444 (Force YUV)
+            8'd5   : lut_data = 16'h0c00; // COM3: Disable scaling
+
+            // =======================================================
+            // 2. Hardware Window & Timing
+            // =======================================================
+            8'd6   : lut_data = 16'h32b6; // HREF
+            8'd7   : lut_data = 16'h1713; // HSTART 
+            8'd8   : lut_data = 16'h1801; // HSTOP 
+            8'd9   : lut_data = 16'h1902; // VSTART
+            8'd10  : lut_data = 16'h1a7a; // VSTOP 
+            8'd11  : lut_data = 16'h030a; // VREF  
+            
+            // =======================================================
+            // 3. DSP, Color Matrix, Gamma & Magic Numbers
+            // =======================================================
+            8'd12  : lut_data = 16'h3e00; // PCLK scale
+            8'd13  : lut_data = 16'h7000; // Test pattern control
+            8'd14  : lut_data = 16'h7100; // Test pattern control
+            8'd15  : lut_data = 16'h7211; // Test pattern control
+            8'd16  : lut_data = 16'h7300; // Clock control
+            8'd17  : lut_data = 16'ha202; // Pixel clock delay
+            
+            // Gamma Curve (7a to 89)
+            8'd18  : lut_data = 16'h7a20;
+            8'd19  : lut_data = 16'h7b1c;
+            8'd20  : lut_data = 16'h7c28;
+            8'd21  : lut_data = 16'h7d3c;
+            8'd22  : lut_data = 16'h7e55;
+            8'd23  : lut_data = 16'h7f68;
+            8'd24  : lut_data = 16'h8076;
+            8'd25  : lut_data = 16'h8180;
+            8'd26  : lut_data = 16'h8288;
+            8'd27  : lut_data = 16'h838f;
+            8'd28  : lut_data = 16'h8496;
+            8'd29  : lut_data = 16'h85a3;
+            8'd30  : lut_data = 16'h86af;
+            8'd31  : lut_data = 16'h87c4;
+            8'd32  : lut_data = 16'h88d7;
+            8'd33  : lut_data = 16'h89e8;
+            
+            8'd34  : lut_data = 16'h13e0; // COM8: Fast AGC/AEC, AWB enable
+            8'd35  : lut_data = 16'h0000; // AGC control
+            8'd36  : lut_data = 16'h1000; // AECH control
+            8'd37  : lut_data = 16'h0d00; // COM4
+            8'd38  : lut_data = 16'h1428; // COM9: AGC ceiling
+            8'd39  : lut_data = 16'ha505; // BD50MAX
+            8'd40  : lut_data = 16'hab07; // BD60MAX
+            8'd41  : lut_data = 16'h2475; // AEW
+            8'd42  : lut_data = 16'h2563; // AEB
+            8'd43  : lut_data = 16'h26a5; // VPT
+            8'd44  : lut_data = 16'h9f78; // HAECC1
+            8'd45  : lut_data = 16'ha068; // HAECC2
+            8'd46  : lut_data = 16'ha103; // HAECC3
+            8'd47  : lut_data = 16'ha6df; // HAECC4
+            8'd48  : lut_data = 16'ha7df; // HAECC5
+            8'd49  : lut_data = 16'ha8f0; // HAECC6
+            8'd50  : lut_data = 16'ha990; // HAECC7
+            8'd51  : lut_data = 16'haa94; // HAECC8
+            8'd52  : lut_data = 16'h13ef; // COM8
+            8'd53  : lut_data = 16'h0e61; // COM5
+            8'd54  : lut_data = 16'h0f4b; // COM6
+            8'd55  : lut_data = 16'h1602; // Reserved
+            8'd56  : lut_data = 16'h1e20; // MVFP
+            8'd57  : lut_data = 16'h2102; // ADCB
+            8'd58  : lut_data = 16'h2291; // ADC
+            8'd59  : lut_data = 16'h2907; // RSVD
+            8'd60  : lut_data = 16'h330b; // CHLF
+            8'd61  : lut_data = 16'h350b; // ARBLM
+            8'd62  : lut_data = 16'h371d; // ADC
+            8'd63  : lut_data = 16'h3871; // ACOM
+            8'd64  : lut_data = 16'h392a; // OFON
+            8'd65  : lut_data = 16'h3c78; // COM12
+            8'd66  : lut_data = 16'h4d40; // RSVD
+            8'd67  : lut_data = 16'h4e20; // RSVD
+            8'd68  : lut_data = 16'h6900; // GFIX
+            8'd69  : lut_data = 16'h6b00; // DBLV (PLL multiplier)
+            8'd70  : lut_data = 16'h7419; // REG74
+            8'd71  : lut_data = 16'h8d4f; // REG8D
+            8'd72  : lut_data = 16'h8e00; // REG8E
+            8'd73  : lut_data = 16'h8f00; // REG8F
+            8'd74  : lut_data = 16'h9000; // REG90
+            8'd75  : lut_data = 16'h9100; // REG91
+            8'd76  : lut_data = 16'h9200; // REG92
+            8'd77  : lut_data = 16'h9600; // REG96
+            8'd78  : lut_data = 16'h9a80; // REG9A
+            8'd79  : lut_data = 16'hb084; // REGB0
+            8'd80  : lut_data = 16'hb10c; // REGB1
+            8'd81  : lut_data = 16'hb20e; // REGB2
+            8'd82  : lut_data = 16'hb382; // REGB3
+            8'd83  : lut_data = 16'hb80a; // REGB8
+            
+            // Color Matrix Control
+            8'd84  : lut_data = 16'h4314; // AWBC1
+            8'd85  : lut_data = 16'h44f0; // AWBC2
+            8'd86  : lut_data = 16'h4534; // AWBC3
+            8'd87  : lut_data = 16'h4658; // AWBC4
+            8'd88  : lut_data = 16'h4728; // AWBC5
+            8'd89  : lut_data = 16'h483a; // AWBC6
+            8'd90  : lut_data = 16'h5988; // AWBC7
+            8'd91  : lut_data = 16'h5a88; // AWBC8
+            8'd92  : lut_data = 16'h5b44; // AWBC9
+            8'd93  : lut_data = 16'h5c67; // AWBC10
+            8'd94  : lut_data = 16'h5d49; // AWBC11
+            8'd95  : lut_data = 16'h5e0e; // AWBC12
+            8'd96  : lut_data = 16'h6404; // LCC1
+            8'd97  : lut_data = 16'h6520; // LCC2
+            8'd98  : lut_data = 16'h6605; // LCC3
+            8'd99  : lut_data = 16'h9404; // LCC4
+            8'd100 : lut_data = 16'h9508; // LCC5
+            8'd101 : lut_data = 16'h6c0a; // AWBCtrl
+            8'd102 : lut_data = 16'h6d55; // AWBCtrl
+            8'd103 : lut_data = 16'h6e11; // AWBCtrl
+            8'd104 : lut_data = 16'h6f9f; // AWBCtrl
+            8'd105 : lut_data = 16'h6a40; // GGAIN
+            8'd106 : lut_data = 16'h0140; // BLUE
+            8'd107 : lut_data = 16'h0240; // RED
+            8'd108 : lut_data = 16'h13ef; // COM8
+            8'd109 : lut_data = 16'h1500; // COM10
+            
+            // Ma trận màu (MTX)
+            8'd110 : lut_data = 16'h4f80; // MTX1
+            8'd111 : lut_data = 16'h5080; // MTX2
+            8'd112 : lut_data = 16'h5100; // MTX3
+            8'd113 : lut_data = 16'h5222; // MTX4
+            8'd114 : lut_data = 16'h535e; // MTX5
+            8'd115 : lut_data = 16'h5480; // MTX6
+            8'd116 : lut_data = 16'h589e; // MTXS
+            
+            8'd117 : lut_data = 16'h4108; // COM16
+            8'd118 : lut_data = 16'h3f00; // EDGE
+            8'd119 : lut_data = 16'h7505; // REG75
+            8'd120 : lut_data = 16'h76e1; // REG76
+            8'd121 : lut_data = 16'h4c00; // RSVD
+            8'd122 : lut_data = 16'h7701; // REG77
+            8'd123 : lut_data = 16'h3dc2; // COM13
+            8'd124 : lut_data = 16'h4b09; // RSVD
+            8'd125 : lut_data = 16'hc960; // REG_C9
+            8'd126 : lut_data = 16'h4138; // COM16
+            8'd127 : lut_data = 16'h5640; // HISTO
+            
+            8'd128 : lut_data = 16'h3411; // ARCOM2
+            8'd129 : lut_data = 16'h3b02; // COM11 (Day mode)
+            8'd130 : lut_data = 16'ha489; // NT_CTRL
+            8'd131 : lut_data = 16'h9600; // BD50ST
+            8'd132 : lut_data = 16'h9730; // BD60ST
+            8'd133 : lut_data = 16'h9820; // REG98
+            8'd134 : lut_data = 16'h9930; // REG99
+            8'd135 : lut_data = 16'h9a84; // REG9A
+            8'd136 : lut_data = 16'h9b29; // REG9B
+            8'd137 : lut_data = 16'h9c03; // REG9C
+            8'd138 : lut_data = 16'h9d4c; // REG9D
+            8'd139 : lut_data = 16'h9e3f; // REG9E
+            8'd140 : lut_data = 16'h7804; // REG78
+            
+            8'd141 : lut_data = 16'h7901; // REG79
+            8'd142 : lut_data = 16'hc8f0; // REGC8
+            8'd143 : lut_data = 16'h790f; // REG79
+            8'd144 : lut_data = 16'hc800; // REGC8
+            8'd145 : lut_data = 16'h7910; // REG79
+            8'd146 : lut_data = 16'hc87e; // REGC8
+            8'd147 : lut_data = 16'h790a; // REG79
+            8'd148 : lut_data = 16'hc880; // REGC8
+            8'd149 : lut_data = 16'h790b; // REG79
+            8'd150 : lut_data = 16'hc801; // REGC8
+            8'd151 : lut_data = 16'h790c; // REG79
+            8'd152 : lut_data = 16'hc80f; // REGC8
+            8'd153 : lut_data = 16'h790d; // REG79
+            8'd154 : lut_data = 16'hc820; // REGC8
+            8'd155 : lut_data = 16'h7909; // REG79
+            8'd156 : lut_data = 16'hc880; // REGC8
+            8'd157 : lut_data = 16'h7902; // REG79
+            8'd158 : lut_data = 16'hc8c0; // REGC8
+            8'd159 : lut_data = 16'h7903; // REG79
+            8'd160 : lut_data = 16'hc840; // REGC8
+            8'd161 : lut_data = 16'h7905; // REG79
+            8'd162 : lut_data = 16'hc830; // REGC8
+            8'd163 : lut_data = 16'h7926; // REG79
+            
+            8'd164 : lut_data = 16'h0903; // COM2
+            8'd165 : lut_data = 16'h3b42; // COM11
+            
+            // Safety default
+            default: lut_data = 16'h0000;
+        endcase
+    end
+
+endmodule

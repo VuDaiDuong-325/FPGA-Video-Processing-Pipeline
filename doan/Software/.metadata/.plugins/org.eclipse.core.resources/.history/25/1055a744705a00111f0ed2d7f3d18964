@@ -1,0 +1,126 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <unistd.h>                 // Library for usleep() function
+#include "system.h"                 // Hardware configuration generated from Qsys
+#include "altera_avalon_pio_regs.h" // PIO read/write library
+
+// ====================================================================
+// MACRO ADDRESS DECLARATIONS (Mapped from system.h)
+// Depending on your PIO naming in Qsys, the prefix might differ slightly.
+// Assuming your PIO module names are: pio_mode, pio_threshold, pio_sccb_start, pio_sccb_done
+// ====================================================================
+#ifndef PIO_MODE_BASE
+#define PIO_MODE_BASE           PIO_MODE_BASE // Update according to your system.h
+#endif
+
+#ifndef PIO_THRESHOLD_BASE
+#define PIO_THRESHOLD_BASE      PIO_THRESHOLD_BASE
+#endif
+
+#ifndef PIO_SCCB_START_BASE
+#define PIO_SCCB_START_BASE     PIO_SCCB_START_BASE
+#endif
+
+#ifndef PIO_SCCB_DONE_BASE
+#define PIO_SCCB_DONE_BASE      PIO_SCCB_DONE_BASE
+#endif
+
+// ====================================================================
+// OV7670 CAMERA INITIALIZATION FUNCTION
+// ====================================================================
+void Camera_Initialize() {
+    printf("==========================================\n");
+    printf("   OV7670 CAMERA TO VGA PROCESSING SYSTEM \n");
+    printf("==========================================\n");
+    printf("[INFO] Initializing OV7670 Camera...\n");
+
+    // 1. Ensure start signal is initially at logic 0
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_SCCB_START_BASE, 0);
+    usleep(1000); // Wait for 1ms
+
+    // 2. Generate a pulse to trigger the hardware SCCB configuration module
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_SCCB_START_BASE, 1);
+    usleep(1000); // Hold the pulse for 1ms
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_SCCB_START_BASE, 0);
+
+    // 3. Wait for the hardware to finish configuring all ~160 registers
+    // The IORD function reads the status of the sccb_done PIO
+    while (IORD_ALTERA_AVALON_PIO_DATA(PIO_SCCB_DONE_BASE) == 0) {
+        // Print loading dots for debugging
+        printf(".");
+        usleep(100000); // Wait 100ms per check
+    }
+
+    printf("\n[SUCCESS] Camera configuration successful!\n");
+    printf("OV7670 Camera is ready to output to VGA.\n");
+    printf("==========================================\n\n");
+}
+
+// ====================================================================
+// MAIN PROGRAM
+// ====================================================================
+int main() {
+    // Variables to store system configuration
+    uint8_t current_mode = 0;
+    uint8_t current_threshold = 128; // Default threshold at medium level (0-255)
+    char user_input;
+
+    // Set default values for hardware
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_MODE_BASE, current_mode);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_THRESHOLD_BASE, current_threshold);
+
+    // Call the camera initialization function
+    Camera_Initialize();
+
+    // Main loop handling user interaction via Console (JTAG UART)
+    while (1) {
+        printf("\n--- CONTROL MENU ---\n");
+        printf("1. Normal Display Mode\n");
+        printf("2. Grayscale Display Mode\n");
+        printf("3. Edge Detection Display Mode\n");
+        printf("4. Increase Color Threshold (+10)\n");
+        printf("5. Decrease Color Threshold (-10)\n");
+        printf("Enter your choice (1-5): ");
+
+        // Read keystroke from Eclipse Console
+        user_input = getchar();
+
+        // Ignore the Enter character (\n) from the input buffer
+        while(getchar() != '\n');
+
+        switch (user_input) {
+            case '1':
+                current_mode = 0; // Mode 0: Normal RGB
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_MODE_BASE, current_mode);
+                printf("[ACTION] Switched to Normal Mode.\n");
+                break;
+            case '2':
+                current_mode = 1; // Mode 1: Grayscale
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_MODE_BASE, current_mode);
+                printf("[ACTION] Switched to Grayscale Mode.\n");
+                break;
+            case '3':
+                current_mode = 2; // Mode 2: Edge Detection
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_MODE_BASE, current_mode);
+                printf("[ACTION] Switched to Edge Detection Mode.\n");
+                break;
+            case '4':
+                if (current_threshold <= 245) current_threshold += 10;
+                else current_threshold = 255;
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_THRESHOLD_BASE, current_threshold);
+                printf("[ACTION] Threshold increased. Current: %d\n", current_threshold);
+                break;
+            case '5':
+                if (current_threshold >= 10) current_threshold -= 10;
+                else current_threshold = 0;
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_THRESHOLD_BASE, current_threshold);
+                printf("[ACTION] Threshold decreased. Current: %d\n", current_threshold);
+                break;
+            default:
+                printf("[ERROR] Invalid choice, please try again!\n");
+                break;
+        }
+    }
+
+    return 0; // The microcontroller practically never reaches here
+}

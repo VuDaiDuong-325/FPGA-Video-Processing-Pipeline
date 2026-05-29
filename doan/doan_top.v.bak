@@ -1,0 +1,222 @@
+module doan_top (
+    // CLOCK & RESET
+    input  wire        CLOCK_50,
+    input  wire [3:0]  KEY,          // KEY[0] dùng làm Reset
+    input  wire [9:0]  SW,           // Switch chọn chế độ
+    
+    // SDRAM (Chip ngoài DE1-SoC)
+    output wire [12:0] DRAM_ADDR,
+    output wire [1:0]  DRAM_BA,
+    output wire        DRAM_CAS_N,
+    output wire        DRAM_CKE,
+    output wire        DRAM_CLK,
+    output wire        DRAM_CS_N,
+    inout  wire [15:0] DRAM_DQ,
+    output wire        DRAM_LDQM,
+    output wire        DRAM_RAS_N,
+    output wire        DRAM_UDQM,
+    output wire        DRAM_WE_N,
+    
+    // CAMERA OV7670 (Giả sử cắm vào GPIO_1)
+    output wire        CAM_XCLK,     // XCLK cấp cho Camera
+    input  wire        CAM_PCLK,     // Xung đồng bộ pixel
+    input  wire        CAM_VSYNC,    // Xung đồng bộ mành (khung hình)
+    input  wire        CAM_HREF,     // Xung đồng bộ dòng
+    input  wire [7:0]  CAM_DATA,     // Dữ liệu pixel (8-bit)
+    output wire        CAM_SCL,      // I2C Clock
+    inout  wire        CAM_SDA,      // I2C Data
+    output wire        CAM_RESET,    // Reset Camera cứng
+    output wire        CAM_PWDN,     // Power down Camera (thường = 0)
+    
+    // VGA
+    output wire [7:0]  VGA_R,        // DAC ADV7123 trên DE1-SoC dùng 8-bit màu
+    output wire [7:0]  VGA_G,
+    output wire [7:0]  VGA_B,
+    output wire        VGA_HS,
+    output wire        VGA_VS,
+    output wire        VGA_SYNC_N,
+    output wire        VGA_BLANK_N,
+    output wire        VGA_CLK
+);
+
+    // =========================================================================
+    // 1. DÂY TÍN HIỆU ĐỒNG BỘ CLOCK & RESET
+    // =========================================================================
+    wire clk_50m_sys;      // Cấp cho Nios, Qsys, Mạch xử lý
+    wire clk_24m_cam;      // Cấp ra chân CAM_XCLK
+    wire clk_50m_sdram;    // Cấp ra chân DRAM_CLK (-3ns)
+    wire clk_25m_vga;      // Cấp cho VGA
+    
+    wire pll_sys_locked;
+    wire pll_vga_locked;
+    
+    // Reset tổng (Chỉ thả ra khi PLL đã ổn định)
+    wire rst_n = KEY[0] & pll_sys_locked & pll_vga_locked;
+    
+    // Thiết lập nguồn cứng cho Camera
+    assign CAM_RESET = 1'b1; // Tích cực thấp, 1 = Normal mode
+    assign CAM_PWDN  = 1'b0; // 0 = Normal mode
+    assign CAM_XCLK  = clk_24m_cam;
+    assign DRAM_CLK  = clk_50m_sdram;
+    assign VGA_CLK   = clk_25m_vga;
+
+    // --- Gọi Khối PLL ---
+    sys_pll u_sys_pll (
+        .refclk   (CLOCK_50),
+        .rst      (~KEY[0]),
+        .outclk_0 (clk_50m_sys),    // 50 MHz (0 ps)
+        .outclk_1 (clk_24m_cam),    // 24 MHz (0 ps)
+        .outclk_2 (clk_50m_sdram),  // 50 MHz (-3000 ps)
+        .locked   (pll_sys_locked)
+    );
+
+    vga_pll u_vga_pll (
+        .refclk   (CLOCK_50),
+        .rst      (~KEY[0]),
+        .outclk_0 (clk_25m_vga),    // 25.175 MHz
+        .locked   (pll_vga_locked)
+    );
+
+    // =========================================================================
+    // 2. GIAO TIẾP VÀ CHỤP DỮ LIỆU CAMERA (CAPTURE)
+    // =========================================================================
+    wire       sccb_start, sccb_done;
+    wire [15:0] cap_data;
+    wire        cap_we;
+    
+    ov7670_config_sccb u_cam_config (
+        .iCLK        (clk_50m_sys),
+        .iRST_N      (rst_n),
+        .iSTART      (sccb_start),
+        .oSCLK       (CAM_SCL),
+        .oSDA        (CAM_SDA),
+        .config_done (sccb_done)
+    );
+
+    ov7670_capture u_cam_capture (
+        .pclk        (CAM_PCLK),
+        .reset       (~rst_n),
+        .vsync       (CAM_VSYNC),
+        .href        (CAM_HREF),
+        .data_in     (CAM_DATA),
+        .data_out    (cap_data),
+        .write_en    (cap_we)
+    );
+
+    // =========================================================================
+    // 3. VÙNG ĐỆM CHUYỂN CLOCK (FIFO)
+    // =========================================================================
+    wire [15:0] fifo_data;
+    wire        fifo_rdempty;
+    wire        fifo_rdreq;
+    
+    cam_dcfifo u_fifo (
+        .aclr    (~rst_n | CAM_VSYNC), // Xóa rác đầu mỗi frame
+        .data    (cap_data),
+        .wrclk   (CAM_PCLK),
+        .wrreq   (cap_we),
+        .rdclk   (clk_50m_sys),
+        .rdreq   (fifo_rdreq),
+        .q       (fifo_data),
+        .rdempty (fifo_rdempty)
+    );
+
+    // =========================================================================
+    // 4. KHỐI XỬ LÝ ẢNH (SẼ THÊM SAU) VÀ GHI VÀO SDRAM
+    // =========================================================================
+    // [TODO]: Chèn module YUV2YUV444, Sobel, Threshold vào đây
+    // Tạm thời: Đưa thẳng ảnh YUV422 thô từ FIFO vào SDRAM
+    
+    wire [24:0] dma_wr_addr;
+    wire [15:0] dma_wr_data;
+    wire        dma_wr_en;
+    wire        dma_wr_wait;
+    
+    // Logic Đọc FIFO một cách an toàn: 
+    // Nếu FIFO có dữ liệu (!rdempty) VÀ SDRAM không bận (!waitrequest) -> Cho phép lấy data ghi vào RAM
+    assign fifo_rdreq = ~fifo_rdempty & ~dma_wr_wait;
+
+    sdram_double_buffer_controller u_dma_writer (
+        .clk             (clk_50m_sys),
+        .rst_n           (rst_n),
+        .cam_vsync       (CAM_VSYNC),
+        .cam_pixel_valid (~fifo_rdempty),
+        .cam_pixel_data  (fifo_data),      // Sau này sẽ thay bằng Data của khối xử lý ảnh
+        
+        .avm_address     (dma_wr_addr),
+        .avm_writedata   (dma_wr_data),
+        .avm_write       (dma_wr_en),
+        .avm_waitrequest (dma_wr_wait)
+    );
+
+    // =========================================================================
+    // 5. NIOS II SYSTEM (QSYS)
+    // =========================================================================
+    wire [1:0] sys_mode;
+    wire [7:0] sys_threshold;
+    
+    system u_qsys (
+        .clk_clk                (clk_50m_sys),
+        .reset_reset_n          (rst_n),
+        
+        // Cổng SDRAM vật lý
+        .new_sdram_controller_0_wire_addr  (DRAM_ADDR),
+        .new_sdram_controller_0_wire_ba    (DRAM_BA),
+        .new_sdram_controller_0_wire_cas_n (DRAM_CAS_N),
+        .new_sdram_controller_0_wire_cke   (DRAM_CKE),
+        .new_sdram_controller_0_wire_cs_n  (DRAM_CS_N),
+        .new_sdram_controller_0_wire_dq    (DRAM_DQ),
+        .new_sdram_controller_0_wire_dqm   ({DRAM_UDQM, DRAM_LDQM}),
+        .new_sdram_controller_0_wire_ras_n (DRAM_RAS_N),
+        .new_sdram_controller_0_wire_we_n  (DRAM_WE_N),
+        
+        // Nối Cổng Avalon Bridge (Sẽ xuất hiện sau khi bạn Export ở bước trên)
+        // .dma_write_bridge_address       (dma_wr_addr),
+        // .dma_write_bridge_write         (dma_wr_en),
+        // .dma_write_bridge_writedata     (dma_wr_data),
+        // .dma_write_bridge_waitrequest   (dma_wr_wait),
+        // .dma_write_bridge_byteenable    (2'b11),
+        
+        // PIO
+        .pio_sw_export          (SW),
+        .pio_mode_export        (sys_mode),
+        .pio_threshold_export   (sys_threshold),
+        .pio_sccb_start_export  (sccb_start),
+        .pio_sccb_done_export   (sccb_done)
+    );
+
+    // =========================================================================
+    // 6. KHỐI HIỂN THỊ VGA
+    // =========================================================================
+    wire [9:0] vga_red_10, vga_green_10, vga_blue_10;
+    
+    // [TODO]: Mạch đọc Avalon Master (DMA Read) từ SDRAM cấp cho VGA
+    // Tạm thời cấp màu đen để giữ xung sync chạy đúng
+    assign vga_red_10   = 10'd0; 
+    assign vga_green_10 = 10'd0;
+    assign vga_blue_10  = 10'd0;
+
+    VGA_controller u_vga (
+        .iCLK       (clk_25m_vga),
+        .iRST_N     (rst_n),
+        .iRed       (vga_red_10),
+        .iGreen     (vga_green_10),
+        .iBlue      (vga_blue_10),
+        
+        .oCurrent_X (), // Tọa độ X để tính địa chỉ đọc RAM
+        .oCurrent_Y (), // Tọa độ Y để tính địa chỉ đọc RAM
+        .oAddress   (),
+        .oRequest   (),
+        
+        // DE1-SoC DAC yêu cầu 8-bit (cắt 2 bit cuối của 10-bit đi)
+        .oVGA_R     ({VGA_R, /* 2 bit bỏ đi */}), 
+        .oVGA_G     ({VGA_G, /* 2 bit bỏ đi */}),
+        .oVGA_B     ({VGA_B, /* 2 bit bỏ đi */}),
+        .oVGA_HS    (VGA_HS),
+        .oVGA_VS    (VGA_VS),
+        .oVGA_SYNC  (VGA_SYNC_N),
+        .oVGA_BLANK (VGA_BLANK_N),
+        .oVGA_CLOCK () // Đã gán VGA_CLK ở đầu file
+    );
+
+endmodule

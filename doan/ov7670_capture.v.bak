@@ -1,0 +1,67 @@
+module ov7670_capture(
+	// input from camera
+	input wire pclk,
+	input wire reset,
+	input wire vsync,
+	input wire href,
+	input wire [7:0] data_in,
+	
+	//output to DC FIFO
+	output reg [15:0] data_out,
+	output reg write_en
+);
+
+	reg reset_sync_1, reset_sync_2;
+
+	reg vsync_reg;
+	reg href_reg;
+	reg [7:0] d_reg;
+	
+	reg vsync_prev;
+	reg byte_flag;
+	reg [7:0] latched_data;
+	
+	
+	always @(posedge pclk) begin
+		reset_sync_1 <= reset;
+		reset_sync_2 <= reset_sync_1;
+		
+		vsync_reg <= vsync;
+		href_reg <= href;
+		d_reg <= data_in;
+		
+		vsync_prev <= vsync_reg;
+	end
+
+	always @(posedge pclk) begin
+		if(!reset_sync_2) begin
+			data_out   <= 16'd0;
+         write_en   <= 1'b0;
+         byte_flag  <= 1'b0;
+         latched_data <= 8'd0;
+		end
+		else begin
+			if(vsync_prev == 0 && vsync_reg == 1) begin
+				byte_flag <= 1'b0;
+				write_en <= 1'b0;
+			end
+			else if(vsync_reg == 0 && href_reg == 1) begin
+				if(!byte_flag) begin
+					latched_data <= d_reg;
+					write_en <= 1'b0;
+					byte_flag <= 1'b1;
+				end
+				else begin
+					data_out <= {latched_data, d_reg};
+					write_en <= 1'b1;
+					byte_flag <= 1'b0;
+				end
+			end
+			else if(href_reg == 0) begin
+				write_en <= 0;
+				byte_flag <= 0;
+			end
+		end
+	end
+
+endmodule

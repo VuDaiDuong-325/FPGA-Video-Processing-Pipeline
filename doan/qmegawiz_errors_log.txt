@@ -1,0 +1,31 @@
+
+
+D:/E/1subject/HK6/SoC/doan/doan/sys_pll.v
+
+May 29 12AM:15:18>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/E/1subject/HK6/SoC/doan/doan/vga_pll.v
+
+May 29 12AM:15:26>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/E/1subject/HK6/SoC/doan/doan/vga_pll.v
+
+May 29 12AM:15:38>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/E/1subject/HK6/SoC/doan/doan/vga_pll.v
+
+May 29 12AM:16:01>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/E/1subject/HK6/SoC/doan/doan/vga_pll.v
+
+May 29 12AM:17:30>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/E/1subject/HK6/SoC/doan/doan/vga_pll.v
+
+May 29 12AM:17:35>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

@@ -1,0 +1,33 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst system.pio_sccb_start -pg 1 -lvl 3 -y 460
+preplace inst system.new_sdram_controller_0 -pg 1 -lvl 3 -y 260
+preplace inst system.nios2_gen2_0.cpu -pg 1
+preplace inst system.sysid_qsys_0 -pg 1 -lvl 3 -y 370
+preplace inst system.pio_threshold -pg 1 -lvl 3 -y 680
+preplace inst system.pio_sw -pg 1 -lvl 3 -y 570
+preplace inst system.nios2_gen2_0.clock_bridge -pg 1
+preplace inst system.jtag_uart_0 -pg 1 -lvl 3 -y 140
+preplace inst system.nios2_gen2_0.reset_bridge -pg 1
+preplace inst system.clock -pg 1 -lvl 1 -y 160
+preplace inst system.onchip_memory2_0 -pg 1 -lvl 2 -y 240
+preplace inst system.nios2_gen2_0 -pg 1 -lvl 2 -y 100
+preplace inst system.pio_sccb_done -pg 1 -lvl 3 -y 30
+preplace inst system.mm_bridge_0 -pg 1 -lvl 2 -y 380
+preplace inst system -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst system.pio_mode -pg 1 -lvl 3 -y 790
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.pio_threshold,(SLAVE)pio_threshold.external_connection) 1 0 3 NJ 710 NJ 710 NJ
+preplace netloc INTERCONNECT<net_container>system</net_container>(MASTER)nios2_gen2_0.instruction_master,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)pio_sccb_start.s1,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)pio_mode.s1,(MASTER)mm_bridge_0.m0,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)new_sdram_controller_0.s1,(SLAVE)pio_sw.s1,(MASTER)nios2_gen2_0.data_master,(SLAVE)onchip_memory2_0.s1,(SLAVE)pio_threshold.s1,(SLAVE)pio_sccb_done.s1) 1 1 2 430 350 810
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)pio_sccb_start.external_connection,(SLAVE)system.pio_sccb_start) 1 0 3 NJ 490 NJ 490 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.pio_sccb_done,(SLAVE)pio_sccb_done.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.new_sdram_controller_0_wire,(SLAVE)new_sdram_controller_0.wire) 1 0 3 NJ 330 NJ 330 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.dma_write_bridge,(SLAVE)mm_bridge_0.s0) 1 0 2 NJ 430 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)clock.clk_in,(SLAVE)system.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.reset,(SLAVE)clock.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.pio_mode,(SLAVE)pio_mode.external_connection) 1 0 3 NJ 820 NJ 820 NJ
+preplace netloc POINT_TO_POINT<net_container>system</net_container>(MASTER)nios2_gen2_0.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 N
+preplace netloc FAN_OUT<net_container>system</net_container>(MASTER)clock.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)pio_sccb_start.clk,(SLAVE)pio_sw.clk,(SLAVE)mm_bridge_0.clk,(SLAVE)sysid_qsys_0.clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)pio_sccb_done.clk,(SLAVE)new_sdram_controller_0.clk,(SLAVE)pio_mode.clk,(SLAVE)pio_threshold.clk) 1 1 2 390 370 830
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)pio_sw.external_connection,(SLAVE)system.pio_sw) 1 0 3 NJ 600 NJ 600 NJ
+preplace netloc INTERCONNECT<net_container>system</net_container>(SLAVE)new_sdram_controller_0.reset,(MASTER)clock.clk_reset,(SLAVE)pio_sw.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)pio_sccb_done.reset,(SLAVE)mm_bridge_0.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)pio_threshold.reset,(SLAVE)pio_sccb_start.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)pio_mode.reset,(SLAVE)sysid_qsys_0.reset) 1 1 2 410 840 790
+levelinfo -pg 1 0 180 1120
+levelinfo -hier system 190 220 550 960 1110

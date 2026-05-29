@@ -1,0 +1,9 @@
+12:23:11 **** Incremental Build of configuration Nios II for project doan ****
+make all 
+Info: Building ../doan_bsp/
+E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/
+[BSP build complete]
+[doan build complete]
+
+12:23:12 Build Finished (took 674ms)
+
