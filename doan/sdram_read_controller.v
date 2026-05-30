@@ -21,13 +21,14 @@ module sdram_read_controller (
     // =========================================================================
     // THÔNG SỐ CẤU HÌNH BỘ NHỚ
     // =========================================================================
-    localparam BUFFER_A_BASE = 25'h0000_000;
-    localparam BUFFER_B_BASE = 25'h004_B000; // 307,200 Words
+    localparam BUFFER_A_BASE = 25'h1000_000;
+    localparam BUFFER_B_BASE = 25'h104_B000; // 307,200 Words
     localparam MAX_PIXELS    = 19'd307_200;  // 640 x 480
 
     // Biến trạng thái nội bộ
     reg read_buffer_sel; // 0: Đọc từ Buffer A | 1: Đọc từ Buffer B
     reg [18:0] req_cnt;  // Bộ đếm số lượng pixel đã gửi yêu cầu đọc
+	 reg frame_ready; // Cờ: đã có ít nhất 1 frame trong SDRAM chưa?
 
     // =========================================================================
     // 1. QUẢN LÝ ĐỆM KÉP (PING-PONG)
@@ -36,9 +37,11 @@ module sdram_read_controller (
         if (!rst_n) begin
             // Giả sử mạch ghi khởi động ở Buffer A (0), mạch Đọc PHẢI ở Buffer B (1)
             read_buffer_sel <= 1'b1;
+				frame_ready <= 1'b0;
         end else if (frame_done) begin
             // Lật đệm mỗi khi Camera báo xong một khung hình
             read_buffer_sel <= ~read_buffer_sel;
+				frame_ready <= 1'b1;
         end
     end
 
@@ -56,30 +59,32 @@ module sdram_read_controller (
     // Dư ra 512 từ trống để hứng dữ liệu trễ từ SDRAM về.
     wire safe_to_read = (fifo_wrusedw < 11'd1536); 
     wire need_to_read = (req_cnt < MAX_PIXELS);
-    wire can_read     = safe_to_read && need_to_read;
+    wire can_read     = safe_to_read && need_to_read && frame_ready;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             req_cnt     <= 19'd0;
             avm_read    <= 1'b0;
             avm_address <= 25'd0;
-        end else if (frame_done) begin
-            // Bắt đầu khung hình mới -> reset số đếm
-            req_cnt  <= 19'd0;
-            avm_read <= 1'b0;
         end else begin
-            // Nếu SDRAM đang bận (waitrequest = 1) và ta đang phát lệnh -> Cấm đổi tín hiệu
+            // ƯU TIÊN SỐ 1: BẢO VỆ BUS AVALON
             if (avm_read && avm_waitrequest) begin
                 avm_read    <= avm_read;
                 avm_address <= avm_address;
-            end else begin
-                // Nếu SDRAM đã sẵn sàng nhận lệnh mới
+            end 
+            // ƯU TIÊN SỐ 2: RESET KHI XONG KHUNG HÌNH
+            else if (frame_done) begin
+                req_cnt  <= 19'd0;
+                avm_read <= 1'b0;
+            end 
+            // ƯU TIÊN SỐ 3: PHÁT LỆNH ĐỌC MỚI
+            else begin
                 if (can_read) begin
                     avm_read    <= 1'b1;
                     avm_address <= base_addr + req_cnt;
                     req_cnt     <= req_cnt + 1'b1;
                 end else begin
-                    avm_read    <= 1'b0; // Nghỉ đọc để chờ VGA hút bớt dữ liệu ra
+                    avm_read    <= 1'b0; 
                 end
             end
         end

@@ -5,7 +5,7 @@ create_clock -name CLOCK_50 -period 20.000 [get_ports {CLOCK_50}]
 create_clock -name CAM_PCLK -period 41.666 [get_ports {CAM_PCLK}]
 
 # 3. Yêu cầu Quartus TỰ ĐỘNG suy luận các tần số đầu ra của toàn bộ PLL
-derive_pll_clocks
+derive_pll_clocks -create_base_clocks
 
 # 4. Tự động tính toán độ rung pha (jitter) để phân tích đường truyền an toàn hơn
 derive_clock_uncertainty

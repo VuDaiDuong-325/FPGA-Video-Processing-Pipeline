@@ -1,0 +1,31 @@
+module Grayscale_to_RGB10 (
+    input  wire        iCLK,
+    input  wire        iRST_N,
+    input  wire        i_valid,
+    input  wire [7:0]  iY,         // Chỉ nhận đầu vào là độ sáng Y (8-bit)
+    
+    output reg         o_valid,
+    output reg  [9:0]  oRed,       // Ngõ ra 10-bit cho bộ DAC VGA
+    output reg  [9:0]  oGreen,
+    output reg  [9:0]  oBlue
+);
+
+    // Xử lý đồng bộ theo nhịp Clock VGA (25MHz)
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            o_valid <= 1'b0;
+            oRed    <= 10'd0;
+            oGreen  <= 10'd0;
+            oBlue   <= 10'd0;
+        end else begin
+            o_valid <= i_valid;
+            
+            // Ánh xạ 8-bit Y sang 10-bit RGB. (R = G = B = Y)
+            // Dịch trái 2 bit (thêm 2'b00) để quy đổi từ thang 255 lên 1023
+            oRed    <= {iY, 2'b00};
+            oGreen  <= {iY, 2'b00};
+            oBlue   <= {iY, 2'b00};
+        end
+    end
+
+endmodule

@@ -1,16 +1,6 @@
 
 module system (
 	clk_clk,
-	sdram_write_bridge_waitrequest,
-	sdram_write_bridge_readdata,
-	sdram_write_bridge_readdatavalid,
-	sdram_write_bridge_burstcount,
-	sdram_write_bridge_writedata,
-	sdram_write_bridge_address,
-	sdram_write_bridge_write,
-	sdram_write_bridge_read,
-	sdram_write_bridge_byteenable,
-	sdram_write_bridge_debugaccess,
 	new_sdram_controller_0_wire_addr,
 	new_sdram_controller_0_wire_ba,
 	new_sdram_controller_0_wire_cas_n,
@@ -35,19 +25,19 @@ module system (
 	sdram_read_bridge_write,
 	sdram_read_bridge_read,
 	sdram_read_bridge_byteenable,
-	sdram_read_bridge_debugaccess);	
+	sdram_read_bridge_debugaccess,
+	sdram_write_bridge_waitrequest,
+	sdram_write_bridge_readdata,
+	sdram_write_bridge_readdatavalid,
+	sdram_write_bridge_burstcount,
+	sdram_write_bridge_writedata,
+	sdram_write_bridge_address,
+	sdram_write_bridge_write,
+	sdram_write_bridge_read,
+	sdram_write_bridge_byteenable,
+	sdram_write_bridge_debugaccess);	
 
 	input		clk_clk;
-	output		sdram_write_bridge_waitrequest;
-	output	[15:0]	sdram_write_bridge_readdata;
-	output		sdram_write_bridge_readdatavalid;
-	input	[0:0]	sdram_write_bridge_burstcount;
-	input	[15:0]	sdram_write_bridge_writedata;
-	input	[25:0]	sdram_write_bridge_address;
-	input		sdram_write_bridge_write;
-	input		sdram_write_bridge_read;
-	input	[1:0]	sdram_write_bridge_byteenable;
-	input		sdram_write_bridge_debugaccess;
 	output	[12:0]	new_sdram_controller_0_wire_addr;
 	output	[1:0]	new_sdram_controller_0_wire_ba;
 	output		new_sdram_controller_0_wire_cas_n;
@@ -73,4 +63,14 @@ module system (
 	input		sdram_read_bridge_read;
 	input	[1:0]	sdram_read_bridge_byteenable;
 	input		sdram_read_bridge_debugaccess;
+	output		sdram_write_bridge_waitrequest;
+	output	[15:0]	sdram_write_bridge_readdata;
+	output		sdram_write_bridge_readdatavalid;
+	input	[0:0]	sdram_write_bridge_burstcount;
+	input	[15:0]	sdram_write_bridge_writedata;
+	input	[25:0]	sdram_write_bridge_address;
+	input		sdram_write_bridge_write;
+	input		sdram_write_bridge_read;
+	input	[1:0]	sdram_write_bridge_byteenable;
+	input		sdram_write_bridge_debugaccess;
 endmodule

@@ -108,10 +108,10 @@ module doan_top (
     wire [7:0]  w_cr;
     wire [10:0] vga_x;
     wire [10:0] vga_y;
-    reg         pipe_valid_d1;
-    wire [9:0]  vga_red_10;
-    wire [9:0]  vga_green_10;
-    wire [9:0]  vga_blue_10;
+	 
+	 wire [9:0]  final_vga_r;
+    wire [9:0]  final_vga_g;
+    wire [9:0]  final_vga_b;
 
 
     // =========================================================================
@@ -129,27 +129,10 @@ module doan_top (
         else        vsync_sync_reg <= {vsync_sync_reg[1:0], CAM_VSYNC};
     end
     assign frame_done = (vsync_sync_reg[2] == 1'b0 && vsync_sync_reg[1] == 1'b1);
-	 
-	 reg [2:0] vga_vsync_sync;
-    always @(posedge clk_50m_sys or negedge rst_n) begin
-        if (!rst_n)
-            vga_vsync_sync <= 3'b0;
-        else
-            vga_vsync_sync <= {vga_vsync_sync[1:0], VGA_VS}; // oVGA_VS lấy từ ngõ ra của VGA_controller
-    end
-
-    // Tín hiệu reset khung hình dành RIÊNG cho bộ đọc VGA
-    wire vga_frame_done = (vga_vsync_sync[2] == 1'b1 && vga_vsync_sync[1] == 1'b0);
 
     // Điều khiển nạp/xuất đồng bộ cho hai đầu FIFO ghi/đọc
     assign sdram_wrreq    = !sdram_rdempty && !w_dma_waitrequest;
     assign vga_fifo_rdreq = vga_req && (~vga_fifo_rdempty);
-
-    // Mạch trễ 1 nhịp đồng bộ cờ valid phù hợp thiết kế Pipeline giải mã màu YUV
-    always @(posedge clk_25m_vga or negedge rst_n) begin
-        if (!rst_n) pipe_valid_d1 <= 1'b0;
-        else        pipe_valid_d1 <= vga_fifo_rdreq;
-    end
 
 	 // =========================================================================
     // HỆ THỐNG DEBUG BẰNG ĐÈN LED (Phân tích nguyên nhân kẹt Pipeline)
@@ -245,12 +228,12 @@ module doan_top (
     sdram_read_controller u_sdram_read_controller (
         .clk                (clk_50m_sys),
         .rst_n              (rst_n),
-        .frame_done         (vga_frame_done),
+        .frame_done         (frame_done),
         .avm_address        (r_dma_addr),
         .avm_read           (r_dma_read),
         .avm_waitrequest    (r_dma_waitrequest),
-        .avm_readdata       (dma_write_bridge_readdata),
-        .avm_readdatavalid  (dma_write_bridge_readdatavalid),
+        .avm_readdata       (r_dma_readdata),
+        .avm_readdatavalid  (r_dma_readdatavalid),
         .fifo_wrreq         (vga_fifo_wrreq),
         .fifo_wrdata        (vga_fifo_wrdata),
         .fifo_wrusedw       (vga_fifo_wrusedw)
@@ -284,18 +267,20 @@ module doan_top (
         .iRST_N  (rst_n)
     );
 
-    // Bộ giải mã không gian không chuẩn YUV sang hệ màu hiển thị RGB 10-bit độ nét cao
-    YUV444_to_RGB10 u_YUV444_to_RGB10 (
+	 // Khối xử lý ảnh tổng hợp (Bao gồm YUV, Grayscale và Mux)
+    VGA_Image_Processor u_image_processor (
         .iCLK    (clk_25m_vga),
         .iRST_N  (rst_n),
-        .i_valid (pipe_valid_d1),
+        .iMode   (SW[1:0]),      // Chọn chế độ từ SW 0, 1
+        
+        .i_valid (vga_fifo_rdreq),
         .iY      (w_y),
         .iCb     (w_cb),
         .iCr     (w_cr),
-        .o_valid (),
-        .oRed    (vga_red_10),
-        .oGreen  (vga_green_10),
-        .oBlue   (vga_blue_10)
+        
+        .oRed    (final_vga_r),  // Đưa ra dây kết nối VGA
+        .oGreen  (final_vga_g),
+        .oBlue   (final_vga_b)
     );
 
     // Thực thể Qsys Interconnect System (CPU Nios II, Avalon Bus & SDRAM IP Core)
@@ -309,6 +294,12 @@ module doan_top (
         .sdram_read_bridge_waitrequest    (r_dma_waitrequest),       // Tín hiệu bận trả về bộ đọc VGA
         .sdram_read_bridge_readdata       (r_dma_readdata),          // Dữ liệu ảnh trả về bộ đọc VGA
         .sdram_read_bridge_readdatavalid  (r_dma_readdatavalid),     // Tín hiệu báo dữ liệu hợp lệ
+		  
+		  .sdram_read_bridge_burstcount     (1'b1),                    // Đọc từng ô nhớ đơn lẻ (Single word)
+        .sdram_read_bridge_byteenable     (2'b11),                   // Kích hoạt đọc đủ cả 2 bytes (16-bit)
+        .sdram_read_bridge_write          (1'b0),                    // Cổng đọc không dùng lệnh ghi
+        .sdram_read_bridge_writedata      (16'd0),                   // Dữ liệu ghi gán bằng 0
+        .sdram_read_bridge_debugaccess    (1'b0),                    // Không dùng chức năng debugaccess
         
         // CỔNG GHI SDRAM (Nối trực tiếp với mạch điều khiển ghi Camera)
         .sdram_write_bridge_address       ({w_dma_addr, 1'b0}),      // Địa chỉ từ bộ ghi Camera
@@ -316,6 +307,12 @@ module doan_top (
         .sdram_write_bridge_writedata     (w_dma_writedata),         // Dữ liệu ảnh từ bộ ghi Camera
         .sdram_write_bridge_waitrequest   (w_dma_waitrequest),       // Tín hiệu bận trả về bộ ghi Camera
         .sdram_write_bridge_read          (1'b0),                    // Cổng ghi không dùng lệnh đọc -> gán cố định bằng 0
+		  
+		  .sdram_write_bridge_readdata      (),                        // Để trống cổng ra dữ liệu đọc
+        .sdram_write_bridge_readdatavalid (),                        // Để trống cổng ra valid đọc
+        .sdram_write_bridge_burstcount     (1'b1),                   // Ghi từng ô nhớ đơn lẻ (Single word)
+        .sdram_write_bridge_byteenable     (2'b11),                  // Kích hoạt ghi đủ cả 2 bytes (16-bit)
+        .sdram_write_bridge_debugaccess    (1'b0),                   // Không dùng chức năng debugaccess
         
         // Ánh xạ đường dây dẫn thẳng ra chân chip SDRAM hàn trên board mạch
         .new_sdram_controller_0_wire_addr (DRAM_ADDR),
@@ -340,9 +337,10 @@ module doan_top (
     VGA_controller u_vga (
         .iCLK       (clk_25m_vga),
         .iRST_N     (rst_n),
-        .iRed       (vga_red_10),
-        .iGreen     (vga_green_10),
-        .iBlue      (vga_blue_10),
+		  
+        .iRed       (final_vga_r),
+        .iGreen     (final_vga_g),
+        .iBlue      (final_vga_b),
         
         .oCurrent_X (vga_x),
         .oCurrent_Y (vga_y),

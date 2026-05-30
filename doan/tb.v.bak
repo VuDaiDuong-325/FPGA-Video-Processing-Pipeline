@@ -1,0 +1,64 @@
+`timescale 1ns/1ps
+
+module tb;
+
+reg pclk;
+reg reset;
+reg vsync;
+reg href;
+reg [7:0] data_in;
+
+wire [15:0] data_out;
+wire write_en;
+
+ov7670_capture dut(
+    .pclk(pclk),
+    .reset(reset),
+    .vsync(vsync),
+    .href(href),
+    .data_in(data_in),
+    .data_out(data_out),
+    .write_en(write_en)
+);
+
+always #20 pclk = ~pclk; // 25MHz
+
+initial begin
+
+    pclk = 0;
+    reset = 0;
+    vsync = 1;
+    href = 0;
+    data_in = 0;
+
+    #200;
+
+    reset = 1;
+
+    #200;
+
+    vsync = 0;
+
+    href = 1;
+
+    data_in = 8'h11;
+    #40;
+
+    data_in = 8'h22;
+    #40;
+
+    data_in = 8'h33;
+    #40;
+
+    data_in = 8'h44;
+    #40;
+
+    href = 0;
+
+    #200;
+
+    $stop;
+
+end
+
+endmodule

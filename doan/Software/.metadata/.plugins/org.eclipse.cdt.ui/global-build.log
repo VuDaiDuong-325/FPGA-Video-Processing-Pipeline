@@ -1,4 +1,4 @@
-12:18:51 **** Build of configuration Nios II for project doan ****
+15:18:04 **** Build of configuration Nios II for project doan ****
 make all 
 Info: Building ../doan_bsp/
 E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/
@@ -13,19 +13,7 @@ Info:            65534 KBytes free for stack + heap.
 Info: Creating doan.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source doan.elf >doan.objdump
 [doan build complete]
-12:19:08 **** Build of configuration Nios II for project doan ****
-make all 
-Info: Building ../doan_bsp/
-E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/
-[BSP build complete]
-[doan build complete]
-12:19:10 **** Incremental Build of configuration Nios II for project doan ****
-make all 
-Info: Building ../doan_bsp/
-E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/
-[BSP build complete]
-[doan build complete]
-12:23:11 **** Incremental Build of configuration Nios II for project doan ****
+15:18:16 **** Incremental Build of configuration Nios II for project doan ****
 make all 
 Info: Building ../doan_bsp/
 E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/

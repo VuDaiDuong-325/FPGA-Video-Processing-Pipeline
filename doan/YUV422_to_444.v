@@ -29,7 +29,7 @@ module YUV422_to_444(
             mCr <= 8'd128; // Giúp màn hình không bị ám xanh khi chưa có camera
         end 
         else if (i_valid) begin // <--- Chỉ cập nhật dữ liệu khi luồng pipeline hợp lệ
-            if (iX[0])
+            if (!iX[0])
                 {mCb, mY} <= iYCbCr; // Tự động chốt giữ mCr cũ
             else
                 {mCr, mY} <= iYCbCr; // Tự động chốt giữ mCb cũ

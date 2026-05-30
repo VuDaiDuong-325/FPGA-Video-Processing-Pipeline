@@ -6,8 +6,10 @@ Progress: Adding clock [clock_source 18.1]
 Progress: Parameterizing module clock
 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
 Progress: Parameterizing module jtag_uart_0
-Progress: Adding mm_bridge_0 [altera_avalon_mm_bridge 18.1]
-Progress: Parameterizing module mm_bridge_0
+Progress: Adding mm_bridge_read [altera_avalon_mm_bridge 18.1]
+Progress: Parameterizing module mm_bridge_read
+Progress: Adding mm_bridge_write [altera_avalon_mm_bridge 18.1]
+Progress: Parameterizing module mm_bridge_write
 Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 18.1]
 Progress: Parameterizing module new_sdram_controller_0
 Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
@@ -47,8 +49,10 @@ Progress: Adding clock [clock_source 18.1]
 Progress: Parameterizing module clock
 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
 Progress: Parameterizing module jtag_uart_0
-Progress: Adding mm_bridge_0 [altera_avalon_mm_bridge 18.1]
-Progress: Parameterizing module mm_bridge_0
+Progress: Adding mm_bridge_read [altera_avalon_mm_bridge 18.1]
+Progress: Parameterizing module mm_bridge_read
+Progress: Adding mm_bridge_write [altera_avalon_mm_bridge 18.1]
+Progress: Parameterizing module mm_bridge_write
 Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 18.1]
 Progress: Parameterizing module new_sdram_controller_0
 Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
@@ -79,37 +83,37 @@ Info: system.sysid_qsys_0: System ID is not assigned automatically. Edit the Sys
 Info: system.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
 Info: system: Generating system "system" for QUARTUS_SYNTH
 Info: jtag_uart_0: Starting RTL generation for module 'system_jtag_uart_0'
-Info: jtag_uart_0:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_jtag_uart_0 --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0002_jtag_uart_0_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0002_jtag_uart_0_gen//system_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_jtag_uart_0 --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0002_jtag_uart_0_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0002_jtag_uart_0_gen//system_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info: jtag_uart_0: Done RTL generation for module 'system_jtag_uart_0'
 Info: jtag_uart_0: "system" instantiated altera_avalon_jtag_uart "jtag_uart_0"
-Info: mm_bridge_0: "system" instantiated altera_avalon_mm_bridge "mm_bridge_0"
+Info: mm_bridge_read: "system" instantiated altera_avalon_mm_bridge "mm_bridge_read"
 Info: new_sdram_controller_0: Starting RTL generation for module 'system_new_sdram_controller_0'
-Info: new_sdram_controller_0:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=system_new_sdram_controller_0 --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0004_new_sdram_controller_0_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0004_new_sdram_controller_0_gen//system_new_sdram_controller_0_component_configuration.pl  --do_build_sim=0  ]
+Info: new_sdram_controller_0:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=system_new_sdram_controller_0 --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0004_new_sdram_controller_0_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0004_new_sdram_controller_0_gen//system_new_sdram_controller_0_component_configuration.pl  --do_build_sim=0  ]
 Info: new_sdram_controller_0: Done RTL generation for module 'system_new_sdram_controller_0'
 Info: new_sdram_controller_0: "system" instantiated altera_avalon_new_sdram_controller "new_sdram_controller_0"
 Info: nios2_gen2_0: "system" instantiated altera_nios2_gen2 "nios2_gen2_0"
 Info: onchip_memory2_0: Starting RTL generation for module 'system_onchip_memory2_0'
-Info: onchip_memory2_0:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_onchip_memory2_0 --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0005_onchip_memory2_0_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0005_onchip_memory2_0_gen//system_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_onchip_memory2_0 --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0005_onchip_memory2_0_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0005_onchip_memory2_0_gen//system_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
 Info: onchip_memory2_0: Done RTL generation for module 'system_onchip_memory2_0'
 Info: onchip_memory2_0: "system" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
 Info: pio_mode: Starting RTL generation for module 'system_pio_mode'
-Info: pio_mode:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_mode --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0006_pio_mode_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0006_pio_mode_gen//system_pio_mode_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_mode:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_mode --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0006_pio_mode_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0006_pio_mode_gen//system_pio_mode_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_mode: Done RTL generation for module 'system_pio_mode'
 Info: pio_mode: "system" instantiated altera_avalon_pio "pio_mode"
 Info: pio_sccb_done: Starting RTL generation for module 'system_pio_sccb_done'
-Info: pio_sccb_done:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_sccb_done --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0007_pio_sccb_done_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0007_pio_sccb_done_gen//system_pio_sccb_done_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_sccb_done:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_sccb_done --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0007_pio_sccb_done_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0007_pio_sccb_done_gen//system_pio_sccb_done_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_sccb_done: Done RTL generation for module 'system_pio_sccb_done'
 Info: pio_sccb_done: "system" instantiated altera_avalon_pio "pio_sccb_done"
 Info: pio_sccb_start: Starting RTL generation for module 'system_pio_sccb_start'
-Info: pio_sccb_start:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_sccb_start --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0008_pio_sccb_start_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0008_pio_sccb_start_gen//system_pio_sccb_start_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_sccb_start:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_sccb_start --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0008_pio_sccb_start_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0008_pio_sccb_start_gen//system_pio_sccb_start_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_sccb_start: Done RTL generation for module 'system_pio_sccb_start'
 Info: pio_sccb_start: "system" instantiated altera_avalon_pio "pio_sccb_start"
 Info: pio_sw: Starting RTL generation for module 'system_pio_sw'
-Info: pio_sw:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_sw --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0009_pio_sw_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0009_pio_sw_gen//system_pio_sw_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_sw:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_sw --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0009_pio_sw_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0009_pio_sw_gen//system_pio_sw_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_sw: Done RTL generation for module 'system_pio_sw'
 Info: pio_sw: "system" instantiated altera_avalon_pio "pio_sw"
 Info: pio_threshold: Starting RTL generation for module 'system_pio_threshold'
-Info: pio_threshold:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_threshold --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0010_pio_threshold_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0010_pio_threshold_gen//system_pio_threshold_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_threshold:   Generation command is [exec E:/quartus18.1/quartus/bin64/perl/bin/perl.exe -I E:/quartus18.1/quartus/bin64/perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- E:/quartus18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_pio_threshold --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0010_pio_threshold_gen/ --quartus_dir=E:/quartus18.1/quartus --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0010_pio_threshold_gen//system_pio_threshold_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_threshold: Done RTL generation for module 'system_pio_threshold'
 Info: pio_threshold: "system" instantiated altera_avalon_pio "pio_threshold"
 Info: sysid_qsys_0: "system" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
@@ -127,19 +131,19 @@ Info: mm_interconnect_0: "system" instantiated altera_mm_interconnect "mm_interc
 Info: irq_mapper: "system" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "system" instantiated altera_reset_controller "rst_controller"
 Info: cpu: Starting RTL generation for module 'system_nios2_gen2_0_cpu'
-Info: cpu:   Generation command is [exec E:/quartus18.1/quartus/bin64//eperlcmd.exe -I E:/quartus18.1/quartus/bin64//perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_nios2_gen2_0_cpu --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0014_cpu_gen/ --quartus_bindir=E:/quartus18.1/quartus/bin64/ --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0601_4429038983238979978.dir/0014_cpu_gen//system_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info: cpu: # 2026.05.29 00:57:55 (*) Starting Nios II generation
-Info: cpu: # 2026.05.29 00:57:55 (*)   Checking for plaintext license.
-Info: cpu: # 2026.05.29 00:57:55 (*)   Couldn't query license setup in Quartus directory E:/quartus18.1/quartus/bin64/
-Info: cpu: # 2026.05.29 00:57:55 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2026.05.29 00:57:55 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2026.05.29 00:57:55 (*)   Plaintext license not found.
-Info: cpu: # 2026.05.29 00:57:55 (*)   No license required to generate encrypted Nios II/e.
-Info: cpu: # 2026.05.29 00:57:55 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2026.05.29 00:57:55 (*)   Creating all objects for CPU
-Info: cpu: # 2026.05.29 00:57:56 (*)   Generating RTL from CPU objects
-Info: cpu: # 2026.05.29 00:57:56 (*)   Creating plain-text RTL
-Info: cpu: # 2026.05.29 00:57:57 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec E:/quartus18.1/quartus/bin64//eperlcmd.exe -I E:/quartus18.1/quartus/bin64//perl/lib -I E:/quartus18.1/quartus/sopc_builder/bin/europa -I E:/quartus18.1/quartus/sopc_builder/bin/perl_lib -I E:/quartus18.1/quartus/sopc_builder/bin -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- E:/quartus18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_nios2_gen2_0_cpu --dir=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0014_cpu_gen/ --quartus_bindir=E:/quartus18.1/quartus/bin64/ --verilog --config=C:/Users/ADMIN/AppData/Local/Temp/alt0602_1280548665862261329.dir/0014_cpu_gen//system_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2026.05.29 11:31:32 (*) Starting Nios II generation
+Info: cpu: # 2026.05.29 11:31:32 (*)   Checking for plaintext license.
+Info: cpu: # 2026.05.29 11:31:32 (*)   Couldn't query license setup in Quartus directory E:/quartus18.1/quartus/bin64/
+Info: cpu: # 2026.05.29 11:31:32 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2026.05.29 11:31:32 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2026.05.29 11:31:32 (*)   Plaintext license not found.
+Info: cpu: # 2026.05.29 11:31:32 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2026.05.29 11:31:32 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2026.05.29 11:31:32 (*)   Creating all objects for CPU
+Info: cpu: # 2026.05.29 11:31:33 (*)   Generating RTL from CPU objects
+Info: cpu: # 2026.05.29 11:31:33 (*)   Creating plain-text RTL
+Info: cpu: # 2026.05.29 11:31:33 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'system_nios2_gen2_0_cpu'
 Info: cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
 Info: nios2_gen2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_0_data_master_translator"
@@ -149,14 +153,14 @@ Info: jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated alte
 Info: jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo"
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
-Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
 Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
-Info: router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
-Info: router_012: "mm_interconnect_0" instantiated altera_merlin_router "router_012"
+Info: router_004: "mm_interconnect_0" instantiated altera_merlin_router "router_004"
+Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: router_013: "mm_interconnect_0" instantiated altera_merlin_router "router_013"
 Info: new_sdram_controller_0_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "new_sdram_controller_0_s1_burst_adapter"
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
-Info: cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
+Info: cmd_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_003"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: cmd_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_002"
 Info: Reusing file D:/E/1subject/HK6/SoC/doan/doan/system/synthesis/submodules/altera_merlin_arbitrator.sv
@@ -168,7 +172,7 @@ Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_m
 Info: Reusing file D:/E/1subject/HK6/SoC/doan/doan/system/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
 Info: Reusing file D:/E/1subject/HK6/SoC/doan/doan/system/synthesis/submodules/altera_merlin_arbitrator.sv
-Info: rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
+Info: rsp_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_003"
 Info: Reusing file D:/E/1subject/HK6/SoC/doan/doan/system/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: nios2_gen2_0_data_master_to_new_sdram_controller_0_s1_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "nios2_gen2_0_data_master_to_new_sdram_controller_0_s1_cmd_width_adapter"
 Info: Reusing file D:/E/1subject/HK6/SoC/doan/doan/system/synthesis/submodules/altera_merlin_address_alignment.sv

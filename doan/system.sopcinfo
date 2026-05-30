@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="system" kind="system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2026.05.29.11:31:09 -->
+ <!-- 2026.05.30.12:23:03 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1780029069</value>
+  <value>1780118583</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -12060,7 +12060,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1780029069</value>
+   <value>1780118583</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -12080,7 +12080,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1780029069</value>
+   <value>1780118583</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -12096,7 +12096,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1780029069</value>
+   <value>1780118583</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -13224,7 +13224,7 @@ parameters are a RESULT of the module parameters. -->
    end="new_sdram_controller_0.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

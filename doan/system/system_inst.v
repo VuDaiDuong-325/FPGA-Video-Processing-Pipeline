@@ -1,15 +1,5 @@
 	system u0 (
 		.clk_clk                           (<connected-to-clk_clk>),                           //                         clk.clk
-		.sdram_write_bridge_waitrequest    (<connected-to-sdram_write_bridge_waitrequest>),    //          sdram_write_bridge.waitrequest
-		.sdram_write_bridge_readdata       (<connected-to-sdram_write_bridge_readdata>),       //                            .readdata
-		.sdram_write_bridge_readdatavalid  (<connected-to-sdram_write_bridge_readdatavalid>),  //                            .readdatavalid
-		.sdram_write_bridge_burstcount     (<connected-to-sdram_write_bridge_burstcount>),     //                            .burstcount
-		.sdram_write_bridge_writedata      (<connected-to-sdram_write_bridge_writedata>),      //                            .writedata
-		.sdram_write_bridge_address        (<connected-to-sdram_write_bridge_address>),        //                            .address
-		.sdram_write_bridge_write          (<connected-to-sdram_write_bridge_write>),          //                            .write
-		.sdram_write_bridge_read           (<connected-to-sdram_write_bridge_read>),           //                            .read
-		.sdram_write_bridge_byteenable     (<connected-to-sdram_write_bridge_byteenable>),     //                            .byteenable
-		.sdram_write_bridge_debugaccess    (<connected-to-sdram_write_bridge_debugaccess>),    //                            .debugaccess
 		.new_sdram_controller_0_wire_addr  (<connected-to-new_sdram_controller_0_wire_addr>),  // new_sdram_controller_0_wire.addr
 		.new_sdram_controller_0_wire_ba    (<connected-to-new_sdram_controller_0_wire_ba>),    //                            .ba
 		.new_sdram_controller_0_wire_cas_n (<connected-to-new_sdram_controller_0_wire_cas_n>), //                            .cas_n
@@ -34,6 +24,16 @@
 		.sdram_read_bridge_write           (<connected-to-sdram_read_bridge_write>),           //                            .write
 		.sdram_read_bridge_read            (<connected-to-sdram_read_bridge_read>),            //                            .read
 		.sdram_read_bridge_byteenable      (<connected-to-sdram_read_bridge_byteenable>),      //                            .byteenable
-		.sdram_read_bridge_debugaccess     (<connected-to-sdram_read_bridge_debugaccess>)      //                            .debugaccess
+		.sdram_read_bridge_debugaccess     (<connected-to-sdram_read_bridge_debugaccess>),     //                            .debugaccess
+		.sdram_write_bridge_waitrequest    (<connected-to-sdram_write_bridge_waitrequest>),    //          sdram_write_bridge.waitrequest
+		.sdram_write_bridge_readdata       (<connected-to-sdram_write_bridge_readdata>),       //                            .readdata
+		.sdram_write_bridge_readdatavalid  (<connected-to-sdram_write_bridge_readdatavalid>),  //                            .readdatavalid
+		.sdram_write_bridge_burstcount     (<connected-to-sdram_write_bridge_burstcount>),     //                            .burstcount
+		.sdram_write_bridge_writedata      (<connected-to-sdram_write_bridge_writedata>),      //                            .writedata
+		.sdram_write_bridge_address        (<connected-to-sdram_write_bridge_address>),        //                            .address
+		.sdram_write_bridge_write          (<connected-to-sdram_write_bridge_write>),          //                            .write
+		.sdram_write_bridge_read           (<connected-to-sdram_write_bridge_read>),           //                            .read
+		.sdram_write_bridge_byteenable     (<connected-to-sdram_write_bridge_byteenable>),     //                            .byteenable
+		.sdram_write_bridge_debugaccess    (<connected-to-sdram_write_bridge_debugaccess>)     //                            .debugaccess
 	);
 

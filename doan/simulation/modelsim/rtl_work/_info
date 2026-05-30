@@ -1,0 +1,84 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+vsys_pll
+IM0kS65ggSBJU4fT=?d6@51
+V?5S<9X?I3Kjnhi_G4cl:?2
+Z1 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+w1779856677
+8D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo
+FD:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo
+L0 31
+Z2 OV;L;10.1d;51
+r1
+31
+o-O0
+!s100 5dChoE;b3gZg9VFzAJ3Kl1
+!s108 1780117162.670000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo|
+!s90 -reportprogress|300|D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo|
+!i10b 1
+!s85 0
+!s101 -O0
+vtb
+!i10b 1
+!s100 6bD;PlchjBO`DDEX`OPN02
+IB>if`;^;;UBUbZ[cfNlBL0
+VV@Xn<HnSRM[I5c1?BH]3a3
+R1
+w1780117136
+8D:/E/1subject/HK6/SoC/doan/doan/tb.v
+FD:/E/1subject/HK6/SoC/doan/doan/tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1780117162.797000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/E/1subject/HK6/SoC/doan/doan|D:/E/1subject/HK6/SoC/doan/doan/tb.v|
+!s101 -O0
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan -O0
+vVGA_controller
+IT]?jjiI[0RW=2UEFkC?Sf0
+VeiiSf61;<D:h=b:A;o?E>1
+R1
+w1780026911
+8D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v
+FD:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v
+L0 1
+R2
+r1
+31
+R3
+n@v@g@a_controller
+!i10b 1
+!s100 N_][>Db8jXhg4IAVnG7f30
+!s85 0
+!s108 1780117162.765000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/E/1subject/HK6/SoC/doan/doan|D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v|
+!s101 -O0
+R4
+vvga_pll
+ILT7VM_`E0z@bXLZ14chJT0
+VF9<bWkU;@V<E;7IVl9?Ea3
+R1
+w1779851673
+8D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo
+FD:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo
+L0 31
+R2
+r1
+31
+o-O0
+!i10b 1
+!s100 ncnWoF@^_K==XlJLlOWzh2
+!s85 0
+!s108 1780117162.718000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo|
+!s90 -reportprogress|300|D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo|
+!s101 -O0

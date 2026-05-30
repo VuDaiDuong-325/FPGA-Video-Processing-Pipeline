@@ -16,8 +16,8 @@ module sdram_double_buffer_controller (
 
     // Định nghĩa địa chỉ nền của 2 tầng đệm (Địa chỉ dạng WORD)
     // Khung hình VGA 640x480 = 307,200 Words.
-    localparam BUFFER_A_BASE = 25'h0000_000; 
-    localparam BUFFER_B_BASE = 25'h004_B000; // 307,200 tương đương 0x4B000 trong hệ Hex
+    localparam BUFFER_A_BASE = 25'h1000_000; 
+    localparam BUFFER_B_BASE = 25'h104_B000; // 307,200 tương đương 0x4B000 trong hệ Hex
 
     reg current_buffer; // 0: Ghi vào A (VGA đọc B) | 1: Ghi vào B (VGA đọc A)
     reg [18:0] pixel_counter; // Bộ đếm vị trí pixel từ 0 đến 307199
@@ -36,7 +36,7 @@ module sdram_double_buffer_controller (
 	 // Phát hiện cạnh xuống (Falling Edge) dựa trên 2 tầng đã được đồng bộ an toàn:
 	 // vsync_sync_reg[1] là giá trị hiện tại (đã qua 2 tầng FF)
 	 // vsync_sync_reg[2] là giá trị của chu kỳ trước đó (đã qua 3 tầng FF)
-	 wire frame_done = (vsync_sync_reg[2] == 1'b1 && vsync_sync_reg[1] == 1'b0);
+	 wire frame_done = (vsync_sync_reg[2] == 1'b0 && vsync_sync_reg[1] == 1'b1);
 
     // Logic Đảo Tầng Đệm (Ping-Pong Switch)
     always @(posedge clk or negedge rst_n) begin
@@ -54,26 +54,29 @@ module sdram_double_buffer_controller (
             avm_address   <= 25'd0;
             avm_write     <= 1'b0;
             avm_writedata <= 16'd0;
-        end else begin
-            if (frame_done) begin
-                pixel_counter <= 19'd0; // Hết khung hình thì reset bộ đếm
-            end else if (cam_pixel_valid && !avm_waitrequest) begin
-                // TÍNH ĐỊA CHỈ WORD (Không dịch bit << 1 nữa)
-                if (current_buffer == 1'b0)
-                    avm_address <= BUFFER_A_BASE + pixel_counter;
-                else
-                    avm_address <= BUFFER_B_BASE + pixel_counter;
+		  end else if (frame_done) begin
+            pixel_counter <= 19'd0;
+            avm_write     <= 1'b0; // Hủy lệnh ghi tạm thời khi chuyển frame
+        end else if (avm_write && avm_waitrequest) begin
+            // LUẬT AVALON-MM: Nếu đang phát lệnh write mà SDRAM báo bận (waitrequest = 1),
+            // BẮT BUỘC giữ nguyên toàn bộ tín hiệu, không được hạ write, không tăng bộ đếm.
+            avm_write     <= 1'b1;
+            avm_address   <= avm_address;
+            avm_writedata <= avm_writedata;
+        end 
+        else begin
+        // SDRAM đã sẵn sàng (waitrequest = 0), có thể xử lý pixel tiếp theo
+        if (cam_pixel_valid) begin
+				if (current_buffer == 1'b0)
+					avm_address <= BUFFER_A_BASE + pixel_counter;
+            else
+					avm_address <= BUFFER_B_BASE + pixel_counter;
 
-                avm_writedata <= cam_pixel_data;
-                avm_write     <= 1'b1;
-                
-                // Tăng tiến địa chỉ pixel
-                if (pixel_counter < 19'd307199)
-                    pixel_counter <= pixel_counter + 1'b1;
-                else
-                    pixel_counter <= 19'd0;
-            end else if (!avm_waitrequest) begin
-                avm_write <= 1'b0; // Hạ lệnh ghi nếu không có dữ liệu mới hoặc SDRAM bận
+               avm_writedata <= cam_pixel_data;
+               avm_write     <= 1'b1;
+               pixel_counter <= pixel_counter + 1'b1;
+            end else begin
+					avm_write     <= 1'b0; // Không có dữ liệu từ FIFO thì hạ lệnh write
             end
         end
     end

@@ -1,0 +1,63 @@
+# Reading D:/E/1subject/HK2/nhap_mon_mach_so/lab/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do doan_run_msim_rtl_verilog.do 
+# if ![file isdirectory doan_iputf_libs] {
+# 	file mkdir doan_iputf_libs
+# }
+# 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying D:\E\1subject\HK2\nhap_mon_mach_so\lab\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied D:\E\1subject\HK2\nhap_mon_mach_so\lab\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+###### Libraries for IPUTF cores 
+###### End libraries for IPUTF cores 
+###### MIF file copy and HDL compilation commands for IPUTF cores 
+# 
+# 
+# vlog "D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo"
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module sys_pll
+# 
+# Top level modules:
+# 	sys_pll
+# vlog "D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo"
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module vga_pll
+# 
+# Top level modules:
+# 	vga_pll
+# 
+# vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module VGA_controller
+# 
+# Top level modules:
+# 	VGA_controller
+# 
+# vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps tb 
+# Loading work.tb
+# Loading work.VGA_controller
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Mo phong VGA_Controller hoan tat 1 Frame!
+# Break in Module tb at D:/E/1subject/HK6/SoC/doan/doan/tb.v line 48
+# Simulation Breakpoint: Break in Module tb at D:/E/1subject/HK6/SoC/doan/doan/tb.v line 48
+# MACRO ./doan_run_msim_rtl_verilog.do PAUSED at line 29

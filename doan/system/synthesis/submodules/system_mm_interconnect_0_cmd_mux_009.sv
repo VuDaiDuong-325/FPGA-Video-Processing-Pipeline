@@ -40,7 +40,7 @@
 // Generation parameters:
 //   output_name:         system_mm_interconnect_0_cmd_mux_009
 //   NUM_INPUTS:          3
-//   ARBITRATION_SHARES:  1 1 1
+//   ARBITRATION_SHARES:  1 1 2
 //   ARBITRATION_SCHEME   "round-robin"
 //   PIPELINE_ARB:        1
 //   PKT_TRANS_LOCK:      49 (arbitration locking enabled)
@@ -176,10 +176,10 @@ module system_mm_interconnect_0_cmd_mux_009
     // Input  |  arb shares  |  counter load value
     // 0      |      1       |  0
     // 1      |      1       |  0
-    // 2      |      1       |  0
+    // 2      |      2       |  1
      wire [SHARE_COUNTER_W - 1 : 0] share_0 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_1 = 1'd0;
-     wire [SHARE_COUNTER_W - 1 : 0] share_2 = 1'd0;
+     wire [SHARE_COUNTER_W - 1 : 0] share_2 = 1'd1;
 
     // ------------------------------------------
     // Choose the share value corresponding to the grant.

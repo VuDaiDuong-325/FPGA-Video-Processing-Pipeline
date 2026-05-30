@@ -54,7 +54,7 @@ module ov7670_capture(
 					byte_flag <= 1'b1;
 				end
 				else begin
-					data_out <= {latched_data, d_reg};
+					data_out <= {d_reg, latched_data};
 					write_en <= 1'b1;
 					byte_flag <= 1'b0;
 				end
