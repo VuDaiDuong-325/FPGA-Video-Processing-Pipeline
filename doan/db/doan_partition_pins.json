@@ -308,10 +308,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "CAM_SDA",
-					"strict" : false
-				},
-				{
 					"name" : "CAM_HREF",
 					"strict" : false
 				},
@@ -320,19 +316,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "CLOCK_50",
+					"strict" : false
+				},
+				{
 					"name" : "SW[0]",
 					"strict" : false
 				},
 				{
 					"name" : "SW[1]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_VSYNC",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_PCLK",
 					"strict" : false
 				},
 				{
@@ -365,38 +357,6 @@
 				},
 				{
 					"name" : "SW[2]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[0]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[1]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[2]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[3]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[4]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[5]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[6]",
-					"strict" : false
-				},
-				{
-					"name" : "CAM_DATA[7]",
 					"strict" : false
 				}
 			]

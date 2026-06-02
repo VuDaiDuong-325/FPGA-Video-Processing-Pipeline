@@ -1,0 +1,93 @@
+module mock_camera_generator (
+    input  wire       clk_24m, // Cấp xung 24MHz từ PLL
+    input  wire       rst_n,
+    
+    // Tín hiệu giả lập đẩy vào hệ thống y hệt Camera thật
+    output wire       o_pclk,
+    output reg        o_vsync,
+    output reg        o_href,
+    output reg  [7:0] o_data
+);
+
+    // 1. Tạo xung PCLK 12MHz (Chia đôi từ 24MHz)
+    reg pclk_reg;
+    always @(posedge clk_24m or negedge rst_n) begin
+        if (!rst_n) pclk_reg <= 1'b0;
+        else pclk_reg <= ~pclk_reg;
+    end
+    assign o_pclk = pclk_reg;
+
+    // 2. Thông số Timing mô phỏng khung hình VGA (640x480)
+    // 640 pixel YUV422 = 1280 byte (Mỗi pixel 2 byte)
+    localparam H_ACTIVE = 1280; 
+    localparam H_BLANK  = 300;
+    localparam H_TOTAL  = H_ACTIVE + H_BLANK;
+
+    localparam V_ACTIVE = 480;
+    localparam V_BLANK  = 30;
+    localparam V_TOTAL  = V_ACTIVE + V_BLANK;
+
+    reg [11:0] h_cnt;
+    reg [9:0]  v_cnt;
+
+    // Bộ đếm tọa độ dòng quét
+    always @(posedge o_pclk or negedge rst_n) begin
+        if (!rst_n) begin
+            h_cnt <= 0;
+            v_cnt <= 0;
+        end else begin
+            if (h_cnt == H_TOTAL - 1) begin
+                h_cnt <= 0;
+                if (v_cnt == V_TOTAL - 1)
+                    v_cnt <= 0;
+                else
+                    v_cnt <= v_cnt + 1;
+            end else begin
+                h_cnt <= h_cnt + 1;
+            end
+        end
+    end
+
+    // Tín hiệu VSYNC (Lên mức 1 trong 3 dòng đầu tiên của Blanking)
+    always @(posedge o_pclk or negedge rst_n) begin
+        if (!rst_n) o_vsync <= 0;
+        else if (v_cnt < 3) o_vsync <= 1;
+        else o_vsync <= 0;
+    end
+
+    // Tín hiệu HREF (Lên mức 1 trong vùng 640x480 pixel tích cực)
+    always @(posedge o_pclk or negedge rst_n) begin
+        if (!rst_n) o_href <= 0;
+        else if (v_cnt >= V_BLANK && h_cnt < H_ACTIVE) o_href <= 1;
+        else o_href <= 0;
+    end
+
+    // 3. Sinh 4 Dải Màu Dọc YUV (Trắng - Đỏ - Xanh Lá - Xanh Dương)
+    // Tọa độ Pixel X: từ 0 đến 639 (h_cnt / 2)
+    wire [9:0] pixel_x = h_cnt[10:1]; 
+    wire [1:0] color_zone = pixel_x[9:8]; // Chia màn hình làm 4 vùng
+
+    reg [7:0] cur_Y, cur_U, cur_V;
+    always @(*) begin
+        case(color_zone)
+            2'd0: begin cur_Y = 8'd255; cur_U = 8'd128; cur_V = 8'd128; end // Màu Trắng
+            2'd1: begin cur_Y = 8'd76;  cur_U = 8'd84;  cur_V = 8'd255; end // Màu Đỏ
+            2'd2: begin cur_Y = 8'd149; cur_U = 8'd43;  cur_V = 8'd21;  end // Màu Xanh Lá
+            2'd3: begin cur_Y = 8'd29;  cur_U = 8'd255; cur_V = 8'd107; end // Màu Xanh Dương
+        endcase
+    end
+
+    // Đẩy dữ liệu theo thứ tự chuẩn YUV422 (Y0 - U - Y1 - V)
+    always @(*) begin
+        if (o_href) begin
+            case (h_cnt[1:0])
+                2'b00: o_data = cur_Y; // Byte 0: Y
+                2'b01: o_data = cur_U; // Byte 1: Cb (U)
+                2'b10: o_data = cur_Y; // Byte 2: Y
+                2'b11: o_data = cur_V; // Byte 3: Cr (V)
+            endcase
+        end else begin
+            o_data = 8'd0;
+        end
+    end
+endmodule

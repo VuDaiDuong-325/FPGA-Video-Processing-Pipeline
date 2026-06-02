@@ -51,6 +51,32 @@ void Camera_Initialize() {
     printf("\n[SUCCESS] Camera configuration successful!\n");
     printf("OV7670 Camera is ready to output to VGA.\n");
     printf("==========================================\n\n");
+    printf("[DEBUG] Dang kiem tra du lieu trong SDRAM...\n");
+        usleep(1000000);
+
+
+        volatile uint16_t *sdram_image_ptr = (volatile uint16_t *)0x01000000;
+
+        int valid_pixels = 0;
+        int zero_pixels = 0;
+        int error_pixels = 0;
+
+        printf("--- 10 Pixel dau tien ---\n");
+        for(int i = 0; i < 10; i++) {
+            printf("Pixel[%d]: 0x%04X\n", i, sdram_image_ptr[i]);
+        }
+
+        for(int i = 0; i < 307200; i++) {
+            uint16_t pixel = sdram_image_ptr[i];
+            if (pixel == 0x0000) zero_pixels++;
+            else if (pixel == 0xFFFF) error_pixels++;
+            else valid_pixels++;
+        }
+
+        printf("\n--- THONG KE KHUNG HINH ---\n");
+        printf("Pixels empty (0x0000): %d\n", zero_pixels);
+        printf("Pixels error (0xFFFF): %d\n", error_pixels);
+        printf("Pixels co du lieu: %d\n", valid_pixels);
 }
 
 // ====================================================================

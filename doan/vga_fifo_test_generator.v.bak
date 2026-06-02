@@ -1,0 +1,109 @@
+// =========================================================================
+// FILE NAME: vga_fifo_test_generator.v
+// DESCRIPTION: Sinh dữ liệu YUV422 mẫu để test luồng hiển thị VGA FIFO.
+//              Hỗ trợ 2 chế độ: Thanh màu (Color Bars) & Ô cờ (Checkerboard)
+// =========================================================================
+
+module vga_fifo_test_generator (
+    input wire clk,                  // Kết nối tới clk_50m_sys
+    input wire rst_n,                // Reset tích cực mức thấp
+    input wire frame_done,           // Tín hiệu đồng bộ khung hình từ Top
+    input wire [10:0] fifo_wrusedw,  // Mức chứa hiện tại của VGA FIFO
+    
+    output reg        fifo_wrreq,    // Tín hiệu yêu cầu ghi vào FIFO
+    output reg [15:0] fifo_wrdata    // Dữ liệu YUV422 mẫu ghi vào FIFO
+);
+
+    // Thông số kích thước màn hình VGA chuẩn 640x480
+    localparam MAX_PIXELS = 19'd307_200; 
+
+    reg [18:0] pixel_cnt;            // Bộ đếm số lượng pixel trong 1 khung hình
+
+    // Logic kiểm soát luồng (Flow Control) chống tràn FIFO
+    // Cho phép ghi khi FIFO chứa ít hơn 1536 từ (FIFO sâu 2048)
+    wire safe_to_write = (fifo_wrusedw < 11'd1536);
+    wire need_to_write = (pixel_cnt < MAX_PIXELS);
+
+    // Tính toán tọa độ X, Y giả lập dựa vào bộ đếm pixel_cnt để sinh Pattern
+    wire [9:0] pseudo_x = pixel_cnt % 19'd640;
+    wire [8:0] pseudo_y = pixel_cnt / 19'd640;
+
+    reg [7:0] sample_y;
+    reg [7:0] sample_cb;
+    reg [7:0] sample_cr;
+
+    // -------------------------------------------------------------------------
+    // KHỐI SINH KHÔNG GIAN MÀU YUV GIẢ LẬP
+    // CHẾ ĐỘ 1: Dải 8 thanh màu dọc chuẩn (Color Bars) để test bộ chuyển đổi màu
+    // -------------------------------------------------------------------------
+    always @(*) begin
+        if (pseudo_x < 80) begin
+            // Trắng (White): Y=235, Cb=128, Cr=128
+            sample_y = 8'd235; sample_cb = 8'd128; sample_cr = 8'd128;
+        end else if (pseudo_x < 160) begin
+            // Vàng (Yellow): Y=210, Cb=16, Cr=146
+            sample_y = 8'd210; sample_cb = 8'd16;  sample_cr = 8'd146;
+        end else if (pseudo_x < 240) begin
+            // Xanh lam (Cyan): Y=170, Cb=166, Cr=16
+            sample_y = 8'd170; sample_cb = 8'd166; sample_cr = 8'd16;
+        end else if (pseudo_x < 320) begin
+            // Xanh lá (Green): Y=145, Cb=54, Cr=34
+            sample_y = 8'd145; sample_cb = 8'd54;  sample_cr = 8'd34;
+        end else if (pseudo_x < 400) begin
+            // Tím (Magenta): Y=106, Cb=202, Cr=222
+            sample_y = 8'd106; sample_cb = 8'd202; sample_cr = 8'd222;
+        end else if (pseudo_x < 480) begin
+            // Đỏ (Red): Y=81, Cb=90, Cr=240
+            sample_y = 8'd81;  sample_cb = 8'd90;  sample_cr = 8'd240;
+        end else if (pseudo_x < 560) begin
+            // Xanh dương (Blue): Y=41, Cb=240, Cr=110
+            sample_y = 8'd41;  sample_cb = 8'd240; sample_cr = 8'd110;
+        end else begin
+            // Đen (Black): Y=16, Cb=128, Cr=128
+            sample_y = 8'd16;  sample_cb = 8'd128; sample_cr = 8'd128;
+        end
+        
+        // --- BỎ COMMENT ĐOẠN DƯỚI NẾU MUỐN CHUYỂN SANG CHẾ ĐỘ Ô CỜ ĐEN TRẮNG ---
+        // Chế độ Ô cờ (Checkerboard 32x32) giúp kiểm tra nhiễu sọc hình và căn lề biên
+        /*
+        if (pseudo_x[5] ^ pseudo_y[5]) begin
+            sample_y = 8'd200; // Ô sáng
+        end else begin
+            sample_y = 8'd40;  // Ô tối
+        end
+        sample_cb = 8'd128; // Không màu
+        sample_cr = 8'd128; // Không màu
+        */
+    end
+
+    // -------------------------------------------------------------------------
+    // MẠCH ĐIỀU KHIỂN GHI VÀO ĐỆM FIFO ĐỒNG BỘ
+    // -------------------------------------------------------------------------
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            pixel_cnt   <= 19'd0;
+            fifo_wrreq  <= 1'b0;
+            fifo_wrdata <= 16'd0;
+        end else begin
+            if (frame_done) begin
+                // Reset bộ đếm khi hết khung hình để đồng bộ hóa với VGA Controller
+                pixel_cnt  <= 19'd0;
+                fifo_wrreq <= 1'b0;
+            end else if (safe_to_write && need_to_write) begin
+                fifo_wrreq <= 1'b1;
+                // Chuẩn định dạng YUV 4:2:2 sắp xếp tuần tự:
+                // Pixel chẵn (pseudo_x[0] == 0) -> Gửi {Cb, Y}
+                // Pixel lẻ   (pseudo_x[0] == 1) -> Gửi {Cr, Y}
+                if (!pseudo_x[0]) begin
+                    fifo_wrdata <= {sample_cb, sample_y};
+                end else begin
+                    fifo_wrdata <= {sample_cr, sample_y};
+                end
+                pixel_cnt <= pixel_cnt + 1'b1;
+            end else begin
+                fifo_wrreq <= 1'b0;
+            end
+        end
+    end
+
+endmodule

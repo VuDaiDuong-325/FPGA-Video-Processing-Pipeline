@@ -36,7 +36,7 @@ module sdram_double_buffer_controller (
 	 // Phát hiện cạnh xuống (Falling Edge) dựa trên 2 tầng đã được đồng bộ an toàn:
 	 // vsync_sync_reg[1] là giá trị hiện tại (đã qua 2 tầng FF)
 	 // vsync_sync_reg[2] là giá trị của chu kỳ trước đó (đã qua 3 tầng FF)
-	 wire frame_done = (vsync_sync_reg[2] == 1'b0 && vsync_sync_reg[1] == 1'b1);
+	 wire frame_done = (vsync_sync_reg[2] == 1'b1 && vsync_sync_reg[1] == 1'b0);
 
     // Logic Đảo Tầng Đệm (Ping-Pong Switch)
     always @(posedge clk or negedge rst_n) begin

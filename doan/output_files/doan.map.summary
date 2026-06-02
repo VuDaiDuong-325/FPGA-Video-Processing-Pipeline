@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat May 30 15:34:30 2026
+Analysis & Synthesis Status : Successful - Tue Jun 02 09:13:54 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : doan
 Top-level Entity Name : doan_top
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 2272
+Total registers : 2715
 Total pins : 107
 Total virtual pins : 6
-Total block memory bits : 339,072
+Total block memory bits : 339,650
 Total DSP Blocks : 4
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

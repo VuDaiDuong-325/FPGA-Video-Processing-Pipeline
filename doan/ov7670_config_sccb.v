@@ -6,7 +6,7 @@ module ov7670_config_sccb(
     
     // SCCB signals (to OV7670)
     output wire oSCLK,      // Serial clock
-    inout  wire oSDA,       // Serial data
+    inout  wire ioSDA,       // Serial data
     
     // Status signal
     output reg  config_done // Goes high when all registers are configured

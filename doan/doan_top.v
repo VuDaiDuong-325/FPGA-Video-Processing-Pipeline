@@ -126,9 +126,18 @@ module doan_top (
     // Mạch dịch bit phát hiện cạnh lên VSYNC tạo tín hiệu kết thúc Frame hình
     always @(posedge clk_50m_sys or negedge rst_n) begin
         if (!rst_n) vsync_sync_reg <= 3'b0;
-        else        vsync_sync_reg <= {vsync_sync_reg[1:0], CAM_VSYNC};
+        else        vsync_sync_reg <= {vsync_sync_reg[1:0], mock_cam_vsync};
     end
-    assign frame_done = (vsync_sync_reg[2] == 1'b0 && vsync_sync_reg[1] == 1'b1);
+    assign frame_done = (vsync_sync_reg[2] == 1'b1 && vsync_sync_reg[1] == 1'b0);
+	 
+	 reg [2:0] vga_vsync_sync;
+	always @(posedge clk_50m_sys or negedge rst_n) begin
+		 if (!rst_n) vga_vsync_sync <= 3'b111;
+		 else        vga_vsync_sync <= {vga_vsync_sync[1:0], VGA_VS}; // VGA_VS thường tích cực mức thấp
+	end
+
+	// Phát hiện cạnh lên của VGA_VS (báo hiệu kết thúc vùng Blanking, bắt đầu Frame mới)
+	wire vga_frame_done = (vga_vsync_sync[2] == 1'b0 && vga_vsync_sync[1] == 1'b1);
 
     // Điều khiển nạp/xuất đồng bộ cho hai đầu FIFO ghi/đọc
     assign sdram_wrreq    = !sdram_rdempty && !w_dma_waitrequest;
@@ -152,6 +161,45 @@ module doan_top (
     
     // LED 4: Báo Tín hiệu hiển thị vùng hợp lệ của Camera. Nếu TẮT -> Camera hỏng hoặc chưa cấu hình I2C xong (Không xuất pixel)
     assign LEDR[4] = CAM_HREF;
+	 
+	 // 1. Tạo các dây tín hiệu trung gian sau bộ lọc Gate
+		wire       gate_cam_vsync;
+		wire       gate_cam_href;
+		wire [7:0] gate_cam_data;
+
+		// 2. Khởi tạo IP lọc 5 giây
+		camera_frame_gater #(
+			 .FRAME_DELAY(150) // Thay đổi số này để tăng/giảm thời gian delay hình
+		) u_test_gater (
+			 .iCAM_PCLK   (CAM_PCLK),     // Lấy clock trực tiếp từ Camera pin
+			 .iRST_N      (rst_n),
+			 .iCAM_VSYNC  (CAM_VSYNC),
+			 .iCAM_HREF   (CAM_HREF),
+			 .iCAM_DATA   (CAM_DATA),
+			 
+			 .oGATE_VSYNC (gate_cam_vsync), // Dây đã lọc sạch
+			 .oGATE_HREF  (gate_cam_href),
+			 .oGATE_DATA  (gate_cam_data)
+		);
+		
+		wire mock_cam_pclk;
+    wire mock_cam_vsync;
+    wire mock_cam_href;
+    wire [7:0] mock_cam_data;
+
+    mock_camera_generator u_mock_camera (
+        .clk_50    (CLOCK_50),
+        .rst_n     (KEY[0]),
+        .CAM_PCLK  (mock_cam_pclk),
+        .CAM_VSYNC (mock_cam_vsync),
+        .CAM_HREF  (mock_cam_href),
+        .CAM_DATA  (mock_cam_data)
+    );
+		
+		// Các dây tín hiệu kết nối từ module test generator sang VGA FIFO
+    wire        test_fifo_wrreq;
+    wire [15:0] test_fifo_wrdata;
+		
 
     // =========================================================================
     // KHỞI TẠO CÁC THỰC THỂ MODULE CON (MODULE INSTANTIATIONS)
@@ -175,23 +223,23 @@ module doan_top (
         .locked   ()
     );
 
-    // [MỚI] Khối giao tiếp cấu hình SCCB/I2C khởi động Camera OV7670
+    // Khối giao tiếp cấu hình SCCB/I2C khởi động Camera OV7670
     ov7670_config_sccb u_sccb (
         .iCLK        (clk_50m_sys),
         .iRST_N      (rst_n),
         .iSTART      (sccb_start),   // Kích hoạt từ thanh ghi PIO của Nios II
         .oSCLK       (CAM_SCL),      // Xuất tín hiệu ra chân vật lý CAM_SCL
-        .oSDA        (CAM_SDA),      // Khớp bus dữ liệu song hướng CAM_SDA
+        .ioSDA        (CAM_SDA),     // Khớp bus dữ liệu song hướng CAM_SDA
         .config_done (sccb_done)     // Báo trạng thái hoàn thành ngược về CPU
     );
 
     // Khối thu thập dữ liệu pixel thô từ Camera chuyển thành Word 16-bit
     ov7670_capture u_capture (
-        .pclk     (CAM_PCLK),
+        .pclk     (mock_cam_pclk),
         .reset    (rst_n),
-        .vsync    (CAM_VSYNC),
-        .href     (CAM_HREF),
-        .data_in  (CAM_DATA),
+        .vsync    (mock_cam_vsync),
+        .href     (mock_cam_href),
+        .data_in  (mock_cam_data),
         .data_out (cam_data_16bit),
         .write_en (cam_write_en)
     );
@@ -200,7 +248,7 @@ module doan_top (
     video_dcfifo u_cam_fifo (
         .aclr    (~rst_n),
         .data    (cam_data_16bit),
-        .wrclk   (CAM_PCLK),
+        .wrclk   (mock_cam_pclk),
         .wrreq   (cam_write_en),
         .rdclk   (clk_50m_sys),
         .rdreq   (sdram_wrreq),
@@ -215,7 +263,7 @@ module doan_top (
     sdram_double_buffer_controller u_sdram_double_buffer_controller (
         .clk              (clk_50m_sys),
         .rst_n            (rst_n),
-        .cam_vsync        (CAM_VSYNC),
+        .cam_vsync        (mock_cam_vsync),
         .cam_pixel_valid  (sdram_wrreq),
         .cam_pixel_data   (sdram_wrdata),
         .avm_address      (w_dma_addr),
@@ -228,23 +276,36 @@ module doan_top (
     sdram_read_controller u_sdram_read_controller (
         .clk                (clk_50m_sys),
         .rst_n              (rst_n),
-        .frame_done         (frame_done),
+        .cam_frame_done     (frame_done),      // Nối với dây VSYNC của Camera (Xung 15.6Hz kiểm soát lật đệm)
+        .vga_frame_done     (vga_frame_done),  // Nối với dây VSYNC của VGA (Xung 60Hz kiểm soát reset pixel)
         .avm_address        (r_dma_addr),
         .avm_read           (r_dma_read),
         .avm_waitrequest    (r_dma_waitrequest),
         .avm_readdata       (r_dma_readdata),
         .avm_readdatavalid  (r_dma_readdatavalid),
-        .fifo_wrreq         (vga_fifo_wrreq),
-        .fifo_wrdata        (vga_fifo_wrdata),
+        //.fifo_wrreq         (vga_fifo_wrreq),
+        //.fifo_wrdata        (vga_fifo_wrdata),
         .fifo_wrusedw       (vga_fifo_wrusedw)
     );
+	 
+	 
+	 // Khởi tạo thực thể Module Test để truyền dữ liệu thẳng vào luồng VGA
+    vga_fifo_test_generator u_vga_test_gen (
+        .clk            (clk_50m_sys),
+        .rst_n          (rst_n),
+        .vga_vsync      (VGA_VS),
+        .fifo_wrusedw   (vga_fifo_wrusedw),
+        .fifo_wrreq     (test_fifo_wrreq),
+        .fifo_wrdata    (test_fifo_wrdata)
+    );
+	 
 
     // DCFIFO trung chuyển đồng bộ dữ liệu từ Clock Hệ thống sang Clock VGA 25MHz
     video_dcfifo u_vga_fifo (
-        .aclr    (~rst_n),
-        .data    (vga_fifo_wrdata),
+        .aclr    (~rst_n | ~VGA_VS),
+        .data    (test_fifo_wrdata),
         .wrclk   (clk_50m_sys),
-        .wrreq   (vga_fifo_wrreq),
+        .wrreq   (test_fifo_wrreq),
         .wrusedw (vga_fifo_wrusedw),
         .wrfull  (),
         
@@ -310,7 +371,7 @@ module doan_top (
 		  
 		  .sdram_write_bridge_readdata      (),                        // Để trống cổng ra dữ liệu đọc
         .sdram_write_bridge_readdatavalid (),                        // Để trống cổng ra valid đọc
-        .sdram_write_bridge_burstcount     (1'b1),                   // Ghi từng ô nhớ đơn lẻ (Single word)
+        .sdram_write_bridge_burstcount     (4'd8),                   // Ghi từng ô nhớ đơn lẻ (Single word)
         .sdram_write_bridge_byteenable     (2'b11),                  // Kích hoạt ghi đủ cả 2 bytes (16-bit)
         .sdram_write_bridge_debugaccess    (1'b0),                   // Không dùng chức năng debugaccess
         

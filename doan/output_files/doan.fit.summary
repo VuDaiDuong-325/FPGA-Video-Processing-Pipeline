@@ -1,16 +1,16 @@
-Fitter Status : Successful - Sat May 30 15:36:42 2026
+Fitter Status : Successful - Tue Jun 02 09:16:13 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : doan
 Top-level Entity Name : doan_top
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 1,623 / 32,070 ( 5 % )
-Total registers : 2513
+Logic utilization (in ALMs) : 1,835 / 32,070 ( 6 % )
+Total registers : 3036
 Total pins : 107 / 457 ( 23 % )
 Total virtual pins : 6
-Total block memory bits : 339,072 / 4,065,280 ( 8 % )
-Total RAM Blocks : 46 / 397 ( 12 % )
+Total block memory bits : 339,650 / 4,065,280 ( 8 % )
+Total RAM Blocks : 48 / 397 ( 12 % )
 Total DSP Blocks : 4 / 87 ( 5 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

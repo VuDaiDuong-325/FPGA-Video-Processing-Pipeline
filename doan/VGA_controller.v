@@ -49,6 +49,8 @@ module VGA_controller (
     reg [3:0] vga_hs_pipe;
     reg [3:0] vga_vs_pipe;
     reg [3:0] vga_blank_pipe;
+	 reg [10:0] pipe_x1, pipe_x2, pipe_x3;
+    reg [10:0] pipe_y1, pipe_y2, pipe_y3;
 
     // Giao tiếp cố định cho chip DAC ADV7123 trên kit Terasic
     assign oVGA_SYNC  = 1'b0;
@@ -96,22 +98,51 @@ module VGA_controller (
          c_BLANK =  ((H_Cont >= H_BLANK) && (V_Cont >= V_BLANK));
     end
 
-    // [SỬA ĐỔI]: Khối tạo tọa độ pixel hiển thị thực tế & Đẩy tín hiệu vào đường ống dịch bit
+    // [SỬA ĐỔI HOÀN HẢO]: Bộ đếm tọa độ Pipeline an toàn
     always @(posedge iCLK or negedge iRST_N) begin
          if (!iRST_N) begin
               VGA_X          <= 11'd0;
               VGA_Y          <= 11'd0;
-              vga_hs_pipe    <= 4'b1111; // Sync tích cực thấp nên reset về 1
+              vga_hs_pipe    <= 4'b1111;
               vga_vs_pipe    <= 4'b1111;
               vga_blank_pipe <= 4'b0000;
-         end else begin
-              VGA_X          <= oCurrent_X;
-              VGA_Y          <= oCurrent_Y;
               
-              // Dịch bit liên tục từ phải qua trái để tạo các nấc trễ
+              // Reset mảng trễ tọa độ
+              pipe_x1 <= 11'd0; pipe_x2 <= 11'd0; pipe_x3 <= 11'd0;
+              pipe_y1 <= 11'd0; pipe_y2 <= 11'd0; pipe_y3 <= 11'd0;
+         end else begin
+              // 1. Luôn dịch mạch pipe tín hiệu điều khiển độc lập
               vga_hs_pipe    <= {vga_hs_pipe[2:0], c_HS};
               vga_vs_pipe    <= {vga_vs_pipe[2:0], c_VS};
               vga_blank_pipe <= {vga_blank_pipe[2:0], c_BLANK};
+              
+              // >>> THÊM VÀO: Đẩy VGA_X và VGA_Y qua 3 tầng trễ <<<
+              pipe_x1 <= VGA_X;
+              pipe_x2 <= pipe_x1;
+              pipe_x3 <= pipe_x2;
+              
+              pipe_y1 <= VGA_Y;
+              pipe_y2 <= pipe_y1;
+              pipe_y3 <= pipe_y2;
+
+              // 2. Logic đếm tọa độ gốc (Giữ nguyên đoạn này của bạn)
+              if (c_BLANK) begin
+                   if (VGA_X < H_ACT - 1'b1) begin
+                        VGA_X <= VGA_X + 1'b1; 
+                   end else begin
+                        VGA_X <= 11'd0;        
+                        if (VGA_Y < V_ACT - 1'b1) begin
+                             VGA_Y <= VGA_Y + 1'b1; 
+                        end else begin
+                             VGA_Y <= 11'd0;        
+                        end
+                   end
+              end else begin
+                   VGA_X <= 11'd0;
+                   if (H_Cont == 11'd0 && V_Cont == 11'd0) begin
+                        VGA_Y <= 11'd0;
+                   end
+              end
          end
     end
 
@@ -138,7 +169,7 @@ module VGA_controller (
                     VGA_B <= 10'd0;
               end else begin
                     // Test Pattern
-                    if ((VGA_X == 11'd320) || (VGA_Y == 11'd240) || (VGA_X == 11'd180) || (VGA_Y == 11'd120)) begin
+                    if ((pipe_x3 == 11'd320) || (pipe_y3 == 11'd240) || (pipe_x3 == 11'd180) || (pipe_y3 == 11'd120)) begin
                          VGA_R <= 10'h3FF; // Đỏ max
                          VGA_G <= 10'h000;
                          VGA_B <= 10'h000;

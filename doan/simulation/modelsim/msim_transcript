@@ -32,32 +32,437 @@
 # Top level modules:
 # 	vga_pll
 # 
-# vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v}
+# vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/sys_pll.vo}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# ** Error: (vlog-7) Failed to open design unit file "D:/E/1subject/HK6/SoC/doan/doan/sys_pll.vo" in read mode.
+# 
+# No such file or directory. (errno = ENOENT)
+# ** Error: D:/E/1subject/HK2/nhap_mon_mach_so/lab/altera/13.0sp1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./doan_run_msim_rtl_verilog.do line 20
+# D:/E/1subject/HK2/nhap_mon_mach_so/lab/altera/13.0sp1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/sys_pll.vo}"
+vlib rtl_work
+# ** Warning: (vlib-34) Library already exists at "rtl_work".
+# 
+vmap work rtl_work
+# Modifying modelsim.ini
+
+# Biên dËch các module gÑc cça Ó án
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/ov7670_capture.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ov7670_capture
+# 
+# Top level modules:
+# 	ov7670_capture
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/YUV422_to_444.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module YUV422_to_444
+# 
+# Top level modules:
+# 	YUV422_to_444
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/sdram_double_buffer_controller.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module sdram_double_buffer_controller
+# 
+# Top level modules:
+# 	sdram_double_buffer_controller
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/sdram_read_controller.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module sdram_read_controller
+# 
+# Top level modules:
+# 	sdram_read_controller
+
+# THÊM MÚI Þ ÂY: Biên dËch 2 sub-module TR¯ÚC KHI biên dËch VGA_Image_Processor
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/YUV444_to_RGB10.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module YUV444_to_RGB10
+# 
+# Top level modules:
+# 	YUV444_to_RGB10
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/Grayscale_to_RGB10.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Grayscale_to_RGB10
+# 
+# Top level modules:
+# 	Grayscale_to_RGB10
+
+# Sau ó mÛi biên dËch module tÕng hãp hình £nh
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/VGA_Image_Processor.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module VGA_Image_Processor
+# 
+# Top level modules:
+# 	VGA_Image_Processor
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module VGA_controller
 # 
 # Top level modules:
 # 	VGA_controller
-# 
-# vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/tb.v}
+
+# CuÑi cùng là biên dËch file Testbench
+vlog -vlog01compat -work work {D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module tb
+# -- Compiling module tb_doan_top
 # 
 # Top level modules:
-# 	tb
+# 	tb_doan_top
+
+# Khßi ch¡y mô phÏng
+vsim -t 1ns -lib rtl_work tb_doan_top
+# vsim -lib rtl_work -t 1ns tb_doan_top 
+# Loading rtl_work.tb_doan_top
+# Loading rtl_work.ov7670_capture
+# Loading rtl_work.YUV422_to_444
+# Loading rtl_work.sdram_double_buffer_controller
+# Loading rtl_work.sdram_read_controller
+# Loading rtl_work.VGA_Image_Processor
+# Loading rtl_work.YUV444_to_RGB10
+# Loading rtl_work.Grayscale_to_RGB10
+# Loading rtl_work.VGA_controller
+add wave -recursive *
+run -all
+# =================================================
+#   TESTBENCH: CAMERA OV7670 -> SDRAM -> VGA
+#   Target: DE1-SoC 5CSEMA5F31C6 RevH
+# =================================================
 # 
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb
-# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps tb 
-# Loading work.tb
-# Loading work.VGA_controller
+# --- TEST 1: System Reset ---
+# [PASS] T1.1: cam_write_en = 0ÿÿÿáÿ±c ÿÿÿ±ÿÿÿáÿ Reset
+# [PASS] T1.2: avm_write = 0ÿÿÿáÿ±c ÿÿÿ±ÿÿÿáÿ Reset
+# [PASS] T1.3: avm_address = 0ÿÿÿáÿ±c ÿÿÿ±ÿÿÿáÿ Reset
 # 
-# add wave *
-# view structure
-# .main_pane.structure.interior.cs.body.struct
-# view signals
-# .main_pane.objects.interior.cs.body.tree
-# run -all
-# Mo phong VGA_Controller hoan tat 1 Frame!
-# Break in Module tb at D:/E/1subject/HK6/SoC/doan/doan/tb.v line 48
-# Simulation Breakpoint: Break in Module tb at D:/E/1subject/HK6/SoC/doan/doan/tb.v line 48
-# MACRO ./doan_run_msim_rtl_verilog.do PAUSED at line 29
+# --- TEST 2: OV7670 Capture - YUYV Byte Assembly ---
+# [PASS] T2.1: write_en = 1 sau 2 byte
+# [PASS] T2.2: data_out = {Cb,Y0} = 0x80A0
+# [PASS] T2.3: data_out = {Cr,Y1} = 0x7FA1
+# [PASS] T2.4: write_en = 0 khi HREF = 0
+# 
+# --- TEST 3: YUV422_to_444 - Chroma Decode ---
+# [PASS] T3.1: iX=0 -> oY = 0xA0
+# [PASS] T3.2: iX=0 -> oCb = 0x80
+# [PASS] T3.3: iX=1 -> oY = 0xA1
+# [PASS] T3.4: iX=1 -> oCr = 0x7F
+# [PASS] T3.5: iX=1 -> oCb giu 0x80 (chroma sharing)
+# 
+# --- TEST 4: SDRAM Double Buffer Controller ---
+# [PASS] T4.1: Pixel dau -> BUFFER_A_BASE=0x1000000
+# [PASS] T4.2: Data ghi = 0xBEEF
+# [PASS] T4.3: avm_write = 1
+# [PASS] T4.4: avm_write giu =1 khi waitrequest=1
+# [PASS] T4.5: Data giu BEEF, khong doi sang DEAD
+# [PASS] T4.6: Sau VSYNC -> ghi vao BUFFER_B (0x104B000)
+# 
+# --- TEST 5: Camera Line Data Flow (8 pixels) ---
+# [PASS] T5.1: >= 8 write_en sau 1 dong 8 pixel
+# [PASS] T5.2: <= 8 write_en (khong ghi du thua)
+# 
+# --- TEST 6: SDRAM Read Controller Verification ---
+# [PASS] T6.1: Tu dong phat avm_read=1 de doi du lieu tu SDRAM
+# [PASS] T6.2: Co du lieu valid tu SDRAM -> kick hoat fifo_wrreq
+# [PASS] T6.3: Du lieu giu dung gia tri mang vao FIFO (0xCAFE)
+# [PASS] T6.4: [NANG CAO] Giu nguyen avm_read va avm_address khi waitrequest = 1
+# [PASS] T6.5: [NANG CAO] Tu dong ngat avm_read khi FIFO vuot nguong 1536
+# [PASS] T6.6: [NANG CAO] Reset dia chi doc ve Base Address sau frame_done
+# 
+# --- TEST 7: VGA Image Processor MUX & Pipeline ---
+# [INFO] Mode 00 - Output RGB: R=634, G=642, B=639
+# [PASS] T7.1: Mode 00 xuat tin hieu RGB hop le (khong bi loi X)
+# [PASS] T7.2: Mode Grayscale thanh cong - anh R, G, B can bang tuyet doi
+# [PASS] T7.3: [NANG CAO] Bo MUX dap ung chuyen doi che do dung timing, khong gay giat hinh
+# 
+# --- TEST 8: VGA Controller Timing & Feature Verification ---
+# [PASS] T8.1: H_TOTAL = 800 xung clock 25MHz (640x480 chuan)
+# [PASS] T8.2: Mau RGB tu dong bi ep ve 0 (Den) trong vung Blanking
+# [PASS] T8.3: Test Pattern tao vach Mau Do (R=3FF) tai toa do X=320
+# [PASS] T8.4: Mau anh goc (512,256) duoc giu nguyen khi khong nam tren vach Test
+# [PASS] T8.5: V_TOTAL = 525 dong quet (Chuan VESA 60Hz)
+# 
+# =================================================
+#   KET QUA: 34 PASS / 0 FAIL / 34 TOTAL
+#   => TAT CA KIEM THU DAT YEU CAU
+# =================================================
+# 
+#   Thong ke:
+#   - Tong so pixel write_en tu camera: 8
+#   - Tong so VGA frame output:         3
+# =================================================
+# ** Note: $finish    : D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v(867)
+#    Time: 33932220 ns  Iteration: 0  Instance: /tb_doan_top
+# 1
+# Break in Module tb_doan_top at D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v line 867
+# Làm s¡ch cía sÕ hiÃn thË sóng ci
+wave clear
+# bad option "clear": should be one of...
+#   wave activecursor ?arg arg ...?
+#   wave addcursor ?arg arg ...?
+#   wave clipboard ?arg arg ...?
+#   wave collapse ?arg arg ...?
+#   wave configcursor ?arg arg ...?
+#   wave create ?arg arg ...?
+#   wave cursor option ?arg arg ...?
+#   wave cursorconfig ?arg arg ...?
+#   wave cursortime ?arg arg ...?
+#   wave deletecursor ?arg arg ...?
+#   wave edit ?arg arg ...?
+#   wave editwrite ?arg arg ...?
+#   wave expand ?arg arg ...?
+#   wave export ?arg arg ...?
+#   wave group ?arg arg ...?
+#   wave import ?arg arg ...?
+#   wave interrupt ?arg arg ...?
+#   wave map ?arg arg ...?
+#   wave modify ?arg arg ...?
+#   wave positioncursor ?arg arg ...?
+#   wave refresh ?arg arg ...?
+#   wave seecursor ?arg arg ...?
+#   wave seetime ?arg arg ...?
+#   wave sort option ?arg arg ...?
+#   wave ungroup ?arg arg ...?
+#   wave write option ?arg arg ...?
+#   wave zoom option ?arg arg ...?
+#   wave zoomcursor ?arg arg ...?
+#   wave zoomfull ?arg arg ...?
+#   wave zoomin ?arg arg ...?
+#   wave zoomlast ?arg arg ...?
+#   wave zoomout ?arg arg ...?
+#   wave zoomrange ?arg arg ...?
+
+# =========================================================================
+# SYSTEM CLOCKS & RESET
+# =========================================================================
+add wave -divider "--- SYSTEM CLOCKS & RESET ---"
+# Unrecognized option: "--- SYSTEM CLOCKS & RESET ---" ignored.
+add wave -color "Yellow"  -binary    /tb_doan_top/CLOCK_50
+add wave -color "Yellow"  -binary    /tb_doan_top/CAM_PCLK
+add wave -color "Yellow"  -binary    /tb_doan_top/clk_25m_vga_tb
+add wave -color "Orange"  -binary    /tb_doan_top/KEY
+add wave -color "Orange"  -hex       /tb_doan_top/SW
+
+# =========================================================================
+# TEST 2 & 5: CAMERA CAPTURE LOGIC
+# =========================================================================
+add wave -divider "--- CAMERA CAPTURE (TEST 2 & 5) ---"
+# Unrecognized option: "--- CAMERA CAPTURE (TEST 2 & 5) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/CAM_VSYNC
+add wave -color "Purple"  -binary    /tb_doan_top/CAM_HREF
+add wave -color "White"   -hex       /tb_doan_top/CAM_DATA
+add wave -color "Green"   -binary    /tb_doan_top/cam_write_en_dut
+add wave -color "White"   -hex       /tb_doan_top/cam_data_16bit_dut
+add wave -color "Cyan"    -unsigned  /tb_doan_top/pixel_write_count
+
+# =========================================================================
+# TEST 3: YUV422 TO YUV444 DECODER
+# =========================================================================
+add wave -divider "--- YUV DECODER (TEST 3) ---"
+# Unrecognized option: "--- YUV DECODER (TEST 3) ---" ignored.
+add wave -color "Green"   -binary    /tb_doan_top/yuv422_valid_tb
+add wave -color "White"   -hex       /tb_doan_top/yuv422_input_tb
+add wave -color "Cyan"    -unsigned  /tb_doan_top/yuv422_ix_tb
+add wave -color "Gray"    -hex       /tb_doan_top/yuv_oY_tb
+add wave -color "Blue"    -hex       /tb_doan_top/yuv_oCb_tb
+add wave -color "Red"     -hex       /tb_doan_top/yuv_oCr_tb
+
+# =========================================================================
+# TEST 4: SDRAM WRITE PATH & PING-PONG BUFFER
+# =========================================================================
+add wave -divider "--- SDRAM WRITE PATH (TEST 4) ---"
+# Unrecognized option: "--- SDRAM WRITE PATH (TEST 4) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/cam_vsync_stub
+add wave -color "Green"   -binary    /tb_doan_top/sdram_wrreq_stub
+add wave -color "White"   -hex       /tb_doan_top/sdram_wrdata_stub
+add wave -color "Cyan"    -hex       /tb_doan_top/w_addr_dut_tb
+add wave -color "White"   -hex       /tb_doan_top/w_data_dut_tb
+add wave -color "Green"   -binary    /tb_doan_top/w_write_dut_tb
+add wave -color "Red"     -binary    /tb_doan_top/w_waitreq_stub
+
+# =========================================================================
+# TEST 6: SDRAM READ PATH & FIFO MANAGEMENT
+# =========================================================================
+add wave -divider "--- SDRAM READ PATH (TEST 6) ---"
+# Unrecognized option: "--- SDRAM READ PATH (TEST 6) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/r_frame_done_tb
+add wave -color "Cyan"    -hex       /tb_doan_top/r_avm_addr_tb
+add wave -color "Green"   -binary    /tb_doan_top/r_avm_read_tb
+add wave -color "Red"     -binary    /tb_doan_top/r_avm_waitrequest_tb
+add wave -color "White"   -hex       /tb_doan_top/r_avm_readdata_tb
+add wave -color "Green"   -binary    /tb_doan_top/r_avm_readdatavalid_tb
+add wave -color "Yellow"  -unsigned  /tb_doan_top/vga_fifo_wrusedw_tb
+add wave -color "Green"   -binary    /tb_doan_top/vga_fifo_wrreq_tb
+
+# =========================================================================
+# TEST 7: VGA IMAGE PROCESSING PIPELINE
+# =========================================================================
+add wave -divider "--- IMAGE PROCESSOR (TEST 7) ---"
+# Unrecognized option: "--- IMAGE PROCESSOR (TEST 7) ---" ignored.
+add wave -color "Orange"  -hex       /tb_doan_top/img_proc_mode_tb
+add wave -color "Green"   -binary    /tb_doan_top/img_proc_valid_tb
+add wave -color "Gray"    -hex       /tb_doan_top/img_proc_y_tb
+add wave -color "Red"     -unsigned  /tb_doan_top/img_proc_r_tb
+add wave -color "Green"   -unsigned  /tb_doan_top/img_proc_g_tb
+add wave -color "Blue"    -unsigned  /tb_doan_top/img_proc_b_tb
+
+# =========================================================================
+# TEST 8: VGA CONTROLLER TIMING
+# =========================================================================
+add wave -divider "--- VGA TIMING CONTROLLER (TEST 8) ---"
+# Unrecognized option: "--- VGA TIMING CONTROLLER (TEST 8) ---" ignored.
+add wave -color "Cyan"    -unsigned  /tb_doan_top/vga_x_tb
+add wave -color "Cyan"    -unsigned  /tb_doan_top/vga_y_tb
+add wave -color "Purple"  -binary    /tb_doan_top/VGA_HS
+add wave -color "Purple"  -binary    /tb_doan_top/VGA_VS
+add wave -color "Yellow"  -binary    /tb_doan_top/VGA_BLANK_N
+add wave -color "Red"     -unsigned  /tb_doan_top/VGA_R
+add wave -color "Green"   -unsigned  /tb_doan_top/VGA_G
+add wave -color "Blue"    -unsigned  /tb_doan_top/VGA_B
+
+# C¥u hình rút gÍn hiÃn thË °Ýng d«n gÑc (ChÉ hiÃn thË tên tín hiÇu)
+configure wave -signalnamewidth 1
+# Làm s¡ch cía sÕ hiÃn thË sóng ci
+wave clear
+# bad option "clear": should be one of...
+#   wave activecursor ?arg arg ...?
+#   wave addcursor ?arg arg ...?
+#   wave clipboard ?arg arg ...?
+#   wave collapse ?arg arg ...?
+#   wave configcursor ?arg arg ...?
+#   wave create ?arg arg ...?
+#   wave cursor option ?arg arg ...?
+#   wave cursorconfig ?arg arg ...?
+#   wave cursortime ?arg arg ...?
+#   wave deletecursor ?arg arg ...?
+#   wave edit ?arg arg ...?
+#   wave editwrite ?arg arg ...?
+#   wave expand ?arg arg ...?
+#   wave export ?arg arg ...?
+#   wave group ?arg arg ...?
+#   wave import ?arg arg ...?
+#   wave interrupt ?arg arg ...?
+#   wave map ?arg arg ...?
+#   wave modify ?arg arg ...?
+#   wave positioncursor ?arg arg ...?
+#   wave refresh ?arg arg ...?
+#   wave seecursor ?arg arg ...?
+#   wave seetime ?arg arg ...?
+#   wave sort option ?arg arg ...?
+#   wave ungroup ?arg arg ...?
+#   wave write option ?arg arg ...?
+#   wave zoom option ?arg arg ...?
+#   wave zoomcursor ?arg arg ...?
+#   wave zoomfull ?arg arg ...?
+#   wave zoomin ?arg arg ...?
+#   wave zoomlast ?arg arg ...?
+#   wave zoomout ?arg arg ...?
+#   wave zoomrange ?arg arg ...?
+
+# =========================================================================
+# SYSTEM CLOCKS & RESET
+# =========================================================================
+add wave -divider "--- SYSTEM CLOCKS & RESET ---"
+# Unrecognized option: "--- SYSTEM CLOCKS & RESET ---" ignored.
+add wave -color "Yellow"  -binary    /tb_doan_top/CLOCK_50
+add wave -color "Yellow"  -binary    /tb_doan_top/CAM_PCLK
+add wave -color "Yellow"  -binary    /tb_doan_top/clk_25m_vga_tb
+add wave -color "Orange"  -binary    /tb_doan_top/KEY
+add wave -color "Orange"  -hex       /tb_doan_top/SW
+
+# =========================================================================
+# TEST 2 & 5: CAMERA CAPTURE LOGIC
+# =========================================================================
+add wave -divider "--- CAMERA CAPTURE (TEST 2 & 5) ---"
+# Unrecognized option: "--- CAMERA CAPTURE (TEST 2 & 5) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/CAM_VSYNC
+add wave -color "Purple"  -binary    /tb_doan_top/CAM_HREF
+add wave -color "White"   -hex       /tb_doan_top/CAM_DATA
+add wave -color "Green"   -binary    /tb_doan_top/cam_write_en_dut
+add wave -color "White"   -hex       /tb_doan_top/cam_data_16bit_dut
+add wave -color "Cyan"    -unsigned  /tb_doan_top/pixel_write_count
+
+# =========================================================================
+# TEST 3: YUV422 TO YUV444 DECODER
+# =========================================================================
+add wave -divider "--- YUV DECODER (TEST 3) ---"
+# Unrecognized option: "--- YUV DECODER (TEST 3) ---" ignored.
+add wave -color "Green"   -binary    /tb_doan_top/yuv422_valid_tb
+add wave -color "White"   -hex       /tb_doan_top/yuv422_input_tb
+add wave -color "Cyan"    -unsigned  /tb_doan_top/yuv422_ix_tb
+add wave -color "Gray"    -hex       /tb_doan_top/yuv_oY_tb
+add wave -color "Blue"    -hex       /tb_doan_top/yuv_oCb_tb
+add wave -color "Red"     -hex       /tb_doan_top/yuv_oCr_tb
+
+# =========================================================================
+# TEST 4: SDRAM WRITE PATH & PING-PONG BUFFER
+# =========================================================================
+add wave -divider "--- SDRAM WRITE PATH (TEST 4) ---"
+# Unrecognized option: "--- SDRAM WRITE PATH (TEST 4) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/cam_vsync_stub
+add wave -color "Green"   -binary    /tb_doan_top/sdram_wrreq_stub
+add wave -color "White"   -hex       /tb_doan_top/sdram_wrdata_stub
+add wave -color "Cyan"    -hex       /tb_doan_top/w_addr_dut_tb
+add wave -color "White"   -hex       /tb_doan_top/w_data_dut_tb
+add wave -color "Green"   -binary    /tb_doan_top/w_write_dut_tb
+add wave -color "Red"     -binary    /tb_doan_top/w_waitreq_stub
+
+# =========================================================================
+# TEST 6: SDRAM READ PATH & FIFO MANAGEMENT
+# =========================================================================
+add wave -divider "--- SDRAM READ PATH (TEST 6) ---"
+# Unrecognized option: "--- SDRAM READ PATH (TEST 6) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/r_frame_done_tb
+add wave -color "Cyan"    -hex       /tb_doan_top/r_avm_addr_tb
+add wave -color "Green"   -binary    /tb_doan_top/r_avm_read_tb
+add wave -color "Red"     -binary    /tb_doan_top/r_avm_waitrequest_tb
+add wave -color "White"   -hex       /tb_doan_top/r_avm_readdata_tb
+add wave -color "Green"   -binary    /tb_doan_top/r_avm_readdatavalid_tb
+add wave -color "Yellow"  -unsigned  /tb_doan_top/vga_fifo_wrusedw_tb
+add wave -color "Green"   -binary    /tb_doan_top/vga_fifo_wrreq_tb
+
+# =========================================================================
+# TEST 7: VGA IMAGE PROCESSING PIPELINE
+# =========================================================================
+add wave -divider "--- IMAGE PROCESSOR (TEST 7) ---"
+# Unrecognized option: "--- IMAGE PROCESSOR (TEST 7) ---" ignored.
+add wave -color "Orange"  -hex       /tb_doan_top/img_proc_mode_tb
+add wave -color "Green"   -binary    /tb_doan_top/img_proc_valid_tb
+add wave -color "Gray"    -hex       /tb_doan_top/img_proc_y_tb
+add wave -color "Red"     -unsigned  /tb_doan_top/img_proc_r_tb
+add wave -color "Green"   -unsigned  /tb_doan_top/img_proc_g_tb
+add wave -color "Blue"    -unsigned  /tb_doan_top/img_proc_b_tb
+
+# =========================================================================
+# TEST 8: VGA CONTROLLER TIMING
+# =========================================================================
+add wave -divider "--- VGA TIMING CONTROLLER (TEST 8) ---"
+# Unrecognized option: "--- VGA TIMING CONTROLLER (TEST 8) ---" ignored.
+add wave -color "Cyan"    -unsigned  /tb_doan_top/vga_x_tb
+add wave -color "Cyan"    -unsigned  /tb_doan_top/vga_y_tb
+add wave -color "Purple"  -binary    /tb_doan_top/VGA_HS
+add wave -color "Purple"  -binary    /tb_doan_top/VGA_VS
+add wave -color "Yellow"  -binary    /tb_doan_top/VGA_BLANK_N
+add wave -color "Red"     -unsigned  /tb_doan_top/VGA_R
+add wave -color "Green"   -unsigned  /tb_doan_top/VGA_G
+add wave -color "Blue"    -unsigned  /tb_doan_top/VGA_B
+
+# C¥u hình rút gÍn hiÃn thË °Ýng d«n gÑc (ChÉ hiÃn thË tên tín hiÇu)
+configure wave -signalnamewidth 1
+add wave -color "Cyan"    -unsigned  /tb_doan_top/yuv422_ix_tb
+add wave -divider "--- CAMERA CAPTURE (TEST 2 & 5) ---"
+# Unrecognized option: "--- CAMERA CAPTURE (TEST 2 & 5) ---" ignored.
+add wave -color "Purple"  -binary    /tb_doan_top/CAM_VSYNC
+add wave -color "Purple"  -binary    /tb_doan_top/CAM_HREF
+add wave -color "White"   -hex       /tb_doan_top/CAM_DATA
+add wave -color "Green"   -binary    /tb_doan_top/cam_write_en_dut
+add wave -color "White"   -hex       /tb_doan_top/cam_data_16bit_dut
+add wave -color "Cyan"    -unsigned  /tb_doan_top/pixel_write_count
+# Paste insertion failed: add: (vish-4014) No objects found matching 'add'.
+# Paste insertion failed: wave: (vish-4014) No objects found matching 'wave'.
+# Paste insertion failed: -color: No value specified for -color switch.
+# Missing signal name or pattern.
+# Paste insertion failed: White: (vish-4014) No objects found matching 'White'.
+# Paste insertion failed: -hex: Missing signal name or pattern.
+add wave -color "White"   -hex       /tb_doan_top/r_avm_readdata_tb
+add wave -color "White"   -hex       /tb_doan_top/vga_fifo_wrdata_tb
+add wave -color "Gray"    -hex       /tb_doan_top/img_proc_cb_tb
+add wave -color "Gray"    -hex       /tb_doan_top/img_proc_cr_tb

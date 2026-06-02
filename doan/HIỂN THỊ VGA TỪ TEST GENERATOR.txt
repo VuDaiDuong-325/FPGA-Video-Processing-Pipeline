@@ -1,0 +1,45 @@
+# TÓM TẮT KIẾN TRÚC HỆ THỐNG HIỂN THỊ VGA TỪ TEST GENERATOR
+
+## 1. Phân tích Miền xung nhịp (Clock Domains)
+Hệ thống hiện tại được chia làm 2 miền xung nhịp hoàn toàn độc lập, giao tiếp với nhau qua cầu nối là bộ đệm **Video DCFIFO (Dual-Clock FIFO)**:
+
+* **Miền 50MHz (Write Domain):**
+    * Hoạt động theo `clk` (50MHz) của hệ thống.
+    * Module: `vga_fifo_test_generator`.
+    * Nhiệm vụ: Sinh dữ liệu màu YUV 4:2:2 tuần tự và ghi vào DCFIFO (`fifo_wrreq`, `fifo_wrdata`).
+    * Lưu ý: Mọi tín hiệu từ miền 25MHz đưa về đây (điển hình là `vga_vsync`) đều được đồng bộ hóa chống suy biến (Metastability) qua 2 tầng Flip-Flop (`vsync_d1`, `vsync_d2`).
+
+* **Miền 25.175MHz / 25MHz (Read Domain):**
+    * Hoạt động theo `clk_25m_vga` (từ PLL).
+    * Module: `VGA_controller` và `YUV422_to_444`.
+    * Nhiệm vụ: Quét tọa độ hiển thị, phát lệnh đọc FIFO (`oRequest`), xử lý màu từ YUV sang RGB, và xuất tín hiệu điều khiển màn hình.
+
+## 2. Luồng dữ liệu và Kết nối xuyên Module (Data Path Wiring)
+* **Bước 1:** `vga_fifo_test_generator` sinh luồng YUV422 (16-bit: {Cb/Cr, Y}) -> **Ghi vào DCFIFO**.
+* **Bước 2:** `VGA_controller` đếm tọa độ ngang/dọc, phát tín hiệu `oRequest` (đóng vai trò là `rdreq` của FIFO). 
+* **Bước 3:** **DCFIFO** nhả dữ liệu 16-bit ra chân `q`. Tín hiệu này đi thẳng vào ngõ `iYCbCr` của `YUV422_to_444`.
+* **Bước 4:** `YUV422_to_444` tách và chốt các kênh màu, xuất ra `oY`, `oCb`, `oCr` 24-bit.
+* **Bước 5:** `VGA_controller` nhận màu từ `YUV422_to_444`, đăng ký (register) lại 1 lần nữa ra ngõ `VGA_R`, `VGA_G`, `VGA_B` gửi tới chip DAC.
+
+## 3. Phân tích Đường ống trễ (Pipeline & Phase Synchronization)
+Do dữ liệu phải đi qua nhiều tầng IC/Module, nó bị trễ vài nhịp clock so với bộ đếm tọa độ gốc. Hệ thống đã xử lý hoàn hảo độ lệch pha này thông qua cơ chế Shift Register.
+
+* **Nhịp 0:** Bộ đếm `H_Cont` / `V_Cont` thỏa mãn vùng Active. Tín hiệu `oRequest` được kéo lên 1, đồng thời tín hiệu điều khiển gốc (`c_HS`, `c_VS`, `c_BLANK`) được tính toán.
+* **Nhịp 1:** * DCFIFO xuất dữ liệu YUV422 ra ngoài.
+    * Tín hiệu điều khiển dịch vào tầng trễ 1: `vga_hs_pipe[0]`.
+    * Tọa độ quét chủ động `VGA_X`, `VGA_Y` được sinh ra (Trễ 1 nhịp so với `H_Cont`).
+* **Nhịp 2:** * `YUV422_to_444` đọc dữ liệu YUV, xử lý nội suy, và xuất ra 3 kênh màu riêng biệt.
+    * Tín hiệu điều khiển dịch vào tầng trễ 2: `vga_hs_pipe[1]`.
+    * Tọa độ dịch vào `pipe_x1`, `pipe_y1`.
+* **Nhịp 3 & 4:** * Dữ liệu màu được đưa về lại `VGA_controller`, chuẩn bị chốt ra VGA.
+    * Các tín hiệu điều khiển tiếp tục được dịch đến `vga_hs_pipe[3]` và `vga_blank_pipe[3]`.
+    * Tọa độ dịch đến `pipe_x3`, `pipe_y3`.
+* **Kết quả:** Tại cửa ngõ cuối cùng của module VGA, dữ liệu màu `VGA_R/G/B` và các cờ điều khiển `oVGA_HS/VS/BLANK` đều hội tụ cùng 1 nhịp clock, triệt tiêu hoàn toàn lỗi lệch Pixel hoặc ám viền màu.
+
+## 4. Cơ sở để mở rộng sang bộ đọc SDRAM (SDRAM Read Controller)
+Để thay thế Test Generator bằng dữ liệu thực từ Camera lưu trên SDRAM, bạn **không cần thay đổi bất cứ dòng code nào ở nửa Read Domain (VGA, YUV, DCFIFO)**. Thiết kế hiện tại đã tách bạch rất tốt:
+
+1.  **Chỉ cần tháo bỏ** module `vga_fifo_test_generator`.
+2.  **Lắp module `sdram_read_controller` vào thay thế.**
+3.  **Điều kiện giao tiếp FIFO:** Module đọc SDRAM của bạn chỉ cần hoạt động ở miền 50MHz, theo dõi mức chứa của FIFO (`fifo_wrusedw`). Khi FIFO vơi đi (dưới ngưỡng an toàn), module sẽ Burst-Read từ SDRAM (qua Avalon-MM) và đẩy data 16-bit vào FIFO y hệt như cách Test Generator đã làm.
+4.  **Đồng bộ khung hình:** Tiếp tục sử dụng sườn xuống của `vga_vsync` (đã qua 2 FF đồng bộ `vsync_d2`) làm tín hiệu reset bộ đếm địa chỉ SDRAM (chỉ điểm về đầu khung hình) và đợi FIFO được súc rửa sạch trước khi nạp Frame mới.
