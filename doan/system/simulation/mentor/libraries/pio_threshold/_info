@@ -1,0 +1,31 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/system/simulation/mentor
+vsystem_pio_threshold
+!s110 1780540471
+!i10b 1
+!s100 _AaomX9<Cli4ogo[@?Ya13
+IX26XJE8cR?N[[zA79@O0Y0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1780539188
+8./../submodules/system_pio_threshold.v
+F./../submodules/system_pio_threshold.v
+L0 21
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1780540471.000000
+!s107 ./../submodules/system_pio_threshold.v|
+!s90 -reportprogress|300|./../submodules/system_pio_threshold.v|-work|pio_threshold|
+!i113 1
+o-work pio_threshold
+tCvgOpt 0

@@ -1,0 +1,275 @@
+// =========================================================================
+// PROJECT: CAMERA OV7670 TO VGA DISPLAY VIA SDRAM ON DE1-SOC
+// FILE NAME: debug_top.v
+// DESCRIPTION: Top-level chuyên dụng để DEBUG luồng dữ liệu từ Camera
+//              đến SDRAM và đọc ra FIFO (Đã cập nhật theo FSM Show-Ahead)
+// =========================================================================
+
+module debug_top (
+    // CLOCK & RESET
+    input  wire        CLOCK_50,     // Xung nhịp hệ thống 50MHz
+    input  wire [3:0]  KEY,          // KEY[0] làm Reset hệ thống (Tích cực thấp)
+    input  wire [9:0]  SW,           // SW[0] chọn Cam thật (1) hoặc Mock Cam (0)
+    output wire [9:0]  LEDR,         // Đèn LED hiển thị trạng thái hệ thống
+    
+    // SDRAM Pins (Kết nối vật lý với chip SDRAM ngoài board)
+    output wire [12:0] DRAM_ADDR,
+    output wire [1:0]  DRAM_BA,
+    output wire        DRAM_CAS_N,
+    output wire        DRAM_CKE,
+    output wire        DRAM_CLK,
+    output wire        DRAM_CS_N,
+    inout  wire [15:0] DRAM_DQ,
+    output wire        DRAM_LDQM,
+    output wire        DRAM_RAS_N,
+    output wire        DRAM_UDQM,
+    output wire        DRAM_WE_N,
+    
+    // CAMERA OV7670 Pins (Nếu cắm Camera thật)
+    input  wire        CAM_PCLK,
+    input  wire        CAM_VSYNC,
+    input  wire        CAM_HREF,
+    input  wire [7:0]  CAM_DATA
+);
+
+    // =========================================================================
+    // 1. KHỞI TẠO XUNG NHỊP KHỐI HỆ THỐNG & SDRAM CLOCK
+    // =========================================================================
+    wire clk_50  = CLOCK_50;
+    wire rst_n   = KEY[0];
+    wire clk_sdram;
+
+    // Sử dụng PLL hệ thống được tạo từ IP Catalog để cấp nguồn cho chân DRAM_CLK
+    sys_pll u_sys_pll (
+        .refclk   (CLOCK_50),
+        .rst      (!rst_n),
+        .outclk_0 (),         // 50 MHz (Bỏ trống vì dùng thẳng CLOCK_50)
+        .outclk_1 (),         // 24 MHz (Bỏ trống)
+        .outclk_2 (clk_sdram), // 50 MHz lệch pha -3020ps cấp cho SDRAM chip
+        .locked   ()
+    );
+    assign DRAM_CLK = clk_sdram;
+
+    // =========================================================================
+    // 2. KHỐI GIẢ LẬP CAMERA (MOCK CAMERA GENERATOR)
+    // =========================================================================
+    wire mock_pclk, mock_vsync, mock_href;
+    wire [7:0] mock_data;
+
+    mock_camera_generator u_mock_cam (
+        .clk_50    (clk_50),
+        .rst_n     (rst_n),
+        .CAM_PCLK  (mock_pclk),
+        .CAM_VSYNC (mock_vsync),
+        .CAM_HREF  (mock_href),
+        .CAM_DATA  (mock_data)
+    );
+
+    // MUX chọn lựa nguồn cấp dữ liệu dựa trên SW[0]
+    // SW[0] = 0 -> Chạy bộ giả lập Mock Cam để cô lập lỗi phần cứng
+    // SW[0] = 1 -> Chạy Camera thật OV7670
+    wire active_pclk  = SW[0] ? CAM_PCLK  : mock_pclk;
+    wire active_vsync = SW[0] ? CAM_VSYNC : mock_vsync;
+    wire active_href  = SW[0] ? CAM_HREF  : mock_href;
+    wire [7:0] active_data = SW[0] ? CAM_DATA : mock_data;
+
+    // =========================================================================
+    // 3. ĐƯỜNG GHI (WRITE PATH): CAPTURE -> WRITE FIFO -> SDRAM CONTROLLER
+    // =========================================================================
+    wire [15:0] capture_data;
+    wire        capture_we;
+
+    // Khối bắt pixel từ Camera (Hoặc Mock), gộp 2 byte 8-bit thành 1 word 16-bit
+    ov7670_capture u_capture (
+        .pclk     (active_pclk),
+        .reset    (rst_n),
+        .vsync    (active_vsync),
+        .href     (active_href),
+        .data_in  (active_data),
+        .data_out (capture_data),
+        .write_en (capture_we)
+    );
+
+    // Tín hiệu giao tiếp DCFIFO Ghi
+    wire [15:0] w_fifo_q;
+    wire        w_fifo_empty;
+    wire        w_fifo_rdreq;
+    
+    // Khởi tạo DCFIFO trung gian chuyển vùng từ PCLK (Camera) sang 50MHz (Hệ thống)
+    // LƯU Ý: Phải cấu hình FIFO ở chế độ "Show-ahead" (First-Word Fall-Through)
+    video_dcfifo u_camera_to_sdram_fifo (
+        .aclr    (!rst_n),
+        .wrclk   (active_pclk),
+        .wrreq   (capture_we),
+        .data    (capture_data),
+        .rdclk   (clk_50),
+        .rdreq   (w_fifo_rdreq),
+        .q       (w_fifo_q),
+        .rdempty (w_fifo_empty),
+        .wrfull  (),
+        .rdusedw (),
+        .wrusedw ()
+    );
+
+    // Tín hiệu kết nối Avalon Master Ghi
+    wire [24:0] w_avm_address;
+    wire [15:0] w_avm_writedata;
+    wire        w_avm_write;
+    wire        w_avm_waitrequest;
+
+    // Bộ điều khiển ghi kép SDRAM (Chuẩn State Machine giao tiếp Show-Ahead FIFO)
+    sdram_double_buffer_controller u_write_ctrl (
+        .clk             (clk_50),
+        .rst_n           (rst_n),
+        .cam_vsync       (active_vsync),
+        .fifo_empty      (w_fifo_empty),
+        .fifo_rdreq      (w_fifo_rdreq),    // FSM tự sinh cờ đọc cấp cho FIFO
+        .fifo_q          (w_fifo_q),
+        .avm_address     (w_avm_address),
+        .avm_writedata   (w_avm_writedata),
+        .avm_write       (w_avm_write),
+        .avm_waitrequest (w_avm_waitrequest)
+    );
+
+    // TẠO TÍN HIỆU BÁO CHUYỂN KHUNG HÌNH (Để nuôi bộ điều khiển Đọc phía dưới)
+    reg [2:0] vsync_sync_reg;
+    always @(posedge clk_50 or negedge rst_n) begin
+        if (!rst_n) vsync_sync_reg <= 3'b0;
+        else        vsync_sync_reg <= {vsync_sync_reg[1:0], active_vsync};
+    end
+    wire cam_frame_done = (vsync_sync_reg[2] == 1'b1 && vsync_sync_reg[1] == 1'b0);
+
+    // =========================================================================
+    // 4. MÔ PHỎNG XUNG ĐỒNG BỘ VGA (DÙNG ĐỂ DEBUG ĐẦU ĐỌC KHÔNG CẦN MÀN HÌNH)
+    // =========================================================================
+    reg [19:0] vga_sim_timer;
+    reg        vga_frame_done_reg;
+    
+    // Tự động sinh xung vga_frame_done tần số ~60Hz ở clock 50MHz (833,333 chu kỳ)
+    always @(posedge clk_50 or negedge rst_n) begin
+        if (!rst_n) begin
+            vga_sim_timer      <= 20'd0;
+            vga_frame_done_reg <= 1'b0;
+        end else begin
+            if (vga_sim_timer >= 20'd833333) begin
+                vga_sim_timer      <= 20'd0;
+                vga_frame_done_reg <= 1'b1;
+            end else begin
+                vga_sim_timer      <= vga_sim_timer + 1'b1;
+                vga_frame_done_reg <= 1'b0;
+            end
+        end
+    end
+    wire vga_frame_done = vga_frame_done_reg;
+
+    // =========================================================================
+    // 5. ĐƯỜNG ĐỌC (READ PATH): SDRAM CONTROLLER -> READ CONTROLLER -> READ FIFO
+    // =========================================================================
+    wire [24:0] r_avm_address;
+    wire        r_avm_read;
+    wire        r_avm_waitrequest;
+    wire [15:0] r_avm_readdata;
+    wire        r_avm_readdatavalid;
+
+    wire        r_fifo_wrreq;
+    wire [15:0] r_fifo_wrdata;
+    wire [10:0] r_fifo_wrusedw;
+    wire        read_buffer_status;
+
+    // Bộ điều khiển đọc SDRAM
+    sdram_read_controller u_read_ctrl (
+        .clk               (clk_50),
+        .rst_n             (rst_n),
+        .cam_frame_done    (cam_frame_done), // Nhận xung từ mạch bắt cạnh VSYNC ở trên
+        .vga_frame_done    (vga_frame_done),
+        .avm_address       (r_avm_address),
+        .avm_read          (r_avm_read),
+        .avm_waitrequest   (r_avm_waitrequest),
+        .avm_readdata      (r_avm_readdata),
+        .avm_readdatavalid (r_avm_readdatavalid),
+        .fifo_wrreq        (r_fifo_wrreq),
+        .fifo_wrdata       (r_fifo_wrdata),
+        .fifo_wrusedw      (r_fifo_wrusedw),
+        .o_read_buffer_sel (read_buffer_status)
+    );
+
+    // DCFIFO Đọc (Chứa dữ liệu từ SDRAM trả về chuẩn bị xuất ra VGA)
+    video_dcfifo u_sdram_to_vga_fifo (
+        .aclr    (!rst_n),
+        .wrclk   (clk_50),
+        .wrreq   (r_fifo_wrreq),
+        .data    (r_fifo_wrdata),
+        .rdclk   (clk_50),          // Để debug tạm thời chạy chung clock hệ thống 50MHz
+        .rdreq   (1'b0),            // Tạm thời chưa pop để quan sát mức lấp đầy (wrusedw)
+        .q       (),
+        .rdempty (),
+        .wrfull  (),
+        .rdusedw (),
+        .wrusedw (r_fifo_wrusedw)   // Trả ngược số lượng word đang chứa về bộ đọc điều tiết
+    );
+
+    // =========================================================================
+    // 6. NHÚNG LÕI QUYẾT TOÁN QSYS (SYSTEM HARDWARE IP CORE)
+    // =========================================================================
+    wire [1:0] dummy_pio_mode;
+    wire [7:0] dummy_pio_threshold;
+    system u_qsys_core (
+        .clk_clk                           (clk_50),
+        .reset_reset_n                     (rst_n),
+        
+        // CỔNG ĐỌC SDRAM (Nối trực tiếp với mạch điều khiển đọc VGA của bộ Debug)
+        .sdram_read_bridge_address         ({r_avm_address, 1'b0}),   // Dịch sang địa chỉ Byte
+        .sdram_read_bridge_read            (r_avm_read),              // Lệnh đọc từ bộ đọc
+        .sdram_read_bridge_waitrequest     (r_avm_waitrequest),       // Tín hiệu bận trả về từ Qsys
+        .sdram_read_bridge_readdata        (r_avm_readdata),          // Dữ liệu ảnh trả về
+        .sdram_read_bridge_readdatavalid   (r_avm_readdatavalid),     // Tín hiệu báo dữ liệu hợp lệ
+        .sdram_read_bridge_burstcount      (1'b1),                    // Đọc từng ô nhớ đơn lẻ (Single word)
+        .sdram_read_bridge_byteenable      (2'b11),                   // Kích hoạt đọc đủ cả 2 bytes (16-bit)
+        .sdram_read_bridge_write           (1'b0),                    // Cổng đọc không dùng lệnh ghi
+        .sdram_read_bridge_writedata       (16'd0),                   // Dữ liệu ghi gán bằng 0
+        .sdram_read_bridge_debugaccess     (1'b0),                    // Không dùng chức năng debugaccess
+        
+        // CỔNG GHI SDRAM (Nối trực tiếp với mạch điều khiển ghi Camera của bộ Debug)
+        .sdram_write_bridge_address        ({w_avm_address, 1'b0}),   // Dịch sang địa chỉ Byte
+        .sdram_write_bridge_write          (w_avm_write),             // Lệnh ghi từ bộ ghi Camera
+        .sdram_write_bridge_writedata      (w_avm_writedata),         // Dữ liệu ảnh từ bộ ghi Camera
+        .sdram_write_bridge_waitrequest    (w_avm_waitrequest),       // Tín hiệu bận trả về bộ ghi Camera
+        .sdram_write_bridge_read           (1'b0),                    // Cổng ghi không dùng lệnh đọc
+        .sdram_write_bridge_readdata       (),                        // Để trống cổng ra dữ liệu đọc
+        .sdram_write_bridge_readdatavalid  (),                        // Để trống cổng ra valid đọc
+        .sdram_write_bridge_burstcount     (1'b1),                    // Burst count cấu hình theo chuẩn hệ thống
+        .sdram_write_bridge_byteenable     (2'b11),                   // Kích hoạt ghi đủ cả 2 bytes (16-bit)
+        .sdram_write_bridge_debugaccess    (1'b0),                    // Không dùng chức năng debugaccess
+        
+        // Nối dây ra các chân vật lý của SDRAM trên board DE1-SoC
+        .new_sdram_controller_0_wire_addr  (DRAM_ADDR),
+        .new_sdram_controller_0_wire_ba    (DRAM_BA),
+        .new_sdram_controller_0_wire_cas_n (DRAM_CAS_N),
+        .new_sdram_controller_0_wire_cke   (DRAM_CKE),
+        .new_sdram_controller_0_wire_cs_n  (DRAM_CS_N),
+        .new_sdram_controller_0_wire_dq    (DRAM_DQ),
+        .new_sdram_controller_0_wire_ras_n (DRAM_RAS_N),
+        .new_sdram_controller_0_wire_dqm   ({DRAM_UDQM, DRAM_LDQM}),
+        .new_sdram_controller_0_wire_we_n  (DRAM_WE_N),
+
+        // Các PIO của Nios II tạm thời không dùng trong debug đường truyền data
+        .pio_mode_export                   (dummy_pio_mode),
+        .pio_threshold_export              (dummy_pio_threshold),
+        .pio_sccb_start_export             (),
+        .pio_sccb_done_export              (1'b1),
+        .pio_sw_export                     (10'd0)
+    );
+
+    // =========================================================================
+    // 7. HIỂN THỊ TRẠNG THÁI RA ĐÈN LED (HARDWARE VISUAL DEBUG)
+    // =========================================================================
+    assign LEDR[0] = SW[0];                     // Sáng: Đang test Cam thật, Tắt: Đang test Giả lập
+    assign LEDR[1] = !w_fifo_empty;             // Sáng: Có data từ Camera đẩy vào FIFO Ghi
+    assign LEDR[2] = w_fifo_rdreq;              // Sáng mờ: FSM đang nhổ dữ liệu ra khỏi FIFO
+    assign LEDR[3] = read_buffer_status;        // Đèn báo tầng đệm đang Đọc (0 hoặc 1)
+    assign LEDR[4] = w_avm_waitrequest;         // Sáng: SDRAM đang bắt Master Ghi phải đợi (Nghẽn bus ghi)
+    assign LEDR[5] = r_avm_waitrequest;         // Sáng: SDRAM đang bắt Master Đọc phải đợi (Nghẽn bus đọc)
+    assign LEDR[6] = r_fifo_wrreq;              // Nhấp nháy/Sáng: SDRAM đang trả data về hợp lệ cho FIFO Đọc
+    assign LEDR[9] = rst_n;                     // Đèn báo nguồn/Reset hệ thống ổn định
+
+endmodule

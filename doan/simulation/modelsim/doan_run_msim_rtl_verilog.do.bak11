@@ -14,33 +14,27 @@ vmap work rtl_work
 ###### MIF file copy and HDL compilation commands for IPUTF cores 
 
 
-vlog "D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo"
-vlog "D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo"
+vlog "D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sys_pll_sim/sys_pll.vo"
+vlog "D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/vga_pll_sim/vga_pll.vo"
 
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/ov7670_capture.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/ov7670_config_sccb.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/sccb_ov7670_lut_config.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/sdram_double_buffer_controller.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/doan_top.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/YUV422_to_444.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/YUV444_to_RGB10.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/sdram_read_controller.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/video_dcfifo.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/Grayscale_to_RGB10.v}
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/VGA_Image_Processor.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sys_pll.vo}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/system/simulation {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/system/simulation/system.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/ov7670_capture.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/VGA_controller.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sdram_double_buffer_controller.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sdram_read_controller.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/video_dcfifo.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/mock_camera_generator.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/debug_top.v}
 vlib sys_pll
 vmap sys_pll sys_pll
-vlog -vlog01compat -work sys_pll +incdir+D:/E/1subject/HK6/SoC/doan/doan/sys_pll {D:/E/1subject/HK6/SoC/doan/doan/sys_pll/sys_pll_0002.v}
-vlib vga_pll
-vmap vga_pll vga_pll
-vlog -vlog01compat -work vga_pll +incdir+D:/E/1subject/HK6/SoC/doan/doan/vga_pll {D:/E/1subject/HK6/SoC/doan/doan/vga_pll/vga_pll_0002.v}
+vlog -vlog01compat -work sys_pll +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sys_pll {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sys_pll/sys_pll_0002.v}
 
-vlog -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan {D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/debug_top_tb.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sys_pll {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/sys_pll/sys_pll_0002.v}
+vlog -vlog01compat -work work +incdir+D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/vga_pll {D:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/vga_pll/vga_pll_0002.v}
 
-vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -L sys_pll -L vga_pll -voptargs="+acc"  tb_doan_top
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -L sys_pll -voptargs="+acc"  debug_top_tb
 
 add wave *
 view structure

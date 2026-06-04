@@ -1,0 +1,31 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan/system/simulation/mentor
+vsystem_pio_mode
+!s110 1780540471
+!i10b 1
+!s100 oUB3:=_g==RJ9BN8Ve:3?2
+Ia@C7AFzILI>cjX_@NO3cZ0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1780539184
+8./../submodules/system_pio_mode.v
+F./../submodules/system_pio_mode.v
+L0 21
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1780540471.000000
+!s107 ./../submodules/system_pio_mode.v|
+!s90 -reportprogress|300|./../submodules/system_pio_mode.v|-work|pio_mode|
+!i113 1
+o-work pio_mode
+tCvgOpt 0

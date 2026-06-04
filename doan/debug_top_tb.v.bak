@@ -1,0 +1,179 @@
+// =========================================================================
+// PROJECT: CAMERA OV7670 TO VGA DISPLAY VIA SDRAM ON DE1-SOC
+// FILE NAME: debug_top_tb.v
+// DESCRIPTION: Comprehensive testbench with fixed SDRAM initialization time
+//              and synchronized edge signals to prevent Race Conditions.
+// =========================================================================
+
+`timescale 1ns/1ps
+
+module debug_top_tb;
+
+    // =========================================================================
+    // 1. UUT SIGNAL DECLARATIONS
+    // =========================================================================
+    reg        tb_CLOCK_50;
+    reg  [3:0] tb_KEY;
+    reg  [9:0] tb_SW;
+    reg        tb_CAM_PCLK;
+    reg        tb_CAM_VSYNC;
+    reg        tb_CAM_HREF;
+    reg  [7:0] tb_CAM_DATA;
+
+    wire [9:0] tb_LEDR;
+    wire [12:0] tb_DRAM_ADDR;
+    wire [1:0]  tb_DRAM_BA;
+    wire        tb_DRAM_CAS_N;
+    wire        tb_DRAM_CKE;
+    wire        tb_DRAM_CLK;
+    wire        tb_DRAM_CS_N;
+    wire        tb_DRAM_LDQM;
+    wire        tb_DRAM_RAS_N;
+    wire        tb_DRAM_UDQM;
+    wire        tb_DRAM_WE_N;
+    
+    wire [15:0] tb_DRAM_DQ;
+    assign tb_DRAM_DQ = 16'hZZZZ; // Floating SDRAM data bus in basic test environment
+
+    // =========================================================================
+    // 2. UNIT UNDER TEST (UUT) INSTANTIATION
+    // =========================================================================
+    debug_top uut (
+        .CLOCK_50   (tb_CLOCK_50),
+        .KEY        (tb_KEY),
+        .SW         (tb_SW),
+        .LEDR       (tb_LEDR),
+        
+        // SDRAM Ports
+        .DRAM_ADDR  (tb_DRAM_ADDR),
+        .DRAM_BA    (tb_DRAM_BA),
+        .DRAM_CAS_N (tb_DRAM_CAS_N),
+        .DRAM_CKE   (tb_DRAM_CKE),
+        .DRAM_CLK   (tb_DRAM_CLK),
+        .DRAM_CS_N  (tb_DRAM_CS_N),
+        .DRAM_DQ    (tb_DRAM_DQ),
+        .DRAM_LDQM  (tb_DRAM_LDQM),
+        .DRAM_RAS_N (tb_DRAM_RAS_N),
+        .DRAM_UDQM  (tb_DRAM_UDQM),
+        .DRAM_WE_N  (tb_DRAM_WE_N),
+        
+        // Camera Ports
+        .CAM_PCLK   (tb_CAM_PCLK),
+        .CAM_VSYNC  (tb_CAM_VSYNC),
+        .CAM_HREF   (tb_CAM_HREF),
+        .CAM_DATA   (tb_CAM_DATA)
+    );
+
+    // =========================================================================
+    // 3. CLOCK GENERATORS
+    // =========================================================================
+    initial tb_CLOCK_50 = 1'b0;
+    always #10 tb_CLOCK_50 = ~tb_CLOCK_50; // 50MHz system clock
+
+    initial tb_CAM_PCLK = 1'b0;
+    always #40 tb_CAM_PCLK = ~tb_CAM_PCLK;  // 12.5MHz camera pixel clock
+
+    // =========================================================================
+    // 4. MAIN STIMULUS PROCESS
+    // =========================================================================
+    initial begin
+        // --- STEP 0: Initialize default states ---
+        tb_KEY       = 4'b1111; 
+        tb_SW        = 10'd0;   // SW[0] = 0 -> Run Mock Camera first
+        tb_CAM_VSYNC = 1'b0;
+        tb_CAM_HREF  = 1'b0;
+        tb_CAM_DATA  = 8'h00;
+
+        $display("[TIME: %0t] --- SYSTEM SIMULATION STARTED ---", $time);
+        #100;
+        
+        // Issue System Reset pulse
+        tb_KEY[0] = 1'b0; 
+        #200;
+        tb_KEY[0] = 1'b1; 
+        $display("[TIME: %0t] -> Reset released successfully.", $time);
+        #500;
+
+        // =====================================================================
+        // SCENARIO 1: CHECK MOCK CAMERA GENERATOR FUNCTION
+        // =====================================================================
+        $display("[TIME: %0t] >>> SCENARIO 1: Running Mock Camera Generator (SW[0] = 0) <<<", $time);
+        
+        // Wait 400us to ensure SDRAM IP Core finishes its initialization safely
+        #400000; 
+
+        // Check write FIFO status via LEDR[1]
+        if (tb_LEDR[1]) 
+            $display("[SUCCESS] Write FIFO received valid data from Mock Camera (LEDR[1] is ON).");
+        else 
+            $display("[WARNING] Write FIFO is empty! Check waveform to see if Avalon waitrequest is pulled down to 0.");
+
+        // =====================================================================
+        // SCENARIO 2: SWITCH TO PHYSICAL CAMERA
+        // =====================================================================
+        $display("[TIME: %0t] >>> SCENARIO 2: Set SW[0] = 1 to switch to physical Camera <<<", $time);
+        tb_SW[0] = 1'b1; 
+        #2000;
+
+        // Send simulated physical camera stream
+        sim_ov7670_hardware_stream(2, 5);
+
+        // =====================================================================
+        // END OF SIMULATION
+        // =====================================================================
+        #20000;
+        $display("[TIME: %0t] --- SIMULATION COMPLETED ---", $time);
+        $stop; 
+    end
+
+    // =========================================================================
+    // 5. PHYSICAL CAMERA TIMING SIMULATION TASK (SYNCED ON NEGEDGE)
+    // =========================================================================
+    task sim_ov7670_hardware_stream(
+        input integer total_lines, 
+        input integer pixels_per_line
+    );
+        integer line_idx, pixel_idx;
+        begin
+            $display("[CAMERA TASK] Starting stream: %0d lines, %0d pixels/line", total_lines, pixels_per_line);
+            
+            // 1. Generate VSYNC pulse on PCLK negedge for timing stability
+            @(negedge tb_CAM_PCLK);
+            tb_CAM_VSYNC = 1'b1;
+            repeat(3) @(negedge tb_CAM_PCLK);
+            tb_CAM_VSYNC = 1'b0;
+            
+            // Vertical Blanking interval
+            repeat(10) @(negedge tb_CAM_PCLK);
+
+            // 2. Frame scanning loop
+            for (line_idx = 0; line_idx < total_lines; line_idx = line_idx + 1) begin
+                $display("[CAMERA TASK] ---> Transmitting line number: %0d", line_idx);
+                
+                // Assert HREF on PCLK negedge
+                @(negedge tb_CAM_PCLK);
+                tb_CAM_HREF = 1'b1; 
+
+                // Transmit YUYV byte sequence
+                for (pixel_idx = 0; pixel_idx < pixels_per_line; pixel_idx = pixel_idx + 1) begin
+                    
+                    // Byte 1: Luma Y (Updates on negedge, UUT captures on next posedge)
+                    tb_CAM_DATA = line_idx[7:0] + pixel_idx[7:0]; 
+                    @(negedge tb_CAM_PCLK);
+                    
+                    // Byte 2: Chroma Cb/Cr
+                    tb_CAM_DATA = 8'h5A; 
+                    @(negedge tb_CAM_PCLK);
+                end
+
+                // End of current scanline
+                tb_CAM_HREF = 1'b0; 
+                tb_CAM_DATA = 8'h00;
+                
+                // Horizontal Blanking interval
+                repeat(5) @(negedge tb_CAM_PCLK);
+            end
+        end
+    endtask
+
+endmodule

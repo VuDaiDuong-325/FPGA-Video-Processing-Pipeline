@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan
+vdebug_top
+Z1 !s110 1780540566
+!i10b 1
+!s100 [OF3BDk]2IHU;W5KnYVZ?0
+I55eCaa?@cZT0ifoSV`3El2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1780539704
+8debug_top.v
+Fdebug_top.v
+L0 8
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1780540566.000000
+Z5 !s107 debug_top_tb.v|debug_top.v|
+Z6 !s90 -reportprogress|300|-vlog01compat|-work|work|debug_top.v|debug_top_tb.v|
+!i113 1
+Z7 o-vlog01compat -work work
+Z8 tCvgOpt 0
+vdebug_top_tb
+R1
+!i10b 1
+!s100 0>KJ2@VPVnj=5kbGK=a@C2
+IR4n`Y8Gc[57ijB`L3;3341
+R2
+R0
+w1780500406
+8debug_top_tb.v
+Fdebug_top_tb.v
+L0 10
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8

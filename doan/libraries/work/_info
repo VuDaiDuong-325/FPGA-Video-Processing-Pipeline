@@ -1,0 +1,241 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan
+vdebug_top
+Z1 !s110 1780573402
+!i10b 1
+!s100 f^hOUdk6odV4jHeSEkNcM2
+IAgSTH0SXUl7B<aeac]DEA0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1780563977
+8debug_top.v
+Fdebug_top.v
+L0 8
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1780573402.000000
+Z5 !s107 debug_top_tb.v|debug_top.v|mock_camera_generator.v|video_dcfifo.v|sdram_read_controller.v|sdram_double_buffer_controller.v|VGA_controller.v|ov7670_capture.v|
+Z6 !s90 -reportprogress|300|-vlog01compat|-work|work|ov7670_capture.v|VGA_controller.v|sdram_double_buffer_controller.v|sdram_read_controller.v|video_dcfifo.v|mock_camera_generator.v|debug_top.v|debug_top_tb.v|
+!i113 1
+Z7 o-vlog01compat -work work
+Z8 tCvgOpt 0
+vdebug_top_tb
+R1
+!i10b 1
+!s100 dCMN21`>3<B]dCQAV^E_K1
+IGNh:SGMPOb`_P;R5e;B]d0
+R2
+R0
+w1780572879
+8debug_top_tb.v
+Fdebug_top_tb.v
+L0 7
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+vmock_camera_generator
+R1
+!i10b 1
+!s100 JJSF279cGgMBPFjml`3]d1
+IeMZ_`7j5I24lBdVHF37j@1
+R2
+R0
+Z9 w1780494514
+8mock_camera_generator.v
+Fmock_camera_generator.v
+L0 7
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+vov7670_capture
+R1
+!i10b 1
+!s100 3KQA6HlcDQck5V9?J`^Pe1
+I^U9SbFZ^Pon;k4;TXhi>_1
+R2
+R0
+R9
+8ov7670_capture.v
+Fov7670_capture.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+vsdram_double_buffer_controller
+R1
+!i10b 1
+!s100 z>1SIRQo^KDVMg3m?]dhR3
+IFG6Bb_0_o^XQkPihdPg_@0
+R2
+R0
+w1780572744
+8sdram_double_buffer_controller.v
+Fsdram_double_buffer_controller.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+vsdram_read_controller
+R1
+!i10b 1
+!s100 66a5MczR`MJfjHdmA7h6I2
+IP^:dzaI5mW6l5GX`m@K3m0
+R2
+R0
+w1780572750
+8sdram_read_controller.v
+Fsdram_read_controller.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+vsys_pll
+!s110 1780558689
+!i10b 1
+!s100 Me6Nig@9JKSjNiQ;F07go1
+IlUK>34?]:FIKeQg1N16a73
+R2
+R0
+Z10 w1780494515
+8sys_pll_sim/sys_pll.vo
+Fsys_pll_sim/sys_pll.vo
+Z11 L0 31
+R3
+r1
+!s85 0
+31
+!s108 1780558689.000000
+!s107 sys_pll_sim/sys_pll.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|sys_pll_sim/sys_pll.vo|
+!i113 1
+R7
+R8
+vsystem
+!s110 1780573401
+!i10b 1
+!s100 ;]dF:@NlK?RH=6DEWR7I]3
+IWU`O?DHE@9Hj<^S4k=3Xl0
+R2
+R0
+w1780539168
+8system/simulation/system.v
+Fsystem/simulation/system.v
+L0 6
+R3
+r1
+!s85 0
+31
+!s108 1780573401.000000
+!s107 system/simulation/system.v|
+!s90 -reportprogress|300|system/simulation/system.v|
+!i113 1
+R8
+vVGA_controller
+R1
+!i10b 1
+!s100 F6k2fg2UIN1K[A]g9bZ:b1
+Ik_^GGWP;@gOOhgEO[hZS>3
+R2
+R0
+w1780494513
+8VGA_controller.v
+FVGA_controller.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+n@v@g@a_controller
+vvga_pll
+!s110 1780558690
+!i10b 1
+!s100 [U<QWS>RcOKTkDJ=ZjnhB3
+I9V;MHT=]9Y04Ph@kK_FnX2
+R2
+R0
+R10
+8vga_pll_sim/vga_pll.vo
+Fvga_pll_sim/vga_pll.vo
+R11
+R3
+r1
+!s85 0
+31
+!s108 1780558690.000000
+!s107 vga_pll_sim/vga_pll.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|vga_pll_sim/vga_pll.vo|
+!i113 1
+R7
+R8
+vvideo_dcfifo
+R1
+!i10b 1
+!s100 lC0Zh^V]hch1:BGeL3bl`1
+I1C=;9S^A^c9Ko`9GCHV8C3
+R2
+R0
+R10
+8video_dcfifo.v
+Fvideo_dcfifo.v
+L0 39
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8

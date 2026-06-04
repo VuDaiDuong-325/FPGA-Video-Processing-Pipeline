@@ -1,0 +1,115 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/HK6/SoC_Design/FPGA-Video-Processing-Pipeline/doan
+vsystem_jtag_uart_0
+Z1 !s110 1780573401
+!i10b 1
+!s100 F_jM1`@:9Mi2=bLn32eKV0
+I>]GkUm<M0Q0hHazf_HSiT1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1780539173
+Z4 8system/simulation/submodules/system_jtag_uart_0.v
+Z5 Fsystem/simulation/submodules/system_jtag_uart_0.v
+L0 331
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1780573401.000000
+Z8 !s107 system/simulation/submodules/system_jtag_uart_0.v|
+Z9 !s90 -reportprogress|300|system/simulation/submodules/system_jtag_uart_0.v|-work|jtag_uart_0|
+!i113 1
+Z10 o-work jtag_uart_0
+Z11 tCvgOpt 0
+vsystem_jtag_uart_0_scfifo_r
+R1
+!i10b 1
+!s100 nbH:B[hc3Gg3_dlXFY6Y_0
+IdR:T]n<]M41[LIg>ljH5a3
+R2
+R0
+R3
+R4
+R5
+L0 243
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vsystem_jtag_uart_0_scfifo_w
+R1
+!i10b 1
+!s100 U<VMPVbdEfH^<724Hjl`h2
+I@D]Ea0<GQY__5;Z7:oQl40
+R2
+R0
+R3
+R4
+R5
+L0 78
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vsystem_jtag_uart_0_sim_scfifo_r
+R1
+!i10b 1
+!s100 mZX[@nGQG0BfXD=a>JfNP0
+IFegQfSCZNJh:iaM?n6N022
+R2
+R0
+R3
+R4
+R5
+L0 164
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vsystem_jtag_uart_0_sim_scfifo_w
+R1
+!i10b 1
+!s100 ^H3B]NOZefn@cI0?B>8j70
+ITS=E_QYWzLP=`ah`hg6Xh2
+R2
+R0
+R3
+R4
+R5
+L0 21
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

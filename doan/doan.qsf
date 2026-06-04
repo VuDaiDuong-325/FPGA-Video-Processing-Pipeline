@@ -38,7 +38,7 @@
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY doan_top
+set_global_assignment -name TOP_LEVEL_ENTITY debug_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:40:52  MAY 18, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
@@ -47,25 +47,12 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
-set_global_assignment -name QIP_FILE system/synthesis/system.qip
-set_global_assignment -name VERILOG_FILE ov7670_capture.v
-set_global_assignment -name TEXT_FILE ov7670_capture_instruction.txt
-set_global_assignment -name VERILOG_FILE ov7670_config_sccb.v
-set_global_assignment -name VERILOG_FILE sccb_ov7670_lut_config.v
-set_global_assignment -name VERILOG_FILE VGA_controller.v
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name QIP_FILE sys_pll.qip
-set_global_assignment -name SIP_FILE sys_pll.sip
-set_global_assignment -name QIP_FILE vga_pll.qip
-set_global_assignment -name SIP_FILE vga_pll.sip
-set_global_assignment -name VERILOG_FILE sdram_double_buffer_controller.v
-set_global_assignment -name VERILOG_FILE doan_top.v
 # ==============================================================================
 # 1. CLOCK & RESET (Hệ thống)
 # ==============================================================================
 set_location_assignment PIN_AF14 -to CLOCK_50
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
 
 # ==============================================================================
 # 2. NÚT NHẤN (KEYS) & CÔNG TẮC (SWITCHES)
@@ -74,10 +61,6 @@ set_location_assignment PIN_AA14 -to KEY[0]
 set_location_assignment PIN_AA15 -to KEY[1]
 set_location_assignment PIN_W15 -to KEY[2]
 set_location_assignment PIN_Y16 -to KEY[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[3]
 
 set_location_assignment PIN_AB12 -to SW[0]
 set_location_assignment PIN_AC12 -to SW[1]
@@ -89,7 +72,6 @@ set_location_assignment PIN_AE11 -to SW[6]
 set_location_assignment PIN_AC9 -to SW[7]
 set_location_assignment PIN_AD10 -to SW[8]
 set_location_assignment PIN_AE12 -to SW[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[*]
 
 # ==============================================================================
 # 3. IC SDRAM (Đã map chuẩn xác cho Board DE1-SoC Bank 3B)
@@ -136,7 +118,6 @@ set_location_assignment PIN_AB13 -to DRAM_LDQM
 set_location_assignment PIN_AE13 -to DRAM_RAS_N
 set_location_assignment PIN_AK12 -to DRAM_UDQM
 set_location_assignment PIN_AA13 -to DRAM_WE_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_*
 
 # ==============================================================================
 # 4. MÀN HÌNH VGA OUTPUT (8-bit DAC Physical Pins + 2-bit Virtual Pins)
@@ -149,8 +130,6 @@ set_location_assignment PIN_C12 -to VGA_R[4]
 set_location_assignment PIN_D12 -to VGA_R[5]
 set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
-set_instance_assignment -name VIRTUAL_PIN ON -to VGA_R[8]
-set_instance_assignment -name VIRTUAL_PIN ON -to VGA_R[9]
 
 set_location_assignment PIN_J9 -to VGA_G[0]
 set_location_assignment PIN_J10 -to VGA_G[1]
@@ -160,8 +139,6 @@ set_location_assignment PIN_G11 -to VGA_G[4]
 set_location_assignment PIN_G12 -to VGA_G[5]
 set_location_assignment PIN_F11 -to VGA_G[6]
 set_location_assignment PIN_E11 -to VGA_G[7]
-set_instance_assignment -name VIRTUAL_PIN ON -to VGA_G[8]
-set_instance_assignment -name VIRTUAL_PIN ON -to VGA_G[9]
 
 set_location_assignment PIN_B13 -to VGA_B[0]
 set_location_assignment PIN_G13 -to VGA_B[1]
@@ -171,15 +148,12 @@ set_location_assignment PIN_H14 -to VGA_B[4]
 set_location_assignment PIN_F15 -to VGA_B[5]
 set_location_assignment PIN_G15 -to VGA_B[6]
 set_location_assignment PIN_J14 -to VGA_B[7]
-set_instance_assignment -name VIRTUAL_PIN ON -to VGA_B[8]
-set_instance_assignment -name VIRTUAL_PIN ON -to VGA_B[9]
 
 set_location_assignment PIN_A11 -to VGA_CLK
 set_location_assignment PIN_F10 -to VGA_BLANK_N
 set_location_assignment PIN_B11 -to VGA_HS
 set_location_assignment PIN_D11 -to VGA_VS
 set_location_assignment PIN_C10 -to VGA_SYNC_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_*
 
 # ==============================================================================
 # 5. CAMERA OV7670 (Cắm trên Header GPIO_1)
@@ -200,35 +174,15 @@ set_location_assignment PIN_AH24 -to CAM_DATA[7]
 set_location_assignment PIN_AH27 -to CAM_SCL
 set_location_assignment PIN_AJ27 -to CAM_SDA
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_XCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_PCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_VSYNC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_HREF
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_DATA[*]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_SCL
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_SDA
 
 # Bật điện trở Pull-up nội cho đường tín hiệu truyền dữ liệu I2C/SCCB
 	
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_*
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CAM_SDA
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CAM_SCL
-set_global_assignment -name SDC_FILE doan_constraint.sdc
 set_global_assignment -name FLOW_ENABLE_RTL_VIEWER ON
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
-set_global_assignment -name VERILOG_FILE YUV422_to_444.v
-set_global_assignment -name VERILOG_FILE YUV444_to_RGB10.v
-set_global_assignment -name VERILOG_FILE sdram_read_controller.v
-set_global_assignment -name QIP_FILE video_dcfifo.qip
 set_location_assignment PIN_V16 -to LEDR[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[0]
 set_location_assignment PIN_W16 -to LEDR[1]
 set_location_assignment PIN_V17 -to LEDR[2]
 set_location_assignment PIN_V18 -to LEDR[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR
 set_location_assignment PIN_W17 -to LEDR[4]
 set_location_assignment PIN_W19 -to LEDR[5]
 set_location_assignment PIN_Y19 -to LEDR[6]
@@ -237,30 +191,12 @@ set_location_assignment PIN_W21 -to LEDR[8]
 set_location_assignment PIN_Y21 -to LEDR[9]
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
-set_global_assignment -name VERILOG_FILE tb.v
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_doan_top -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb -section_id tb
-set_global_assignment -name VERILOG_FILE Grayscale_to_RGB10.v
-set_global_assignment -name VERILOG_FILE VGA_Image_Processor.v
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH debug_top_tb -section_id eda_simulation
 set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
-set_global_assignment -name VERILOG_FILE tb_doan_top.v
-set_global_assignment -name EDA_TEST_BENCH_FILE tb.v -section_id tb
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_doan_top -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_doan_top
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_doan_top -section_id tb_doan_top
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_doan_top.v -section_id tb_doan_top
-set_global_assignment -name VERILOG_FILE camera_frame_gater.v
-set_global_assignment -name VERILOG_FILE mock_camera_generator.v
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
-set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
 set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to CLOCK_50 -section_id auto_signaltap_0
@@ -332,6 +268,71 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1,basic,1," -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_*
+set_instance_assignment -name VIRTUAL_PIN ON -to VGA_R[8]
+set_instance_assignment -name VIRTUAL_PIN ON -to VGA_R[9]
+set_instance_assignment -name VIRTUAL_PIN ON -to VGA_G[8]
+set_instance_assignment -name VIRTUAL_PIN ON -to VGA_G[9]
+set_instance_assignment -name VIRTUAL_PIN ON -to VGA_B[8]
+set_instance_assignment -name VIRTUAL_PIN ON -to VGA_B[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_*
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_XCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_PCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_VSYNC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_HREF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_DATA[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_SCL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_SDA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAM_*
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CAM_SDA
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CAM_SCL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR
+set_global_assignment -name EDA_TEST_BENCH_NAME debug_top_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id debug_top_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME debug_top_tb -section_id debug_top_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE debug_top_tb.v -section_id debug_top_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE sys_pll/sys_pll_0002.v -section_id debug_top_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE vga_pll/vga_pll_0002.v -section_id debug_top_tb
+set_global_assignment -name VERILOG_FILE system/simulation/system.v
+set_global_assignment -name QIP_FILE system/synthesis/system.qip
+set_global_assignment -name VERILOG_FILE ov7670_capture.v
+set_global_assignment -name TEXT_FILE ov7670_capture_instruction.txt
+set_global_assignment -name VERILOG_FILE ov7670_config_sccb.v
+set_global_assignment -name VERILOG_FILE sccb_ov7670_lut_config.v
+set_global_assignment -name VERILOG_FILE VGA_controller.v
+set_global_assignment -name QIP_FILE sys_pll.qip
+set_global_assignment -name SIP_FILE sys_pll.sip
+set_global_assignment -name QIP_FILE vga_pll.qip
+set_global_assignment -name SIP_FILE vga_pll.sip
+set_global_assignment -name VERILOG_FILE sdram_double_buffer_controller.v
+set_global_assignment -name VERILOG_FILE doan_top.v
+set_global_assignment -name SDC_FILE doan_constraint.sdc
+set_global_assignment -name VERILOG_FILE YUV422_to_444.v
+set_global_assignment -name VERILOG_FILE YUV444_to_RGB10.v
+set_global_assignment -name VERILOG_FILE sdram_read_controller.v
+set_global_assignment -name QIP_FILE video_dcfifo.qip
+set_global_assignment -name VERILOG_FILE tb.v
+set_global_assignment -name VERILOG_FILE Grayscale_to_RGB10.v
+set_global_assignment -name VERILOG_FILE VGA_Image_Processor.v
+set_global_assignment -name VERILOG_FILE tb_doan_top.v
+set_global_assignment -name VERILOG_FILE camera_frame_gater.v
+set_global_assignment -name VERILOG_FILE mock_camera_generator.v
+set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
 set_global_assignment -name VERILOG_FILE vga_fifo_test_generator.v
-set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
+set_global_assignment -name VERILOG_FILE debug_top.v
+set_global_assignment -name VERILOG_FILE debug_top_tb.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp

@@ -1,5 +1,5 @@
 Flow report for doan
-Tue Jun 02 09:16:36 2026
+Thu Jun 04 18:39:25 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,24 +40,24 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Jun 02 09:16:36 2026       ;
+; Flow Status                     ; Successful - Thu Jun 04 18:39:25 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; doan                                        ;
-; Top-level Entity Name           ; doan_top                                    ;
+; Top-level Entity Name           ; debug_top                                   ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 1,835 / 32,070 ( 6 % )                      ;
-; Total registers                 ; 3036                                        ;
-; Total pins                      ; 107 / 457 ( 23 % )                          ;
-; Total virtual pins              ; 6                                           ;
-; Total block memory bits         ; 339,650 / 4,065,280 ( 8 % )                 ;
-; Total DSP Blocks                ; 4 / 87 ( 5 % )                              ;
+; Logic utilization (in ALMs)     ; 1,581 / 32,070 ( 5 % )                      ;
+; Total registers                 ; 2504                                        ;
+; Total pins                      ; 75 / 457 ( 16 % )                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 306,816 / 4,065,280 ( 8 % )                 ;
+; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
 ; Total HSSI TX PCSs              ; 0                                           ;
 ; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 2 / 6 ( 33 % )                              ;
+; Total PLLs                      ; 1 / 6 ( 17 % )                              ;
 ; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
 +---------------------------------+---------------------------------------------+
 
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/02/2026 09:13:24 ;
+; Start date & time ; 06/04/2026 18:34:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; doan                ;
 +-------------------+---------------------+
@@ -78,19 +78,17 @@ refer to the applicable agreement for further details.
 +--------------------------------------+----------------------------------------------------------------+---------------+-------------+------------------+
 ; Assignment Name                      ; Value                                                          ; Default Value ; Entity Name ; Section Id       ;
 +--------------------------------------+----------------------------------------------------------------+---------------+-------------+------------------+
-; COMPILER_SIGNATURE_ID                ; 10995770589192.178036640417640                                 ; --            ; --          ; --               ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                                             ; --            ; --          ; tb               ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                                             ; --            ; --          ; tb_doan_top      ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_doan_top                                                    ; --            ; --          ; eda_simulation   ;
+; COMPILER_SIGNATURE_ID                ; 92668497242013.178057288419396                                 ; --            ; --          ; --               ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                                             ; --            ; --          ; debug_top_tb     ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; debug_top_tb                                                   ; --            ; --          ; eda_simulation   ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                                    ; --            ; --          ; eda_simulation   ;
 ; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)                                      ; <None>        ; --          ; --               ;
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                                                ; --            ; --          ; eda_simulation   ;
-; EDA_TEST_BENCH_FILE                  ; tb.v                                                           ; --            ; --          ; tb               ;
-; EDA_TEST_BENCH_FILE                  ; tb_doan_top.v                                                  ; --            ; --          ; tb_doan_top      ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb                                                             ; --            ; --          ; tb               ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_doan_top                                                    ; --            ; --          ; tb_doan_top      ;
-; EDA_TEST_BENCH_NAME                  ; tb                                                             ; --            ; --          ; eda_simulation   ;
-; EDA_TEST_BENCH_NAME                  ; tb_doan_top                                                    ; --            ; --          ; eda_simulation   ;
+; EDA_TEST_BENCH_FILE                  ; debug_top_tb.v                                                 ; --            ; --          ; debug_top_tb     ;
+; EDA_TEST_BENCH_FILE                  ; sys_pll/sys_pll_0002.v                                         ; --            ; --          ; debug_top_tb     ;
+; EDA_TEST_BENCH_FILE                  ; vga_pll/vga_pll_0002.v                                         ; --            ; --          ; debug_top_tb     ;
+; EDA_TEST_BENCH_MODULE_NAME           ; debug_top_tb                                                   ; --            ; --          ; debug_top_tb     ;
+; EDA_TEST_BENCH_NAME                  ; debug_top_tb                                                   ; --            ; --          ; eda_simulation   ;
 ; EDA_TIME_SCALE                       ; 1 ps                                                           ; --            ; --          ; eda_simulation   ;
 ; ENABLE_SIGNALTAP                     ; On                                                             ; --            ; --          ; --               ;
 ; FITTER_EFFORT                        ; Standard Fit                                                   ; Auto Fit      ; --          ; --               ;
@@ -108,9 +106,9 @@ refer to the applicable agreement for further details.
 ; NUM_PARALLEL_PROCESSORS              ; All                                                            ; --            ; --          ; --               ;
 ; OPTIMIZATION_MODE                    ; Aggressive Performance                                         ; Balanced      ; --          ; --               ;
 ; OPTIMIZATION_TECHNIQUE               ; Speed                                                          ; Balanced      ; --          ; --               ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family)                         ; --            ; doan_top    ; Top              ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family)                         ; --            ; doan_top    ; Top              ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family)                         ; --            ; doan_top    ; Top              ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family)                         ; --            ; debug_top   ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family)                         ; --            ; debug_top   ; Top              ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family)                         ; --            ; debug_top   ; Top              ;
 ; PHYSICAL_SYNTHESIS_COMBO_LOGIC       ; On                                                             ; Off           ; --          ; --               ;
 ; PHYSICAL_SYNTHESIS_REGISTER_RETIMING ; On                                                             ; Off           ; --          ; --               ;
 ; PLACEMENT_EFFORT_MULTIPLIER          ; 4.0                                                            ; 1.0           ; --          ; --               ;
@@ -121,7 +119,7 @@ refer to the applicable agreement for further details.
 ; SLD_FILE                             ; system/synthesis/system.regmap                                 ; --            ; --          ; --               ;
 ; SLD_FILE                             ; system/synthesis/system.debuginfo                              ; --            ; --          ; --               ;
 ; SLD_FILE                             ; db/stp1_auto_stripped.stp                                      ; --            ; --          ; --               ;
-; SLD_INFO                             ; QSYS_NAME system HAS_SOPCINFO 1 GENERATION_ID 1780118583       ; --            ; system      ; --               ;
+; SLD_INFO                             ; QSYS_NAME system HAS_SOPCINFO 1 GENERATION_ID 1780539324       ; --            ; system      ; --               ;
 ; SLD_NODE_CREATOR_ID                  ; 110                                                            ; --            ; --          ; auto_signaltap_0 ;
 ; SLD_NODE_ENTITY_NAME                 ; sld_signaltap                                                  ; --            ; --          ; auto_signaltap_0 ;
 ; SLD_NODE_PARAMETER_ASSIGNMENT        ; SLD_RAM_BLOCK_TYPE=AUTO                                        ; --            ; --          ; auto_signaltap_0 ;
@@ -157,7 +155,7 @@ refer to the applicable agreement for further details.
 ; SYNTHESIS_ONLY_QIP                   ; On                                                             ; --            ; --          ; --               ;
 ; SYNTHESIS_ONLY_QIP                   ; On                                                             ; --            ; --          ; --               ;
 ; SYNTHESIS_ONLY_QIP                   ; On                                                             ; --            ; --          ; --               ;
-; TOP_LEVEL_ENTITY                     ; doan_top                                                       ; doan          ; --          ; --               ;
+; TOP_LEVEL_ENTITY                     ; debug_top                                                      ; doan          ; --          ; --               ;
 ; USE_SIGNALTAP_FILE                   ; output_files/stp1.stp                                          ; --            ; --          ; --               ;
 +--------------------------------------+----------------------------------------------------------------+---------------+-------------+------------------+
 
@@ -167,12 +165,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:27     ; 1.0                     ; 5189 MB             ; 00:00:42                           ;
-; Fitter               ; 00:02:18     ; 1.2                     ; 7807 MB             ; 00:11:54                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4904 MB             ; 00:00:05                           ;
-; Timing Analyzer      ; 00:00:10     ; 2.3                     ; 5500 MB             ; 00:00:20                           ;
-; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4940 MB             ; 00:00:03                           ;
-; Total                ; 00:03:04     ; --                      ; --                  ; 00:13:04                           ;
+; Analysis & Synthesis ; 00:01:09     ; 1.0                     ; 5060 MB             ; 00:01:48                           ;
+; Fitter               ; 00:02:37     ; 1.2                     ; 7021 MB             ; 00:05:41                           ;
+; Assembler            ; 00:00:12     ; 1.0                     ; 4887 MB             ; 00:00:12                           ;
+; Timing Analyzer      ; 00:00:24     ; 1.7                     ; 5373 MB             ; 00:00:38                           ;
+; EDA Netlist Writer   ; 00:00:06     ; 1.0                     ; 4920 MB             ; 00:00:06                           ;
+; Total                ; 00:04:28     ; --                      ; --                  ; 00:08:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -181,11 +179,11 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; ZUYYYY           ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; ZUYYYY           ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; ZUYYYY           ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; ZUYYYY           ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer   ; ZUYYYY           ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; VuDuong-32       ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; VuDuong-32       ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; VuDuong-32       ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; VuDuong-32       ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; VuDuong-32       ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

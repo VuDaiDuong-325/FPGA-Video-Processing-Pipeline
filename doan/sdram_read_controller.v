@@ -16,13 +16,15 @@ module sdram_read_controller (
     // Giao tiếp với VGA DCFIFO
     output wire        fifo_wrreq,       
     output wire [15:0] fifo_wrdata,      
-    input  wire [10:0] fifo_wrusedw      
+    input  wire [10:0] fifo_wrusedw,
+	 
+	 output wire o_read_buffer_sel
 );
 
     // THÔNG SỐ CẤU HÌNH BỘ NHỚ
     localparam BUFFER_A_BASE = 25'h1000_000;
     localparam BUFFER_B_BASE = 25'h104_B000; 
-    localparam MAX_PIXELS    = 19'd307_200; // 640 x 480 
+    localparam MAX_PIXELS    = 19'd3072; // 640 x 480 
 
     reg read_buffer_sel; // 0: Đọc Buffer A | 1: Đọc Buffer B 
     reg [18:0] req_cnt;  // Bộ đếm số lượng pixel đã gửi yêu cầu đọc
@@ -44,6 +46,20 @@ module sdram_read_controller (
 
     wire [24:0] base_addr = (read_buffer_sel == 1'b0) ? BUFFER_A_BASE : BUFFER_B_BASE;
 
+    // --- ĐIỂM SỬA CHỮA CHÍNH ---
+    // Chốt (Latch) tín hiệu vga_frame_done để không bị nuốt xung khi SDRAM báo bận
+    reg vga_frame_done_latch;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            vga_frame_done_latch <= 1'b0;
+        end else if (vga_frame_done) begin
+            vga_frame_done_latch <= 1'b1;
+        end else if (vga_frame_done_latch && !(avm_read && avm_waitrequest)) begin
+            // Bỏ cờ chốt khi đã bắt đầu reset xong ở chu kỳ bus rảnh
+            vga_frame_done_latch <= 1'b0;
+        end
+    end
+
     // =========================================================================
     // 2. LOGIC PHÁT LỆNH ĐỌC & RESET ĐỊA CHỈ - CHẠY THEO KHUNG HÌNH VGA
     // =========================================================================
@@ -63,8 +79,8 @@ module sdram_read_controller (
                 avm_address <= avm_address; 
             end 
             // ƯU TIÊN SỐ 2: RESET BỘ ĐẾM KHI QUÉT XONG 1 KHUNG HÌNH VGA (60Hz)
-            else if (vga_frame_done) begin
-                req_cnt  <= 19'd0; // Ép bộ đọc quay về pixel đầu tiên để màn hình không bị lệch dòng [cite: 21]
+            else if (vga_frame_done_latch) begin // <-- SỬ DỤNG LATCH THAY VÌ XUNG TRỰC TIẾP
+                req_cnt  <= 19'd0; 
                 avm_read <= 1'b0; 
             end 
             // ƯU TIÊN SỐ 3: PHÁT LỆNH ĐỌC TUẦN TỰ
@@ -83,5 +99,6 @@ module sdram_read_controller (
     // Ghi dữ liệu trực tiếp vào VGA FIFO khi Bus trả về dữ liệu hợp lệ
     assign fifo_wrreq  = avm_readdatavalid; 
     assign fifo_wrdata = avm_readdata;
+	 assign o_read_buffer_sel = read_buffer_sel;
 
 endmodule
