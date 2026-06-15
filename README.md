@@ -25,6 +25,12 @@ Real-time image processing pipeline implemented on the Terasic DE1-SoC (Cyclone 
 ## Architecture
 
 ```text
+Input Image (PNG/JPG/WEBP/...)
+          │
+          ▼
+Python (Kaggle / convert.py)
+          │
+          ▼
 RGB565 Image (.bin)
           │
           ▼
@@ -51,6 +57,15 @@ RGB565 Image (.bin)
 ```
 
 ---
+
+## Python Toolchain
+
+A Python pipeline is used to prepare image data for the FPGA system.
+
+- Kaggle notebook (full pipeline: RGB565, Sobel, Sharpen):  
+  https://www.kaggle.com/code/dduong325/image-to-bin-rgb565
+
+- Local script (`convert.py`): Convert image → RGB565 `.bin`
 
 ## Results
 
