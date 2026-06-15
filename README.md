@@ -88,3 +88,7 @@ docs/Run_on_FPGA.mp4
 * Terasic DE1-SoC, Cyclone V FPGA (5CSEMA5F31C6)
 * VGA Monitor
 * USB-Blaster / JTAG
+
+## Authors & Contributors
+* **Nguyen Dang Phuong Duy** - [DuyNDP](https://github.com/DuyNDP)
+* **Vu Dai Duong** - [VuDaiDuong_325](https://github.com/VuDaiDuong-325)
