@@ -1,0 +1,54 @@
+// =========================================================================
+// MODULE: Grayscale_to_RGB10.v  [FIX]
+//
+// [FIX] Sửa công thức luma từ xấp xỉ sai sang chuẩn BT.601:
+//
+//   GỐC (SAI): luma = (R>>2) + (G>>1) + (B>>3)
+//              = 0.250*R + 0.500*G + 0.125*B  (tổng = 0.875 → ảnh tối hơn thực)
+//
+//   FIX (ĐÚNG BT.601): Y = 0.299*R + 0.587*G + 0.114*B
+//   Xấp xỉ integer 10-bit (tránh nhân phức tạp, dùng shift+add):
+//              luma = (77*R + 150*G + 29*B) >> 8
+//              77/256=0.301, 150/256=0.586, 29/256=0.113 ← gần BT.601 ✓
+//              Tổng coeff = 256/256 = 1.0 → brightness đúng ✓
+//
+// LƯU Ý: Input là 10-bit RGB. Phép nhân tạm thời cần bit width đủ lớn:
+//   10-bit * 8-bit = 18-bit → không overflow trong 20-bit wire.
+//   Kết quả >> 8 → 10-bit ✓ (max = (77+150+29)*1023 >> 8 = 256*1023/256 = 1023 ✓)
+//
+// Pipeline: 1 clock cycle (registered output)
+// =========================================================================
+
+module Grayscale_to_RGB10 (
+    input  wire        iCLK,
+    input  wire        iRST_N,
+    input  wire        i_valid,
+    input  wire [9:0]  iRed,
+    input  wire [9:0]  iGreen,
+    input  wire [9:0]  iBlue,
+
+    output reg  [9:0]  oRed,
+    output reg  [9:0]  oGreen,
+    output reg  [9:0]  oBlue
+);
+    // Dùng wire 20-bit để tránh overflow khi nhân 10-bit * 8-bit
+    wire [19:0] luma_full = (20'd77  * {10'd0, iRed})
+                          + (20'd150 * {10'd0, iGreen})
+                          + (20'd29  * {10'd0, iBlue});
+
+    // Lấy 10 bit [17:8] (tương đương >> 8) — giới hạn tại 1023
+    wire [9:0] luma = luma_full[17:8];
+
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            oRed   <= 10'd0;
+            oGreen <= 10'd0;
+            oBlue  <= 10'd0;
+        end else if (i_valid) begin
+            oRed   <= luma;
+            oGreen <= luma;
+            oBlue  <= luma;
+        end
+    end
+
+endmodule

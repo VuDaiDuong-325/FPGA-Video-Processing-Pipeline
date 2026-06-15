@@ -1,0 +1,149 @@
+// =========================================================================
+// FILE: VGA_controller.v  [v3 - Mở rộng blank_pipe cho Sobel pipeline]
+//
+// THAY ĐỔI DUY NHẤT so với v2:
+//   [v2] blank_pipe[2:0] → pipeline 3 stage (khớp với pipeline cũ 3 stage)
+//   [v3] blank_pipe[7:0] → pipeline 8 stage (khớp với pipeline mới 8 stage)
+//
+// LÝ DO:
+//   VGA_Image_Processor v3 thêm 5-stage delay path để align Sobel (6 cycle total Stage 2).
+//   Tổng pipeline: Stage1(1) + Stage2(6) + Stage3_VGA(1) = 8 stages
+//   → blank_pipe cần shift 8 lần → [7:0] thay vì [2:0]
+//   → Dùng blank_pipe[7] thay vì blank_pipe[2]
+//
+// TẤT CẢ PHẦN KHÁC GIỮ NGUYÊN HOÀN TOÀN so với v2.
+//
+// PIPELINE MỚI:
+//   T0 (H=H_BLANK): rdreq=1, fifo_q=pixel[N], Decoder nhận data
+//   T1 posedge:     Decoder latch → oRed=r(N)                  [Stage 1]
+//   T2..T6 posedge: Image_Processor delay + MUX latch          [Stage 2 x5]
+//   T7 posedge:     Image_Processor MUX register               [Stage 2, out]
+//   T8 posedge:     VGA_R latch iRed=r(N)                      [Stage 3]
+//                   blank_pipe[7](at T8) = c_BLANK(T0) ✓
+//
+// NOTE: oRequest không thay đổi (= H_Cont >= H_BLANK). Request dựa trên
+//   timing FIFO/SDRAM, không phụ thuộc pipeline stage count.
+// =========================================================================
+
+module VGA_controller (
+    input  [9:0]  iRed,
+    input  [9:0]  iGreen,
+    input  [9:0]  iBlue,
+    output [10:0] oCurrent_X,
+    output [10:0] oCurrent_Y,
+    output [21:0] oAddress,
+    output        oRequest,
+    output [7:0]  oVGA_R,
+    output [7:0]  oVGA_G,
+    output [7:0]  oVGA_B,
+    output reg    oVGA_HS,
+    output reg    oVGA_VS,
+    output        oVGA_SYNC,
+    output reg    oVGA_BLANK,
+    output        oVGA_CLOCK,
+    input         iCLK,
+    input         iRST_N
+);
+
+    // VGA 640x480 @ 60Hz (pixel clock 25.175 MHz)
+    parameter [10:0] H_FRONT = 11'd16;
+    parameter [10:0] H_SYNC  = 11'd96;
+    parameter [10:0] H_BACK  = 11'd48;
+    parameter [10:0] H_ACT   = 11'd640;
+    parameter [10:0] H_BLANK = H_FRONT + H_SYNC + H_BACK;    // 160
+    parameter [10:0] H_TOTAL = H_BLANK + H_ACT;               // 800
+
+    parameter [10:0] V_FRONT = 11'd10;
+    parameter [10:0] V_SYNC  = 11'd2;
+    parameter [10:0] V_BACK  = 11'd33;
+    parameter [10:0] V_ACT   = 11'd480;
+    parameter [10:0] V_BLANK = V_FRONT + V_SYNC + V_BACK;    // 45
+    parameter [10:0] V_TOTAL = V_BLANK + V_ACT;               // 525
+
+    reg [10:0] H_Cont, V_Cont;
+    reg [9:0]  VGA_R, VGA_G, VGA_B;
+
+    // Tín hiệu điều khiển combinational
+    wire c_HS    = ~((H_Cont >= H_FRONT) && (H_Cont < H_FRONT + H_SYNC));
+    wire c_VS    = ~((V_Cont >= V_FRONT) && (V_Cont < V_FRONT + V_SYNC));
+    wire c_BLANK =  (H_Cont >= H_BLANK)  && (V_Cont >= V_BLANK);
+
+    // [v3] 8 tầng pipeline (pipe[7:0]), khớp với 8 register stages của data path
+    // (Stage1=1 + Stage2=6 + Stage3_VGA=1 = 8 stages tổng)
+    // Dùng pipe[7] thay vì pipe[2] ở v2
+    reg [7:0] vga_hs_pipe, vga_vs_pipe, vga_blank_pipe;
+
+    // ADV7123: SYNC=0 (dùng HS/VS riêng), CLK=~iCLK
+    assign oVGA_SYNC  = 1'b0;
+    assign oVGA_CLOCK = ~iCLK;
+    // DE1-SoC ADV7123: lấy 8 bit MSB [9:2] của 10-bit nội bộ
+    assign oVGA_R     = VGA_R[9:2];
+    assign oVGA_G     = VGA_G[9:2];
+    assign oVGA_B     = VGA_B[9:2];
+
+    // Tọa độ pixel hiện tại (combinational, không trễ)
+    assign oCurrent_X = (H_Cont >= H_BLANK) ? (H_Cont - H_BLANK) : 11'd0;
+    assign oCurrent_Y = (V_Cont >= V_BLANK)  ? (V_Cont - V_BLANK)  : 11'd0;
+    assign oAddress   = ({11'd0, oCurrent_Y} * 22'd640) + {11'd0, oCurrent_X};
+
+    // oRequest không thay đổi
+    assign oRequest = (H_Cont >= H_BLANK) && (V_Cont >= V_BLANK);
+
+    // Bộ đếm quét H/V
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            H_Cont <= 11'd0;
+            V_Cont <= 11'd0;
+        end else begin
+            if (H_Cont < H_TOTAL - 1'b1)
+                H_Cont <= H_Cont + 1'b1;
+            else begin
+                H_Cont <= 11'd0;
+                V_Cont <= (V_Cont < V_TOTAL - 1'b1) ? V_Cont + 1'b1 : 11'd0;
+            end
+        end
+    end
+
+    // [v3] Pipeline 8 tầng cho HS/VS/BLANK
+    // Sau 8 posedge: pipe[7] chứa c_BLANK từ 8 cycle trước
+    // Data pipeline cũng có 8 stages → đồng bộ hoàn hảo
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            vga_hs_pipe    <= 8'hFF;  // HS default HIGH
+            vga_vs_pipe    <= 8'hFF;  // VS default HIGH
+            vga_blank_pipe <= 8'h00;  // BLANK default OFF
+        end else begin
+            vga_hs_pipe    <= {vga_hs_pipe[6:0],    c_HS};
+            vga_vs_pipe    <= {vga_vs_pipe[6:0],    c_VS};
+            vga_blank_pipe <= {vga_blank_pipe[6:0], c_BLANK};
+        end
+    end
+
+    // Output register - Stage 8 (Stage 3 của data pipeline, VGA final stage)
+    // [v3] Dùng blank_pipe[7] (tap cuối của 8-stage shift register)
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            VGA_R      <= 10'd0;
+            VGA_G      <= 10'd0;
+            VGA_B      <= 10'd0;
+            oVGA_HS    <= 1'b1;
+            oVGA_VS    <= 1'b1;
+            oVGA_BLANK <= 1'b0;
+        end else begin
+            oVGA_HS    <= vga_hs_pipe[7];     // [v3] index 7 (không phải 2)
+            oVGA_VS    <= vga_vs_pipe[7];
+            oVGA_BLANK <= vga_blank_pipe[7];
+
+            if (vga_blank_pipe[7]) begin      // [v3] gate bằng pipe[7]
+                VGA_R <= iRed;
+                VGA_G <= iGreen;
+                VGA_B <= iBlue;
+            end else begin
+                VGA_R <= 10'd0;
+                VGA_G <= 10'd0;
+                VGA_B <= 10'd0;
+            end
+        end
+    end
+
+endmodule

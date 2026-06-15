@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
+<<<<<<< Updated upstream
  date="2026.05.30.15:34:21"
  outputDirectory="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/">
+=======
+ date="2026.06.15.01:27:46"
+ outputDirectory="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/">
+>>>>>>> Stashed changes
  <perimeter>
   <parameter
      name="AUTO_DEVICE_FAMILY"
@@ -38,7 +43,11 @@
  </perimeter>
  <entity
    path=""
+<<<<<<< Updated upstream
    parameterizationKey="alt_sld_fab:1.0:AUTO_DEVICE=,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=(alt_sld_fab:18.1:AGENTS=,AUTO_DEVICE=Unknown,AUTO_DEVICE_SPEEDGRADE=Unknown,CLOCKS={id {} } {id {} } ,COMPOSED_SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } ,DESIGN_HASH=27da249910e74c9ad48f,DEVICE_FAMILY=Cyclone V,EP_INFOS={hpath {system:u0|system_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:system_jtag_uart_0_alt_jtag_atlantic} } {hpath {system:u0|system_nios2_gen2_0:nios2_gen2_0|system_nios2_gen2_0_cpu:cpu|system_nios2_gen2_0_cpu_nios2_oci:the_system_nios2_gen2_0_cpu_nios2_oci|system_nios2_gen2_0_cpu_debug_slave_wrapper:the_system_nios2_gen2_0_cpu_debug_slave_wrapper|sld_virtual_jtag_basic:system_nios2_gen2_0_cpu_debug_slave_phy|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst} } ,MAX_WIDTH=25,MIRROR=0,NODE_COUNT=2,SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 psig 9b67919e} {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 psig 9b67919e} ,TOP_HUB=1(altera_super_splitter:18.1:MAX_WIDTH=25,RECEIVE_WIDTHS=24 25,SEND_WIDTHS=3 4)(altera_sld_splitter:18.1:ADD_INTERFACE_ASGN=0,EXAMPLE=,FRAGMENTS={{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 1 23} {irq irq out 1 1} {ir_out ir_out out 1 2} } clock clock assign {debug.controlledBy {link_0} } moduleassign {debug.virtualInterface.link_0 {debug.endpointLink {fabric sld index 1} } } } } {{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 2 23} {irq irq out 1 1} {ir_out ir_out out 2 2} } clock clock assign {debug.controlledBy {link_1} } moduleassign {debug.virtualInterface.link_1 {debug.endpointLink {fabric sld index 2} } } } } )(altera_jtag_pins_bridge:18.1:)(altera_sld_jtag_hub:18.1:BROADCAST_FEATURE=1,COMPILATION_MODE=0,CONN_INDEX=0,COUNT=2,DEVICE_FAMILY=Cyclone V,ENABLE_SOFT_CORE_CONTROLLER=0,FORCE_IR_CAPTURE_FEATURE=1,FORCE_PRE_1_4_FEATURE=0,NEGEDGE_TDO_LATCH=1,NODE_INFO=0001100100010000010001100000000000001100000000000110111000000000,N_NODE_IR_BITS=5,N_SEL_BITS=2,SETTINGS={mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } ,TOP_HUB=1)(altera_connection_identification_hub:18.1:COUNT=1,DESIGN_HASH=27da249910e74c9ad48f,SETTINGS={width 4 latency 0} )(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0))"
+=======
+   parameterizationKey="alt_sld_fab:1.0:AUTO_DEVICE=,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=(alt_sld_fab:18.1:AGENTS=,AUTO_DEVICE=Unknown,AUTO_DEVICE_SPEEDGRADE=Unknown,CLOCKS={id {} } {id {} } {id {} } ,COMPOSED_SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } {fabric sld dir agent mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 bridge_agent 0 prefer_host {} } ,DESIGN_HASH=fe928579cb77f23761a8,DEVICE_FAMILY=Cyclone V,EP_INFOS={hpath {system:u0|system_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:system_jtag_uart_0_alt_jtag_atlantic} } {hpath {system:u0|system_nios2_gen2_0:nios2_gen2_0|system_nios2_gen2_0_cpu:cpu|system_nios2_gen2_0_cpu_nios2_oci:the_system_nios2_gen2_0_cpu_nios2_oci|system_nios2_gen2_0_cpu_debug_slave_wrapper:the_system_nios2_gen2_0_cpu_debug_slave_wrapper|sld_virtual_jtag_basic:system_nios2_gen2_0_cpu_debug_slave_phy|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst} } {hpath {sld_signaltap:auto_signaltap_0} } ,MAX_WIDTH=33,MIRROR=0,NODE_COUNT=3,SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 psig 9b67919e} {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 psig 9b67919e} {fabric sld dir agent mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 psig 9b67919e} ,TOP_HUB=1(altera_super_splitter:18.1:MAX_WIDTH=33,RECEIVE_WIDTHS=24 25 33,SEND_WIDTHS=3 4 12)(altera_sld_splitter:18.1:ADD_INTERFACE_ASGN=0,EXAMPLE=,FRAGMENTS={{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 1 23} {irq irq out 1 1} {ir_out ir_out out 1 2} } clock clock assign {debug.controlledBy {link_0} } moduleassign {debug.virtualInterface.link_0 {debug.endpointLink {fabric sld index 1} } } } } {{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 2 23} {irq irq out 1 1} {ir_out ir_out out 2 2} } clock clock assign {debug.controlledBy {link_1} } moduleassign {debug.virtualInterface.link_1 {debug.endpointLink {fabric sld index 2} } } } } {{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 10 23} {irq irq out 1 1} {ir_out ir_out out 10 2} } clock clock assign {debug.controlledBy {link_2} } moduleassign {debug.virtualInterface.link_2 {debug.endpointLink {fabric sld index 3} } } } } )(altera_jtag_pins_bridge:18.1:)(altera_sld_jtag_hub:18.1:BROADCAST_FEATURE=1,COMPILATION_MODE=0,CONN_INDEX=0,COUNT=3,DEVICE_FAMILY=Cyclone V,ENABLE_SOFT_CORE_CONTROLLER=0,FORCE_IR_CAPTURE_FEATURE=1,FORCE_PRE_1_4_FEATURE=0,NEGEDGE_TDO_LATCH=1,NODE_INFO=001100000000000001101110000000000001100100010000010001100000000000001100000000000110111000000000,N_NODE_IR_BITS=10,N_SEL_BITS=2,SETTINGS={mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } {mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 bridge_agent 0 prefer_host {} } ,TOP_HUB=1)(altera_connection_identification_hub:18.1:COUNT=1,DESIGN_HASH=fe928579cb77f23761a8,SETTINGS={width 4 latency 0} )(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0))"
+>>>>>>> Stashed changes
    instancePathKey="alt_sld_fab"
    kind="alt_sld_fab"
    version="1.0"
@@ -48,33 +57,33 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <generatedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/alt_sld_fab.v"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/alt_sld_fab.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab.v"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab.v"
        type="VERILOG" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_presplit.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_splitter.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_ident.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/alt_sld_fab_wrapper_hw.tcl" />
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/alt_sld_fab_wrapper_hw.tcl" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -142,7 +151,11 @@
  </entity>
  <entity
    path="submodules/"
+<<<<<<< Updated upstream
    parameterizationKey="alt_sld_fab:18.1:AGENTS=,AUTO_DEVICE=Unknown,AUTO_DEVICE_SPEEDGRADE=Unknown,CLOCKS={id {} } {id {} } ,COMPOSED_SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } ,DESIGN_HASH=27da249910e74c9ad48f,DEVICE_FAMILY=Cyclone V,EP_INFOS={hpath {system:u0|system_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:system_jtag_uart_0_alt_jtag_atlantic} } {hpath {system:u0|system_nios2_gen2_0:nios2_gen2_0|system_nios2_gen2_0_cpu:cpu|system_nios2_gen2_0_cpu_nios2_oci:the_system_nios2_gen2_0_cpu_nios2_oci|system_nios2_gen2_0_cpu_debug_slave_wrapper:the_system_nios2_gen2_0_cpu_debug_slave_wrapper|sld_virtual_jtag_basic:system_nios2_gen2_0_cpu_debug_slave_phy|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst} } ,MAX_WIDTH=25,MIRROR=0,NODE_COUNT=2,SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 psig 9b67919e} {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 psig 9b67919e} ,TOP_HUB=1(altera_super_splitter:18.1:MAX_WIDTH=25,RECEIVE_WIDTHS=24 25,SEND_WIDTHS=3 4)(altera_sld_splitter:18.1:ADD_INTERFACE_ASGN=0,EXAMPLE=,FRAGMENTS={{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 1 23} {irq irq out 1 1} {ir_out ir_out out 1 2} } clock clock assign {debug.controlledBy {link_0} } moduleassign {debug.virtualInterface.link_0 {debug.endpointLink {fabric sld index 1} } } } } {{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 2 23} {irq irq out 1 1} {ir_out ir_out out 2 2} } clock clock assign {debug.controlledBy {link_1} } moduleassign {debug.virtualInterface.link_1 {debug.endpointLink {fabric sld index 2} } } } } )(altera_jtag_pins_bridge:18.1:)(altera_sld_jtag_hub:18.1:BROADCAST_FEATURE=1,COMPILATION_MODE=0,CONN_INDEX=0,COUNT=2,DEVICE_FAMILY=Cyclone V,ENABLE_SOFT_CORE_CONTROLLER=0,FORCE_IR_CAPTURE_FEATURE=1,FORCE_PRE_1_4_FEATURE=0,NEGEDGE_TDO_LATCH=1,NODE_INFO=0001100100010000010001100000000000001100000000000110111000000000,N_NODE_IR_BITS=5,N_SEL_BITS=2,SETTINGS={mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } ,TOP_HUB=1)(altera_connection_identification_hub:18.1:COUNT=1,DESIGN_HASH=27da249910e74c9ad48f,SETTINGS={width 4 latency 0} )(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)"
+=======
+   parameterizationKey="alt_sld_fab:18.1:AGENTS=,AUTO_DEVICE=Unknown,AUTO_DEVICE_SPEEDGRADE=Unknown,CLOCKS={id {} } {id {} } {id {} } ,COMPOSED_SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } {fabric sld dir agent mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 bridge_agent 0 prefer_host {} } ,DESIGN_HASH=fe928579cb77f23761a8,DEVICE_FAMILY=Cyclone V,EP_INFOS={hpath {system:u0|system_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:system_jtag_uart_0_alt_jtag_atlantic} } {hpath {system:u0|system_nios2_gen2_0:nios2_gen2_0|system_nios2_gen2_0_cpu:cpu|system_nios2_gen2_0_cpu_nios2_oci:the_system_nios2_gen2_0_cpu_nios2_oci|system_nios2_gen2_0_cpu_debug_slave_wrapper:the_system_nios2_gen2_0_cpu_debug_slave_wrapper|sld_virtual_jtag_basic:system_nios2_gen2_0_cpu_debug_slave_phy|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst} } {hpath {sld_signaltap:auto_signaltap_0} } ,MAX_WIDTH=33,MIRROR=0,NODE_COUNT=3,SETTINGS={fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 psig 9b67919e} {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 psig 9b67919e} {fabric sld dir agent mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 psig 9b67919e} ,TOP_HUB=1(altera_super_splitter:18.1:MAX_WIDTH=33,RECEIVE_WIDTHS=24 25 33,SEND_WIDTHS=3 4 12)(altera_sld_splitter:18.1:ADD_INTERFACE_ASGN=0,EXAMPLE=,FRAGMENTS={{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 1 23} {irq irq out 1 1} {ir_out ir_out out 1 2} } clock clock assign {debug.controlledBy {link_0} } moduleassign {debug.virtualInterface.link_0 {debug.endpointLink {fabric sld index 1} } } } } {{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 2 23} {irq irq out 1 1} {ir_out ir_out out 2 2} } clock clock assign {debug.controlledBy {link_1} } moduleassign {debug.virtualInterface.link_1 {debug.endpointLink {fabric sld index 2} } } } } {{name clock type clock dir end ports { {tck clk in 1 0} } } {name node type conduit dir end ports { {tms tms in 1 1} {tdi tdi in 1 2} {tdo tdo out 1 0} {ena ena in 1 3} {usr1 usr1 in 1 4} {clr clr in 1 5} {clrn clrn in 1 6} {jtag_state_tlr jtag_state_tlr in 1 7} {jtag_state_rti jtag_state_rti in 1 8} {jtag_state_sdrs jtag_state_sdrs in 1 9} {jtag_state_cdr jtag_state_cdr in 1 10} {jtag_state_sdr jtag_state_sdr in 1 11} {jtag_state_e1dr jtag_state_e1dr in 1 12} {jtag_state_pdr jtag_state_pdr in 1 13} {jtag_state_e2dr jtag_state_e2dr in 1 14} {jtag_state_udr jtag_state_udr in 1 15} {jtag_state_sirs jtag_state_sirs in 1 16} {jtag_state_cir jtag_state_cir in 1 17} {jtag_state_sir jtag_state_sir in 1 18} {jtag_state_e1ir jtag_state_e1ir in 1 19} {jtag_state_pir jtag_state_pir in 1 20} {jtag_state_e2ir jtag_state_e2ir in 1 21} {jtag_state_uir jtag_state_uir in 1 22} {ir_in ir_in in 10 23} {irq irq out 1 1} {ir_out ir_out out 10 2} } clock clock assign {debug.controlledBy {link_2} } moduleassign {debug.virtualInterface.link_2 {debug.endpointLink {fabric sld index 3} } } } } )(altera_jtag_pins_bridge:18.1:)(altera_sld_jtag_hub:18.1:BROADCAST_FEATURE=1,COMPILATION_MODE=0,CONN_INDEX=0,COUNT=3,DEVICE_FAMILY=Cyclone V,ENABLE_SOFT_CORE_CONTROLLER=0,FORCE_IR_CAPTURE_FEATURE=1,FORCE_PRE_1_4_FEATURE=0,NEGEDGE_TDO_LATCH=1,NODE_INFO=001100000000000001101110000000000001100100010000010001100000000000001100000000000110111000000000,N_NODE_IR_BITS=10,N_SEL_BITS=2,SETTINGS={mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 bridge_agent 0 prefer_host {} } {mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 bridge_agent 0 prefer_host {} } {mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 bridge_agent 0 prefer_host {} } ,TOP_HUB=1)(altera_connection_identification_hub:18.1:COUNT=1,DESIGN_HASH=fe928579cb77f23761a8,SETTINGS={width 4 latency 0} )(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(clock:18.1:)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)(conduit:18.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0)"
+>>>>>>> Stashed changes
    instancePathKey="alt_sld_fab:.:alt_sld_fab"
    kind="alt_sld_fab"
    version="18.1"
@@ -152,9 +165,15 @@
   <parameter name="DEVICE_FAMILY" value="Cyclone V" />
   <parameter
      name="SETTINGS"
+<<<<<<< Updated upstream
      value="{fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 psig 9b67919e} {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 psig 9b67919e} " />
   <parameter name="CLOCKS" value="{id {} } {id {} } " />
   <parameter name="DESIGN_HASH" value="27da249910e74c9ad48f" />
+=======
+     value="{fabric sld dir agent mfr_code 110 type_code 128 version 1 instance 0 ir_width 1 psig 9b67919e} {fabric sld dir agent mfr_code 70 type_code 34 version 3 instance 0 ir_width 2 psig 9b67919e} {fabric sld dir agent mfr_code 110 type_code 0 version 6 instance 0 ir_width 10 psig 9b67919e} " />
+  <parameter name="CLOCKS" value="{id {} } {id {} } {id {} } " />
+  <parameter name="DESIGN_HASH" value="fe928579cb77f23761a8" />
+>>>>>>> Stashed changes
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="Unknown" />
   <parameter name="MIRROR" value="0" />
   <parameter
@@ -168,24 +187,24 @@
   <parameter name="NODE_COUNT" value="2" />
   <generatedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab.v"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_presplit.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_splitter.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_ident.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </childGeneratedFiles>
@@ -254,7 +273,7 @@
   <parameter name="RECEIVE_WIDTHS" value="24 25" />
   <generatedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_presplit.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
@@ -284,7 +303,7 @@
   <parameter name="ADD_INTERFACE_ASGN" value="0" />
   <generatedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_splitter.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
@@ -327,7 +346,7 @@
   <parameter name="COUNT" value="2" />
   <generatedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
   </generatedFiles>
@@ -345,17 +364,25 @@
  </entity>
  <entity
    path="submodules/"
+<<<<<<< Updated upstream
    parameterizationKey="altera_connection_identification_hub:18.1:COUNT=1,DESIGN_HASH=27da249910e74c9ad48f,SETTINGS={width 4 latency 0} "
+=======
+   parameterizationKey="altera_connection_identification_hub:18.1:COUNT=1,DESIGN_HASH=fe928579cb77f23761a8,SETTINGS={width 4 latency 0} "
+>>>>>>> Stashed changes
    instancePathKey="alt_sld_fab:.:alt_sld_fab:.:ident"
    kind="altera_connection_identification_hub"
    version="18.1"
    name="alt_sld_fab_alt_sld_fab_ident">
   <parameter name="COUNT" value="1" />
   <parameter name="SETTINGS" value="{width 4 latency 0} " />
+<<<<<<< Updated upstream
   <parameter name="DESIGN_HASH" value="27da249910e74c9ad48f" />
+=======
+  <parameter name="DESIGN_HASH" value="fe928579cb77f23761a8" />
+>>>>>>> Stashed changes
   <generatedFiles>
    <file
-       path="D:/E/1subject/HK6/SoC/doan/doan/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_ident.sv"
+       path="D:/E/1subject/HK6/SoC/doan/test/vduong/test/db/ip/sld387cc7b0/submodules/alt_sld_fab_alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>

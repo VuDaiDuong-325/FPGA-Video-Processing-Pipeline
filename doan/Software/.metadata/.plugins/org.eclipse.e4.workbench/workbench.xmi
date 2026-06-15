@@ -45,12 +45,22 @@
           <tags>persp.newWizSC:com.altera.sbtgui.ui.newLibrary</tags>
           <tags>persp.perspSC:com.altera.sbtgui.ui.debugPerspective</tags>
           <tags>persp.viewSC:com.altera.sbtgui.launch.hardware.ByteStreamConsoleView</tags>
+<<<<<<< Updated upstream
           <children xsi:type="basic:PartSashContainer" xmi:id="_wEjA5VsvEfGcN_8YhvTlDw" selectedElement="_wEjA61svEfGcN_8YhvTlDw" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_wEjA5lsvEfGcN_8YhvTlDw" elementId="topLeft" containerData="2500" selectedElement="_wEjA51svEfGcN_8YhvTlDw">
               <children xsi:type="advanced:Placeholder" xmi:id="_wEjA51svEfGcN_8YhvTlDw" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_wEjCCFsvEfGcN_8YhvTlDw"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_wEjA6FsvEfGcN_8YhvTlDw" elementId="org.eclipse.cdt.ui.CView" toBeRendered="false" ref="_wEjCXlsvEfGcN_8YhvTlDw"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_wEjA6VsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_wEjCX1svEfGcN_8YhvTlDw"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_wEjA6lsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_wEkPAFsvEfGcN_8YhvTlDw"/>
+=======
+          <children xsi:type="basic:PartSashContainer" xmi:id="_2pygRV2EEfG4bpzmMEAOeA" selectedElement="_2pygRl2EEfG4bpzmMEAOeA" horizontal="true">
+            <children xsi:type="basic:PartStack" xmi:id="_2pygRl2EEfG4bpzmMEAOeA" elementId="topLeft" containerData="2500" selectedElement="_2pygR12EEfG4bpzmMEAOeA">
+              <tags>active</tags>
+              <children xsi:type="advanced:Placeholder" xmi:id="_2pygR12EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_2pyha12EEfG4bpzmMEAOeA"/>
+              <children xsi:type="advanced:Placeholder" xmi:id="_2pygSF2EEfG4bpzmMEAOeA" elementId="org.eclipse.cdt.ui.CView" toBeRendered="false" ref="_2pyhwl2EEfG4bpzmMEAOeA"/>
+              <children xsi:type="advanced:Placeholder" xmi:id="_2pygSV2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_2pyhw12EEfG4bpzmMEAOeA"/>
+              <children xsi:type="advanced:Placeholder" xmi:id="_2pygSl2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_2pyhxF2EEfG4bpzmMEAOeA"/>
+>>>>>>> Stashed changes
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_wEjA61svEfGcN_8YhvTlDw" containerData="7500" selectedElement="_wEjA7FsvEfGcN_8YhvTlDw">
               <children xsi:type="basic:PartSashContainer" xmi:id="_wEjA7FsvEfGcN_8YhvTlDw" containerData="7500" selectedElement="_wEjA7VsvEfGcN_8YhvTlDw" horizontal="true">
@@ -59,6 +69,7 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_wEjA71svEfGcN_8YhvTlDw" elementId="org.eclipse.ui.views.ContentOutline" ref="_wEkPWVsvEfGcN_8YhvTlDw"/>
                 </children>
               </children>
+<<<<<<< Updated upstream
               <children xsi:type="basic:PartStack" xmi:id="_wEjA8FsvEfGcN_8YhvTlDw" elementId="bottom" containerData="2500" selectedElement="_wEjA81svEfGcN_8YhvTlDw">
                 <tags>noFocus</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_wEjA8VsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.views.ProblemView" ref="_wEkPAVsvEfGcN_8YhvTlDw"/>
@@ -67,6 +78,15 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_wEjA9VsvEfGcN_8YhvTlDw" elementId="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:*" toBeRendered="false" ref="_wEkPV1svEfGcN_8YhvTlDw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_wEjA9lsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.views.PropertySheet" ref="_wEkPWFsvEfGcN_8YhvTlDw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_wEjA91svEfGcN_8YhvTlDw" elementId="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView" toBeRendered="false" ref="_wEkPcVsvEfGcN_8YhvTlDw"/>
+=======
+              <children xsi:type="basic:PartStack" xmi:id="_2pygUF2EEfG4bpzmMEAOeA" elementId="bottom" containerData="2500" selectedElement="_2pygU12EEfG4bpzmMEAOeA">
+                <children xsi:type="advanced:Placeholder" xmi:id="_2pygUV2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.views.ProblemView" ref="_2pyhxV2EEfG4bpzmMEAOeA"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_2pygUl2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.views.TaskList" ref="_2pyhzF2EEfG4bpzmMEAOeA"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_2pygU12EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.console.ConsoleView" ref="_2pyhzV2EEfG4bpzmMEAOeA"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_2pygVV2EEfG4bpzmMEAOeA" elementId="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:*" toBeRendered="false" ref="_2pyiFl2EEfG4bpzmMEAOeA"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_2pygVl2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.views.PropertySheet" ref="_2pyiF12EEfG4bpzmMEAOeA"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_2pygV12EEfG4bpzmMEAOeA" elementId="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView" toBeRendered="false" ref="_2pyiMV2EEfG4bpzmMEAOeA"/>
+>>>>>>> Stashed changes
               </children>
             </children>
           </children>
@@ -94,6 +114,7 @@
       <children xsi:type="basic:PartStack" xmi:id="_wEjB_FsvEfGcN_8YhvTlDw" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_wEjB_VsvEfGcN_8YhvTlDw">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+<<<<<<< Updated upstream
         <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_wEjB_VsvEfGcN_8YhvTlDw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="source.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;source.c&quot; partName=&quot;source.c&quot; title=&quot;source.c&quot; tooltip=&quot;doan/source.c&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/doan/source.c&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3736&quot; selectionTopPixel=&quot;1480&quot;/>&#xD;&#xA;&lt;/editor>"/>
@@ -103,6 +124,14 @@
           <tags>active</tags>
           <tags>activeOnClose</tags>
           <menus xsi:type="menu:PopupMenu" xmi:id="_wEjB_lsvEfGcN_8YhvTlDw" elementId="#CEditorContext">
+=======
+        <children xsi:type="basic:Part" xmi:id="_2pyhXV2EEfG4bpzmMEAOeA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="source.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;source.c&quot; partName=&quot;source.c&quot; title=&quot;source.c&quot; tooltip=&quot;doan/source.c&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/doan/source.c&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;787&quot; selectionTopPixel=&quot;140&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
+          <tags>removeOnHide</tags>
+          <menus xsi:type="menu:PopupMenu" xmi:id="_2pyhXl2EEfG4bpzmMEAOeA" elementId="#CEditorContext">
+>>>>>>> Stashed changes
             <tags>menuContribution:popup</tags>
             <tags>popup:#CEditorContext</tags>
             <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
@@ -151,8 +180,13 @@
             <tags>popup:#OverviewRulerContext</tags>
           </menus>
         </children>
+<<<<<<< Updated upstream
         <children xsi:type="basic:Part" xmi:id="_wEjCB1svEfGcN_8YhvTlDw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="system.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;system.h&quot; partName=&quot;system.h&quot; title=&quot;system.h&quot; tooltip=&quot;doan_bsp/system.h&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/doan_bsp/system.h&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;11&quot; selectionOffset=&quot;11635&quot; selectionTopPixel=&quot;6820&quot;/>&#xD;&#xA;&lt;/editor>"/>
+=======
+        <children xsi:type="basic:Part" xmi:id="_2pyhal2EEfG4bpzmMEAOeA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="system.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;system.h&quot; partName=&quot;system.h&quot; title=&quot;system.h&quot; tooltip=&quot;doan_bsp/system.h&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/doan_bsp/system.h&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;17&quot; selectionOffset=&quot;9194&quot; selectionTopPixel=&quot;5300&quot;/>&#xD;&#xA;&lt;/editor>"/>
+>>>>>>> Stashed changes
           <tags>Editor</tags>
           <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
           <tags>removeOnHide</tags>
@@ -163,7 +197,13 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; currentWorkingSetName=&quot;Aggregate for window 1779935924904&quot; org.eclipse.cdt.ui.cview.groupincludes=&quot;false&quot; org.eclipse.cdt.ui.cview.groupmacros=&quot;false&quot; org.eclipse.cdt.ui.editor.CUChildren=&quot;true&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+<<<<<<< Updated upstream
       <menus xmi:id="_wEjCCVsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.navigator.ProjectExplorer">
+=======
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
+      <menus xmi:id="_2pyhbF2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.navigator.ProjectExplorer">
+>>>>>>> Stashed changes
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
@@ -226,7 +266,11 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+<<<<<<< Updated upstream
       <menus xmi:id="_wEkPFVsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.console.ConsoleView">
+=======
+      <menus xmi:id="_2pyhzl2EEfG4bpzmMEAOeA" elementId="org.eclipse.ui.console.ConsoleView">
+>>>>>>> Stashed changes
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
@@ -333,7 +377,11 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wEkPflsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
+<<<<<<< Updated upstream
         <children xsi:type="menu:HandledToolItem" xmi:id="_tvHlEFv0EfGcNYGwtOAK4Q" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_wElgnlsvEfGcN_8YhvTlDw"/>
+=======
+        <children xsi:type="menu:HandledToolItem" xmi:id="_nyxgoGhkEfG43YP1Bhm3NQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_2pyrR12EEfG4bpzmMEAOeA"/>
+>>>>>>> Stashed changes
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wEkPjFsvEfGcN_8YhvTlDw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -357,7 +405,11 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wEkPyVsvEfGcN_8YhvTlDw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
+<<<<<<< Updated upstream
         <children xsi:type="menu:HandledToolItem" xmi:id="_tvHlG1v0EfGcNYGwtOAK4Q" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_wElgEFsvEfGcN_8YhvTlDw"/>
+=======
+        <children xsi:type="menu:HandledToolItem" xmi:id="_nyyux2hkEfG43YP1Bhm3NQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_2pyquV2EEfG4bpzmMEAOeA"/>
+>>>>>>> Stashed changes
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_wEkP1FsvEfGcN_8YhvTlDw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

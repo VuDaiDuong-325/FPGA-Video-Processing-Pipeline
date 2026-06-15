@@ -1,9 +1,9 @@
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "io.h"
 #include <stdio.h>
-#include <stdint.h>
-#include <unistd.h>                 // Library for usleep() function
-#include "system.h"                 // Hardware configuration generated from Qsys
-#include "altera_avalon_pio_regs.h" // PIO read/write library
 
+<<<<<<< Updated upstream
 // ====================================================================
 // MACRO ADDRESS DECLARATIONS (Mapped from system.h)
 // ====================================================================
@@ -66,44 +66,38 @@ int main() {
     printf("[INFO] System is running. Waiting for Switch toggles...\n\n");
 
     // Infinite loop for automatic processing
+=======
+int main(void) {
+    printf("\n=============================================\n");
+    printf("   DE1-SoC IMAGE DISPLAY CONTROLLER (UART)  \n");
+    printf("=============================================\n");
+
+
+    printf("[SYSTEM] You can now load image by TCL at 0x02000000.\n");
+
+    printf("\n=== KEYBOARD CONTROL INSTRUCTIONS ===\n");
+    printf(" -> Press '1' + Enter: ENABLE  VGA display\n");
+    printf(" -> Press '0' + Enter: DISABLE VGA (safe for JTAG re-download)\n");
+    printf("---------------------------------------------\n");
+
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOAD_BASE, 0);
+
+>>>>>>> Stashed changes
     while (1) {
-        // Read the current value of the switches (SW)
-        current_sw = IORD_ALTERA_AVALON_PIO_DATA(PIO_SW_BASE);
+        unsigned int jtag_reg = IORD(JTAG_UART_0_BASE, 0);
 
-        // Only print to console and update when the user actually toggles a switch
-        if (current_sw != last_sw) {
+        if (jtag_reg & 0x00008000) {
+            char key = (char)(jtag_reg & 0x000000FF);
 
-            // Write the SW value to the image processing hardware
-            IOWR_ALTERA_AVALON_PIO_DATA(PIO_MODE_BASE, current_sw);
-
-            // Print the current status to the Console
-            printf("------------------------------------------\n");
-            printf(">> Switch Changed! SW Value: %lu\n", current_sw);
-
-            switch (current_sw) {
-                case 0:
-                    printf(">> Current Mode: NORMAL DISPLAY (RGB)\n");
-                    break;
-                case 1:
-                    printf(">> Current Mode: GRAYSCALE FILTER\n");
-                    break;
-                case 2:
-                    printf(">> Current Mode: EDGE DETECTION\n");
-                    break;
-                case 3:
-                    printf(">> Current Mode: COLOR INVERSION\n");
-                    break;
-                default:
-                    printf(">> Current Mode: UNKNOWN / EXPERIMENTAL (Mode %lu)\n", current_sw);
-                    break;
+            if (key == '1') {
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOAD_BASE, 1);
+                printf("[MENU] VGA ENABLED  (SW0=0: RGB | SW0=1: Grayscale)\n");
             }
-
-            // Save the switch value to compare in the next scan
-            last_sw = current_sw;
+            else if (key == '0') {
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOAD_BASE, 0);
+                printf("[MENU] VGA DISABLED. SDRAM bus free for JTAG.\n");
+            }
         }
-
-        // Pause for 100ms to prevent Nios II from hanging due to scanning too fast
-        usleep(100000);
     }
 
     return 0;

@@ -1,0 +1,28 @@
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include <stdio.h>
+
+int main(void) {
+    char cmd;
+    printf("=== BO DIEU KHIEN HIEN THI VGA ===\n");
+
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOAD_BASE, 0);
+
+    while(1) {
+        printf("\n[1] Bat VGA (Hien thi anh)\n");
+        printf("[0] Tat VGA (De nap anh moi bang System Console)\n");
+        printf("Moi nhap lua chon (1 hoac 0): ");
+
+        cmd = getchar();
+        getchar();
+
+        if (cmd == '1') {
+            IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOAD_BASE, 1);
+            printf("-> Da BAT man hinh VGA.\n");
+        } else if (cmd == '0') {
+            IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOAD_BASE, 0);
+            printf("-> Da TAT man hinh. Ban co the chay tcl script bay gio!\n");
+        }
+    }
+    return 0;
+}

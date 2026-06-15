@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 15:18:04 **** Build of configuration Nios II for project doan ****
+=======
+22:31:37 **** Build of configuration Nios II for project doan ****
+>>>>>>> Stashed changes
 make all 
 Info: Building ../doan_bsp/
 E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/
@@ -7,15 +11,23 @@ Info: Compiling source.c to obj/default/source.o
 nios2-elf-gcc -xc -MP -MMD -c -I../doan_bsp//HAL/inc -I../doan_bsp/ -I../doan_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/source.o source.c
 Info: Linking doan.elf
 nios2-elf-g++  -T'../doan_bsp//linker.x' -msys-crt0='../doan_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../doan_bsp/  -msmallc  -Wl,-Map=doan.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o doan.elf obj/default/source.o -lm -msys-lib=m
+<<<<<<< Updated upstream
 nios2-elf-insert doan.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --id 1 --sidp 0x4011050 --timestamp 1780029069 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name system --quartus_project_dir "D:/E/1subject/HK6/SoC/doan/doan" --jdi ../..//output_files/doan.jdi --sopcinfo D:/E/1subject/HK6/SoC/doan/doan/Software/doan_bsp/../../system.sopcinfo
 Info: (doan.elf) 9972 Bytes program size (code + initialized data).
+=======
+nios2-elf-insert doan.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --id 1 --sidp 0x4011040 --timestamp 1780907494 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name system --quartus_project_dir "D:/E/1subject/HK6/SoC/doan/test/vduong/test" --jdi ../..//output_files/doan.jdi --sopcinfo D:/E/1subject/HK6/SoC/doan/test/vduong/test/Software/doan_bsp/../../system.sopcinfo
+Info: (doan.elf) 7004 Bytes program size (code + initialized data).
+>>>>>>> Stashed changes
 Info:            65534 KBytes free for stack + heap.
 Info: Creating doan.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source doan.elf >doan.objdump
 [doan build complete]
+<<<<<<< Updated upstream
 15:18:16 **** Incremental Build of configuration Nios II for project doan ****
 make all 
 Info: Building ../doan_bsp/
 E:/quartus18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../doan_bsp/
 [BSP build complete]
 [doan build complete]
+=======
+>>>>>>> Stashed changes

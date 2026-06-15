@@ -11,8 +11,6 @@
 			new_sdram_controller_0_wire_ras_n : out   std_logic;                                        -- ras_n
 			new_sdram_controller_0_wire_we_n  : out   std_logic;                                        -- we_n
 			pio_mode_export                   : out   std_logic_vector(1 downto 0);                     -- export
-			pio_sccb_done_export              : in    std_logic                     := 'X';             -- export
-			pio_sccb_start_export             : out   std_logic;                                        -- export
 			pio_sw_export                     : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
 			pio_threshold_export              : out   std_logic_vector(7 downto 0);                     -- export
 			reset_reset_n                     : in    std_logic                     := 'X';             -- reset_n
@@ -35,7 +33,8 @@
 			sdram_write_bridge_write          : in    std_logic                     := 'X';             -- write
 			sdram_write_bridge_read           : in    std_logic                     := 'X';             -- read
 			sdram_write_bridge_byteenable     : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- byteenable
-			sdram_write_bridge_debugaccess    : in    std_logic                     := 'X'              -- debugaccess
+			sdram_write_bridge_debugaccess    : in    std_logic                     := 'X';             -- debugaccess
+			img_load_export                   : out   std_logic                                         -- export
 		);
 	end component system;
 
@@ -52,8 +51,6 @@
 			new_sdram_controller_0_wire_ras_n => CONNECTED_TO_new_sdram_controller_0_wire_ras_n, --                            .ras_n
 			new_sdram_controller_0_wire_we_n  => CONNECTED_TO_new_sdram_controller_0_wire_we_n,  --                            .we_n
 			pio_mode_export                   => CONNECTED_TO_pio_mode_export,                   --                    pio_mode.export
-			pio_sccb_done_export              => CONNECTED_TO_pio_sccb_done_export,              --               pio_sccb_done.export
-			pio_sccb_start_export             => CONNECTED_TO_pio_sccb_start_export,             --              pio_sccb_start.export
 			pio_sw_export                     => CONNECTED_TO_pio_sw_export,                     --                      pio_sw.export
 			pio_threshold_export              => CONNECTED_TO_pio_threshold_export,              --               pio_threshold.export
 			reset_reset_n                     => CONNECTED_TO_reset_reset_n,                     --                       reset.reset_n
@@ -76,6 +73,7 @@
 			sdram_write_bridge_write          => CONNECTED_TO_sdram_write_bridge_write,          --                            .write
 			sdram_write_bridge_read           => CONNECTED_TO_sdram_write_bridge_read,           --                            .read
 			sdram_write_bridge_byteenable     => CONNECTED_TO_sdram_write_bridge_byteenable,     --                            .byteenable
-			sdram_write_bridge_debugaccess    => CONNECTED_TO_sdram_write_bridge_debugaccess     --                            .debugaccess
+			sdram_write_bridge_debugaccess    => CONNECTED_TO_sdram_write_bridge_debugaccess,    --                            .debugaccess
+			img_load_export                   => CONNECTED_TO_img_load_export                    --                    img_load.export
 		);
 

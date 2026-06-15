@@ -1,5 +1,9 @@
 Assembler report for doan
+<<<<<<< Updated upstream
 Sat May 30 15:36:50 2026
+=======
+Mon Jun 15 01:30:27 2026
+>>>>>>> Stashed changes
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -11,7 +15,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: D:/E/1subject/HK6/SoC/doan/doan/output_files/doan.sof
+  6. Assembler Device Options: D:/E/1subject/HK6/SoC/doan/test/vduong/test/output_files/doan.sof
   7. Assembler Messages
 
 
@@ -38,7 +42,11 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
+<<<<<<< Updated upstream
 ; Assembler Status      ; Successful - Sat May 30 15:36:50 2026 ;
+=======
+; Assembler Status      ; Successful - Mon Jun 15 01:30:27 2026 ;
+>>>>>>> Stashed changes
 ; Revision Name         ; doan                                  ;
 ; Top-level Entity Name ; doan_top                              ;
 ; Family                ; Cyclone V                             ;
@@ -63,15 +71,16 @@ refer to the applicable agreement for further details.
 +--------+------------------------+--------------+
 
 
-+-------------------------------------------------------+
-; Assembler Generated Files                             ;
-+-------------------------------------------------------+
-; File Name                                             ;
-+-------------------------------------------------------+
-; D:/E/1subject/HK6/SoC/doan/doan/output_files/doan.sof ;
-+-------------------------------------------------------+
++-------------------------------------------------------------------+
+; Assembler Generated Files                                         ;
++-------------------------------------------------------------------+
+; File Name                                                         ;
++-------------------------------------------------------------------+
+; D:/E/1subject/HK6/SoC/doan/test/vduong/test/output_files/doan.sof ;
++-------------------------------------------------------------------+
 
 
+<<<<<<< Updated upstream
 +---------------------------------------------------------------------------------+
 ; Assembler Device Options: D:/E/1subject/HK6/SoC/doan/doan/output_files/doan.sof ;
 +----------------+----------------------------------------------------------------+
@@ -80,6 +89,16 @@ refer to the applicable agreement for further details.
 ; JTAG usercode  ; 0x01D1BDB7                                                     ;
 ; Checksum       ; 0x01D1BDB7                                                     ;
 +----------------+----------------------------------------------------------------+
+=======
++---------------------------------------------------------------------------------------------+
+; Assembler Device Options: D:/E/1subject/HK6/SoC/doan/test/vduong/test/output_files/doan.sof ;
++----------------+----------------------------------------------------------------------------+
+; Option         ; Setting                                                                    ;
++----------------+----------------------------------------------------------------------------+
+; JTAG usercode  ; 0x01BEBCBC                                                                 ;
+; Checksum       ; 0x01BEBCBC                                                                 ;
++----------------+----------------------------------------------------------------------------+
+>>>>>>> Stashed changes
 
 
 +--------------------+
@@ -88,12 +107,21 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+<<<<<<< Updated upstream
     Info: Processing started: Sat May 30 15:36:44 2026
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off doan -c doan
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4901 megabytes
     Info: Processing ended: Sat May 30 15:36:50 2026
+=======
+    Info: Processing started: Mon Jun 15 01:30:21 2026
+Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off doan -c doan
+Info (115030): Assembler is generating device programming files
+Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4886 megabytes
+    Info: Processing ended: Mon Jun 15 01:30:27 2026
+>>>>>>> Stashed changes
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:05
 

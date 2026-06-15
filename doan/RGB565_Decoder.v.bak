@@ -1,0 +1,34 @@
+module RGB565_Decoder (
+    input  wire        iCLK,
+    input  wire        iRST_N,
+    input  wire        i_valid,
+    input  wire [15:0] iRGB565,   // [15:11]=R5, [10:5]=G6, [4:0]=B5
+
+    output reg  [9:0]  oRed,
+    output reg  [9:0]  oGreen,
+    output reg  [9:0]  oBlue,
+    output reg         o_valid
+);
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            oRed   <= 10'd0;
+            oGreen <= 10'd0;
+            oBlue  <= 10'd0;
+            o_valid <= 1'b0;
+        end else begin
+            o_valid <= i_valid;
+            if (i_valid) begin
+                // Mở rộng R5 → R10: lặp 2 bit cao vào 2 bit thấp (chuẩn hóa đều)
+                oRed   <= {iRGB565[15:11], iRGB565[15:13]};  // 5+3 bit repeat
+                // Mở rộng G6 → G10: lặp 4 bit cao vào 4 bit thấp
+                oGreen <= {iRGB565[10:5],  iRGB565[10:7]};   // 6+4 bit repeat
+                // Mở rộng B5 → B10: tương tự R
+                oBlue  <= {iRGB565[4:0],   iRGB565[4:2]};    // 5+3 bit repeat (pad 5)
+                // Nếu muốn đơn giản nhất: chỉ dùng shift
+                // oRed   <= {iRGB565[15:11], 5'b0};   // shift trái 5
+                // oGreen <= {iRGB565[10:5],  4'b0};   // shift trái 4
+                // oBlue  <= {iRGB565[4:0],   5'b0};   // shift trái 5
+            end
+        end
+    end
+endmodule

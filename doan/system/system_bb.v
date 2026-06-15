@@ -11,8 +11,6 @@ module system (
 	new_sdram_controller_0_wire_ras_n,
 	new_sdram_controller_0_wire_we_n,
 	pio_mode_export,
-	pio_sccb_done_export,
-	pio_sccb_start_export,
 	pio_sw_export,
 	pio_threshold_export,
 	reset_reset_n,
@@ -35,7 +33,8 @@ module system (
 	sdram_write_bridge_write,
 	sdram_write_bridge_read,
 	sdram_write_bridge_byteenable,
-	sdram_write_bridge_debugaccess);	
+	sdram_write_bridge_debugaccess,
+	img_load_export);	
 
 	input		clk_clk;
 	output	[12:0]	new_sdram_controller_0_wire_addr;
@@ -48,8 +47,6 @@ module system (
 	output		new_sdram_controller_0_wire_ras_n;
 	output		new_sdram_controller_0_wire_we_n;
 	output	[1:0]	pio_mode_export;
-	input		pio_sccb_done_export;
-	output		pio_sccb_start_export;
 	input	[9:0]	pio_sw_export;
 	output	[7:0]	pio_threshold_export;
 	input		reset_reset_n;
@@ -73,4 +70,5 @@ module system (
 	input		sdram_write_bridge_read;
 	input	[1:0]	sdram_write_bridge_byteenable;
 	input		sdram_write_bridge_debugaccess;
+	output		img_load_export;
 endmodule

@@ -4,7 +4,11 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'system'
  * SOPC Builder design path: ../../system.sopcinfo
  *
+<<<<<<< Updated upstream
  * Generated: Fri May 29 11:41:15 ICT 2026
+=======
+ * Generated: Mon Jun 08 19:14:19 ICT 2026
+>>>>>>> Stashed changes
  */
 
 /*
@@ -157,19 +161,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x4011058
+#define ALT_STDERR_BASE 0x4011048
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x4011058
+#define ALT_STDIN_BASE 0x4011048
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x4011058
+#define ALT_STDOUT_BASE 0x4011048
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -194,7 +198,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x4011058
+#define JTAG_UART_0_BASE 0x4011048
 #define JTAG_UART_0_IRQ 0
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -275,12 +279,39 @@
 
 
 /*
+ * pio_img_load configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_img_load altera_avalon_pio
+#define PIO_IMG_LOAD_BASE 0x4011000
+#define PIO_IMG_LOAD_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_IMG_LOAD_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_IMG_LOAD_CAPTURE 0
+#define PIO_IMG_LOAD_DATA_WIDTH 1
+#define PIO_IMG_LOAD_DO_TEST_BENCH_WIRING 0
+#define PIO_IMG_LOAD_DRIVEN_SIM_VALUE 0
+#define PIO_IMG_LOAD_EDGE_TYPE "NONE"
+#define PIO_IMG_LOAD_FREQ 50000000
+#define PIO_IMG_LOAD_HAS_IN 0
+#define PIO_IMG_LOAD_HAS_OUT 1
+#define PIO_IMG_LOAD_HAS_TRI 0
+#define PIO_IMG_LOAD_IRQ -1
+#define PIO_IMG_LOAD_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_IMG_LOAD_IRQ_TYPE "NONE"
+#define PIO_IMG_LOAD_NAME "/dev/pio_img_load"
+#define PIO_IMG_LOAD_RESET_VALUE 0
+#define PIO_IMG_LOAD_SPAN 16
+#define PIO_IMG_LOAD_TYPE "altera_avalon_pio"
+
+
+/*
  * pio_mode configuration
  *
  */
 
 #define ALT_MODULE_CLASS_pio_mode altera_avalon_pio
-#define PIO_MODE_BASE 0x4011000
+#define PIO_MODE_BASE 0x4011010
 #define PIO_MODE_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_MODE_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_MODE_CAPTURE 0
@@ -302,66 +333,12 @@
 
 
 /*
- * pio_sccb_done configuration
- *
- */
-
-#define ALT_MODULE_CLASS_pio_sccb_done altera_avalon_pio
-#define PIO_SCCB_DONE_BASE 0x4011020
-#define PIO_SCCB_DONE_BIT_CLEARING_EDGE_REGISTER 0
-#define PIO_SCCB_DONE_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define PIO_SCCB_DONE_CAPTURE 0
-#define PIO_SCCB_DONE_DATA_WIDTH 1
-#define PIO_SCCB_DONE_DO_TEST_BENCH_WIRING 0
-#define PIO_SCCB_DONE_DRIVEN_SIM_VALUE 0
-#define PIO_SCCB_DONE_EDGE_TYPE "NONE"
-#define PIO_SCCB_DONE_FREQ 50000000
-#define PIO_SCCB_DONE_HAS_IN 1
-#define PIO_SCCB_DONE_HAS_OUT 0
-#define PIO_SCCB_DONE_HAS_TRI 0
-#define PIO_SCCB_DONE_IRQ -1
-#define PIO_SCCB_DONE_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define PIO_SCCB_DONE_IRQ_TYPE "NONE"
-#define PIO_SCCB_DONE_NAME "/dev/pio_sccb_done"
-#define PIO_SCCB_DONE_RESET_VALUE 0
-#define PIO_SCCB_DONE_SPAN 16
-#define PIO_SCCB_DONE_TYPE "altera_avalon_pio"
-
-
-/*
- * pio_sccb_start configuration
- *
- */
-
-#define ALT_MODULE_CLASS_pio_sccb_start altera_avalon_pio
-#define PIO_SCCB_START_BASE 0x4011030
-#define PIO_SCCB_START_BIT_CLEARING_EDGE_REGISTER 0
-#define PIO_SCCB_START_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define PIO_SCCB_START_CAPTURE 0
-#define PIO_SCCB_START_DATA_WIDTH 1
-#define PIO_SCCB_START_DO_TEST_BENCH_WIRING 0
-#define PIO_SCCB_START_DRIVEN_SIM_VALUE 0
-#define PIO_SCCB_START_EDGE_TYPE "NONE"
-#define PIO_SCCB_START_FREQ 50000000
-#define PIO_SCCB_START_HAS_IN 0
-#define PIO_SCCB_START_HAS_OUT 1
-#define PIO_SCCB_START_HAS_TRI 0
-#define PIO_SCCB_START_IRQ -1
-#define PIO_SCCB_START_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define PIO_SCCB_START_IRQ_TYPE "NONE"
-#define PIO_SCCB_START_NAME "/dev/pio_sccb_start"
-#define PIO_SCCB_START_RESET_VALUE 0
-#define PIO_SCCB_START_SPAN 16
-#define PIO_SCCB_START_TYPE "altera_avalon_pio"
-
-
-/*
  * pio_sw configuration
  *
  */
 
 #define ALT_MODULE_CLASS_pio_sw altera_avalon_pio
-#define PIO_SW_BASE 0x4011040
+#define PIO_SW_BASE 0x4011030
 #define PIO_SW_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_SW_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_SW_CAPTURE 0
@@ -388,7 +365,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_threshold altera_avalon_pio
-#define PIO_THRESHOLD_BASE 0x4011010
+#define PIO_THRESHOLD_BASE 0x4011020
 #define PIO_THRESHOLD_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_THRESHOLD_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_THRESHOLD_CAPTURE 0
@@ -415,13 +392,17 @@
  */
 
 #define ALT_MODULE_CLASS_sysid_qsys_0 altera_avalon_sysid_qsys
-#define SYSID_QSYS_0_BASE 0x4011050
+#define SYSID_QSYS_0_BASE 0x4011040
 #define SYSID_QSYS_0_ID 1
 #define SYSID_QSYS_0_IRQ -1
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
+<<<<<<< Updated upstream
 #define SYSID_QSYS_0_TIMESTAMP 1780029069
+=======
+#define SYSID_QSYS_0_TIMESTAMP 1780907494
+>>>>>>> Stashed changes
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */

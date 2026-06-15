@@ -1,0 +1,61 @@
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "io.h"
+#include <stdio.h>
+
+#define SDRAM_SRC_ADDR   ((volatile unsigned short *)0x00000000)
+#define SDRAM_DST_ADDR   ((volatile unsigned short *)0x02000000)
+#define IMAGE_SIZE_WORDS  307200
+
+void copy_image(void) {
+    volatile unsigned short *src = SDRAM_SRC_ADDR;
+    volatile unsigned short *dst = SDRAM_DST_ADDR;
+
+    printf("[SYSTEM] Copying image from 0x00000000 to 0x02000000...\n");
+    for (int i = 0; i < IMAGE_SIZE_WORDS; i++) {
+        dst[i] = src[i];
+    }
+    printf("[SYSTEM] Image copy completed.\n");
+}
+
+int main(void) {
+    printf("\n=============================================\n");
+    printf("   DE1-SoC IMAGE DISPLAY CONTROLLER (UART)  \n");
+    printf("=============================================\n");
+
+    copy_image();
+
+    printf("\n=== KEYBOARD CONTROL INSTRUCTIONS ===\n");
+    printf(" -> Press '1' and Enter: ENABLE VGA display\n");
+    printf(" -> Press '0' and Enter: DISABLE VGA (For JTAG image download)\n");
+    printf("---------------------------------------------\n");
+
+    // Initially disable VGA to safely release the SDRAM bus
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOADED_BASE, 0);
+
+    while(1) {
+        /* Read directly from the JTAG UART DATA register (Offset 0).
+           Note: Verify the exact component name in system.h
+           if JTAG_UART_BASE causes a compilation error.
+        */
+        unsigned int jtag_reg = IORD(JTAG_UART_BASE, 0);
+
+        // Check bit 15 (RVALID). If it is 1, a new character is available.
+        if (jtag_reg & 0x00008000) {
+
+            // Extract the 8-bit character data from bits 0 to 7
+            char key = (char)(jtag_reg & 0x000000FF);
+
+            if (key == '1') {
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOADED_BASE, 1);
+                printf("[MENU] -> VGA display ENABLED. (SW0/SW1 active for RGB/Gray mode)\n");
+            }
+            else if (key == '0') {
+                IOWR_ALTERA_AVALON_PIO_DATA(PIO_IMG_LOADED_BASE, 0);
+                printf("[MENU] -> VGA display DISABLED. SDRAM bus open for JTAG download.\n");
+            }
+        }
+    }
+
+    return 0;
+}

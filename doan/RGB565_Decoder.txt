@@ -1,0 +1,76 @@
+// =========================================================================
+// MODULE: RGB565_Decoder.v  [FIX v2]
+//
+// Định dạng RGB565 (big-endian word, standard):
+//   Bit [15:11] = R5 (5-bit Red)
+//   Bit [10:5]  = G6 (6-bit Green)
+//   Bit [4:0]   = B5 (5-bit Blue)
+//
+// File .bin được tạo bởi Python/Pillow theo little-endian byte order:
+//   file[2i]   = byte LOW  = {G[2:0], B[4:0]}
+//   file[2i+1] = byte HIGH = {R[4:0], G[5:3]}
+//
+//   Khi Nios II ghi unsigned short (little-endian ARM):
+//     writedata[15:8] = file[2i+1] = byte HIGH
+//     writedata[7:0]  = file[2i]   = byte LOW
+//   → SDRAM lưu đúng như word RGB565 big-endian ✓
+//
+//   Khi SDRAM read controller đọc lại:
+//     readdata[15:8] = byte HIGH = {R[4:0], G[5:3]}
+//     readdata[7:0]  = byte LOW  = {G[2:0], B[4:0]}
+//   → readdata[15:11]=R5, [10:5]=G6, [4:0]=B5 ✓
+//
+// Mở rộng bit lên 10-bit (ADV7123 DAC):
+//   R5  → R10:  {R5, R5}           (lặp 5 bit, max 31→1023 ✓)
+//   G6  → G10:  {G6, G6[5:2]}      (lặp 6+4 bit, max 63→1023 ✓)
+//   B5  → B10:  {B5, B5}           (lặp 5 bit, max 31→1023 ✓)
+//
+// [FIX-4] Thêm parameter SWAP_BYTES để debug byte order nếu cần
+//         SWAP_BYTES=0: standard (mặc định)
+//         SWAP_BYTES=1: hoán đổi byte cao/thấp (nếu file .bin big-endian word)
+//
+// Pipeline: 1 clock cycle (registered output)
+// =========================================================================
+
+module RGB565_Decoder #(
+    parameter SWAP_BYTES = 0
+) (
+    input  wire        iCLK,
+    input  wire        iRST_N,
+    input  wire        i_valid,
+    input  wire [15:0] iRGB565,
+
+    output reg  [9:0]  oRed,
+    output reg  [9:0]  oGreen,
+    output reg  [9:0]  oBlue,
+    output reg         o_valid
+);
+
+    // Byte swap nếu cần
+    wire [15:0] w_rgb = SWAP_BYTES ? {iRGB565[7:0], iRGB565[15:8]} : iRGB565;
+
+    // Trích xuất từng thành phần
+    wire [4:0] w_r5 = w_rgb[15:11];
+    wire [5:0] w_g6 = w_rgb[10:5];
+    wire [4:0] w_b5 = w_rgb[4:0];
+
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            oRed    <= 10'd0;
+            oGreen  <= 10'd0;
+            oBlue   <= 10'd0;
+            o_valid <= 1'b0;
+        end else begin
+            o_valid <= i_valid;
+            if (i_valid) begin
+                // R5 → R10: {R5, R5} = R5 * 33  (0→0, 31→1023) ✓
+                oRed   <= {w_r5, w_r5};
+                // G6 → G10: {G6, G6[5:2]} = 10 bit full range (0→0, 63→1023) ✓
+                oGreen <= {w_g6, w_g6[5:2]};
+                // B5 → B10: {B5, B5} (0→0, 31→1023) ✓
+                oBlue  <= {w_b5, w_b5};
+            end
+        end
+    end
+
+endmodule

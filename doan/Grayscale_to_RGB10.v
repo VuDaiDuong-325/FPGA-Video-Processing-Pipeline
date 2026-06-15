@@ -1,46 +1,37 @@
+// =========================================================================
+// MODULE: Grayscale_to_RGB10.v  [FIX]
+// =========================================================================
+
 module Grayscale_to_RGB10 (
     input  wire        iCLK,
     input  wire        iRST_N,
     input  wire        i_valid,
-    input  wire [7:0]  iY,         // Chỉ nhận đầu vào là độ sáng Y (8-bit)
-    
-    output reg         o_valid,
-    output reg  [9:0]  oRed,       // Ngõ ra 10-bit cho bộ DAC VGA
+    input  wire [9:0]  iRed,
+    input  wire [9:0]  iGreen,
+    input  wire [9:0]  iBlue,
+
+    output reg  [9:0]  oRed,
     output reg  [9:0]  oGreen,
     output reg  [9:0]  oBlue
 );
+    // Dùng wire 20-bit để tránh overflow khi nhân 10-bit * 8-bit
+    wire [19:0] luma_full = (20'd77  * {10'd0, iRed})
+                          + (20'd150 * {10'd0, iGreen})
+                          + (20'd29  * {10'd0, iBlue});
 
-   // Thêm stage trễ nội bộ để đồng bộ với YUV444_to_RGB10 (2 stage)
-	reg [9:0] oRed_d1, oGreen_d1, oBlue_d1;
-	reg       o_valid_d1;
+    // Lấy 10 bit [17:8] (tương đương >> 8) — giới hạn tại 1023
+    wire [9:0] luma = luma_full[17:8];
 
-	always @(posedge iCLK or negedge iRST_N) begin
-		 if (!iRST_N) begin
-			  oRed_d1   <= 10'd0;
-			  oGreen_d1 <= 10'd0;
-			  oBlue_d1  <= 10'd0;
-			  o_valid_d1 <= 1'b0;
-		 end else begin
-			  oRed_d1    <= {iY, 2'b00};
-			  oGreen_d1  <= {iY, 2'b00};
-			  oBlue_d1   <= {iY, 2'b00};
-			  o_valid_d1 <= i_valid;
-		 end
-	end
-
-	// Stage 2: thêm 1 cycle trễ nữa
-	always @(posedge iCLK or negedge iRST_N) begin
-		 if (!iRST_N) begin
-			  o_valid <= 1'b0;
-			  oRed    <= 10'd0;
-			  oGreen  <= 10'd0;
-			  oBlue   <= 10'd0;
-		 end else begin
-			  o_valid <= o_valid_d1;
-			  oRed    <= oRed_d1;
-			  oGreen  <= oGreen_d1;
-			  oBlue   <= oBlue_d1;
-		 end
-	end
+    always @(posedge iCLK or negedge iRST_N) begin
+        if (!iRST_N) begin
+            oRed   <= 10'd0;
+            oGreen <= 10'd0;
+            oBlue  <= 10'd0;
+        end else if (i_valid) begin
+            oRed   <= luma;
+            oGreen <= luma;
+            oBlue  <= luma;
+        end
+    end
 
 endmodule

@@ -29,3 +29,8 @@ D:/E/1subject/HK6/SoC/doan/doan/vga_pll.v
 
 May 29 12AM:17:35>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
 wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/Hoc_Tap/Dai_hoc/HK6/Camera/TestSDRAM/TestNew/doan/sys_pll.v
+
+Jun 05 12PM:09:46>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

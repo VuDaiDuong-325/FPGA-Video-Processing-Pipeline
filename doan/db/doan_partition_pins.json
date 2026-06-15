@@ -24,6 +24,18 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[7]",
+					"strict" : false
+				},
+				{
 					"name" : "DRAM_ADDR[0]",
 					"strict" : false
 				},
@@ -108,10 +120,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "CAM_SCL",
-					"strict" : false
-				},
-				{
 					"name" : "VGA_R[0]",
 					"strict" : false
 				},
@@ -141,14 +149,6 @@
 				},
 				{
 					"name" : "VGA_R[7]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[8]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[9]",
 					"strict" : false
 				},
 				{
@@ -184,14 +184,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "VGA_G[8]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_G[9]",
-					"strict" : false
-				},
-				{
 					"name" : "VGA_B[0]",
 					"strict" : false
 				},
@@ -221,14 +213,6 @@
 				},
 				{
 					"name" : "VGA_B[7]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[8]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[9]",
 					"strict" : false
 				},
 				{
@@ -308,6 +292,7 @@
 					"strict" : false
 				},
 				{
+<<<<<<< Updated upstream
 					"name" : "CAM_SDA",
 					"strict" : false
 				},
@@ -316,6 +301,8 @@
 					"strict" : false
 				},
 				{
+=======
+>>>>>>> Stashed changes
 					"name" : "KEY[0]",
 					"strict" : false
 				},
@@ -328,6 +315,7 @@
 					"strict" : false
 				},
 				{
+<<<<<<< Updated upstream
 					"name" : "CAM_VSYNC",
 					"strict" : false
 				},
@@ -337,6 +325,13 @@
 				},
 				{
 					"name" : "SW[5]",
+=======
+					"name" : "SW[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[4]",
+>>>>>>> Stashed changes
 					"strict" : false
 				},
 				{
@@ -344,19 +339,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "SW[5]",
+					"strict" : false
+				},
+				{
 					"name" : "SW[9]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[8]",
-					"strict" : false
-				},
-				{
 					"name" : "SW[7]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[4]",
 					"strict" : false
 				},
 				{

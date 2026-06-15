@@ -1,0 +1,114 @@
+// =========================================================================
+// MODULE: sdram_read_controller.v
+// =========================================================================
+
+module sdram_read_controller (
+    input  wire        clk,
+    input  wire        rst_n,
+    input  wire        cam_frame_done,   // pio_img_loaded từ Nios II (level)
+    input  wire        vga_frame_done,   // rising edge VGA_VS (từ doan_top)
+
+    output reg  [24:0] avm_address,
+    output reg         avm_read,
+    input  wire        avm_waitrequest,
+    input  wire [15:0] avm_readdata,
+    input  wire        avm_readdatavalid,
+
+    output wire        fifo_wrreq,
+    output wire [15:0] fifo_wrdata,
+    input  wire [10:0] fifo_wrusedw
+);
+
+    localparam [24:0] BUFFER_A_BASE = 25'h100_0000; // word addr (×2 = byte addr 0x2000000)
+    localparam [18:0] MAX_PIXELS    = 19'd307_200;  // 640×480
+
+    // ------------------------------------------------------------------
+    // CDC: đồng bộ cam_frame_done và vga_frame_done sang clk domain
+    // ------------------------------------------------------------------
+    reg [2:0] cam_done_sync, vga_done_sync;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            cam_done_sync <= 3'b0;
+            vga_done_sync <= 3'b0;
+        end else begin
+            cam_done_sync <= {cam_done_sync[1:0], cam_frame_done};
+            vga_done_sync <= {vga_done_sync[1:0], vga_frame_done};
+        end
+    end
+
+    // Rising edge vga_frame_done (sau đồng bộ)
+    wire vga_done_pulse = (~vga_done_sync[2]) && vga_done_sync[1];
+
+    // frame_ready: ảnh tĩnh, giữ ở 1 khi Nios II báo xong
+    wire frame_ready = cam_done_sync[2];
+
+    // ------------------------------------------------------------------
+    // HYSTERESIS kiểm soát nạp FIFO
+    // ------------------------------------------------------------------
+    reg reading_flag;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            reading_flag <= 1'b0;
+        else begin
+            if      (fifo_wrusedw < 11'd512)  reading_flag <= 1'b1;
+            else if (fifo_wrusedw > 11'd1536) reading_flag <= 1'b0;
+        end
+    end
+
+    // ------------------------------------------------------------------
+    // STATE: vga_reset_pending và flush_wait
+    // ------------------------------------------------------------------
+    reg [18:0] req_cnt;
+    reg        vga_reset_pending;
+    reg        flush_wait;
+
+    // Coi FIFO đã flush xong khi wrusedw = 0
+    wire fifo_is_empty = (fifo_wrusedw == 11'd0);
+
+    wire safe_to_read = reading_flag && frame_ready && ~flush_wait && ~vga_reset_pending;
+    wire need_to_read = (req_cnt < MAX_PIXELS);
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            req_cnt           <= 19'd0;
+            avm_read          <= 1'b0;
+            avm_address       <= 25'd0;
+            vga_reset_pending <= 1'b0;
+            flush_wait        <= 1'b0;
+        end else begin
+
+            // Khi VGA frame kết thúc: đánh dấu cần reset và chờ flush
+            if (vga_done_pulse) begin
+                vga_reset_pending <= 1'b1;
+                flush_wait        <= 1'b1;
+            end
+
+            // [FIX-6] Khi FIFO đã flush xong → thoát flush_wait
+            if (flush_wait && fifo_is_empty)
+                flush_wait <= 1'b0;
+
+            if (avm_read && avm_waitrequest) begin
+                // Avalon protocol: giữ nguyên lệnh khi waitrequest=1
+                // (không thay đổi address/read)
+            end else begin
+                if (vga_reset_pending) begin
+                    req_cnt           <= 19'd0;
+                    avm_read          <= 1'b0;
+                    vga_reset_pending <= 1'b0;
+                end else if (safe_to_read && need_to_read) begin
+                    avm_read    <= 1'b1;
+                    avm_address <= BUFFER_A_BASE + {6'd0, req_cnt};
+                    req_cnt     <= req_cnt + 1'b1;
+                end else begin
+                    avm_read <= 1'b0;
+                end
+            end
+        end
+    end
+
+    // Data từ SDRAM → FIFO
+    assign fifo_wrreq  = avm_readdatavalid;
+    assign fifo_wrdata = avm_readdata;
+
+endmodule

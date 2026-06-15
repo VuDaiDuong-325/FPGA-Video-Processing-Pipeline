@@ -1,18 +1,15 @@
 // =========================================================================
-// PROJECT: CAMERA OV7670 TO VGA DISPLAY VIA SDRAM ON DE1-SOC
-// FILE NAME: doan_top.v
-// DESCRIPTION: Full Top-level implementation containing Read/Write Paths,
-//              Dual-Clock FIFOs, and Image Color Processing Pipeline.
+// PROJECT: STATIC BIN IMAGE → VGA DISPLAY via SDRAM on DE1-SoC RevF
+// FILE NAME: doan_top.v  
 // =========================================================================
 
 module doan_top (
-    // CLOCK & RESET
     input  wire        CLOCK_50,
-    input  wire [3:0]  KEY,          // KEY[0] dùng làm Reset hệ thống
-    input  wire [9:0]  SW,           // Switch chọn chế độ
-	 output wire [9:0]  LEDR,			 // LED debug kit
-    
-    // SDRAM Pins (Chip ngoài trên board DE1-SoC)
+    input  wire [3:0]  KEY,
+    input  wire [9:0]  SW,
+    output wire [9:0]  LEDR,
+
+    // SDRAM
     output wire [12:0] DRAM_ADDR,
     output wire [1:0]  DRAM_BA,
     output wire        DRAM_CAS_N,
@@ -24,20 +21,11 @@ module doan_top (
     output wire        DRAM_RAS_N,
     output wire        DRAM_UDQM,
     output wire        DRAM_WE_N,
-    
-    // CAMERA OV7670 Pins (Kết nối qua Header mở rộng GPIO)
-    output wire        CAM_XCLK,     // XCLK cấp cho Camera
-    input  wire        CAM_PCLK,     // Xung đồng bộ pixel từ camera
-    input  wire        CAM_VSYNC,    // Xung đồng bộ mành (khung hình)
-    input  wire        CAM_HREF,     // Xung đồng bộ dòng
-    input  wire [7:0]  CAM_DATA,     // Dữ liệu pixel (8-bit)
-    output wire        CAM_SCL,      // I2C/SCCB Clock
-    inout  wire        CAM_SDA,      // I2C/SCCB Data
-    
-    // VGA Pins (Kết nối bộ DAC ADV7123 ra cổng DB15)
-    output wire [9:0]  VGA_R,
-    output wire [9:0]  VGA_G,
-    output wire [9:0]  VGA_B,
+
+    // VGA
+    output wire [7:0]  VGA_R,
+    output wire [7:0]  VGA_G,
+    output wire [7:0]  VGA_B,
     output wire        VGA_HS,
     output wire        VGA_VS,
     output wire        VGA_BLANK_N,
@@ -45,47 +33,55 @@ module doan_top (
     output wire        VGA_CLK
 );
 
-    // =========================================================================
-    // KHAI BÁO DÂY TÍN HIỆU VÀ THANH GHI (ALL WIRE & REGISTER DECLARATIONS)
-    // =========================================================================
-    
-    // 1. Hệ thống & Xung nhịp (Clock & Reset)
-    wire        rst_n;
-    wire        clk_25m_vga;
-    wire        clk_50m_sys;
-    wire        clk_24m_cam;
-    wire        clk_50m_sdram;
+    // -------------------------------------------------------------------------
+    // CLOCK & RESET
+    // -------------------------------------------------------------------------
+    wire rst_n;
+    wire clk_25m_vga, clk_50m_sys, clk_50m_sdram;
+    wire sys_pll_locked, vga_pll_locked;
 
-    // 2. Tín hiệu điều khiển cấu hình Camera từ Nios II Bus (PIO)
-    wire [3:0]  sys_mode;
-    wire [7:0]  sys_threshold;
-    wire        sccb_start;
-    wire        sccb_done;
+    assign rst_n    = KEY[0] && sys_pll_locked && vga_pll_locked;
+    assign DRAM_CLK = clk_50m_sdram;
 
-    // 3. Luồng ghi dữ liệu Camera & Đồng bộ VSYNC (Camera Capture Path)
-    wire [15:0] cam_data_16bit;
-    wire        cam_write_en;
-    wire [15:0] sdram_wrdata;
-    wire        sdram_rdempty;
-    wire        sdram_wrreq;
-    reg  [2:0]  vsync_sync_reg;
-    wire        frame_done;
+    sys_pll u_sys_pll (
+        .refclk   (CLOCK_50),
+        .rst      (~KEY[0]),
+        .outclk_0 (clk_50m_sys),
+        .outclk_1 (clk_50m_sdram),
+        .locked   (sys_pll_locked)
+    );
 
-    // 4. Bộ điều khiển Ghi tầng đệm SDRAM (SDRAM Write DMA Master)
-    wire [24:0] w_dma_addr;
-    wire [15:0] w_dma_writedata;
-    wire        w_dma_write;
-    wire        w_dma_waitrequest;
+    vga_pll u_vga_pll (
+        .refclk   (CLOCK_50),
+        .rst      (~KEY[0]),
+        .outclk_0 (clk_25m_vga),
+        .locked   (vga_pll_locked)
+    );
 
-    // 5. Bộ điều khiển Đọc dữ liệu SDRAM (SDRAM Read DMA Master)
+    // -------------------------------------------------------------------------
+    // PIO TỪ NIOS II
+    // -------------------------------------------------------------------------
+    wire [1:0]  sys_mode;
+    wire        pio_img_loaded;
+
+    // -------------------------------------------------------------------------
+    // SDRAM DMA
+    // -------------------------------------------------------------------------
     wire [24:0] r_dma_addr;
     wire        r_dma_read;
     wire [15:0] r_dma_readdata;
     wire        r_dma_readdatavalid;
     wire        r_dma_waitrequest;
 
-    // 6. Luồng đọc và tích trữ đệm VGA FIFO (VGA Read Path)
-    wire        vga_fifo_wrreq;
+    wire [24:0] w_dma_addr;
+    wire [15:0] w_dma_writedata;
+    wire        w_dma_write;
+    wire        w_dma_waitrequest;
+
+    // -------------------------------------------------------------------------
+    // VGA DCFIFO (SHOWAHEAD=ON, 2048 words, 16-bit)
+    // -------------------------------------------------------------------------
+    wire        vga_fifo_wrreq, vga_fifo_wrfull;
     wire [15:0] vga_fifo_wrdata;
     wire [10:0] vga_fifo_wrusedw;
     wire        vga_fifo_rdreq;
@@ -93,47 +89,53 @@ module doan_top (
     wire        vga_fifo_rdempty;
     wire        vga_req;
 
-    // 7. Bộ dồn kênh chia sẻ Bus Avalon Master (Arbiter Bridge)
-    wire [24:0] qsys_avm_address;
-    wire [15:0] qsys_avm_writedata;
-    wire        qsys_avm_write;
-    wire        qsys_avm_read;
-    wire        dma_write_bridge_waitrequest;
-    wire [15:0] dma_write_bridge_readdata;
-    wire        dma_write_bridge_readdatavalid;
+    wire        vga_frame_done;
+    reg  [1:0]  fifo_clr_sync;   // 2-FF CDC sang clk_25m_vga
+    reg         fifo_aclr;
+    reg  [3:0]  fifo_clr_cnt;
 
-    // 8. Đường truyền xử lý ảnh mã màu (Image Pipeline & Color Space)
-    wire [7:0]  w_y;
-    wire [7:0]  w_cb;
-    wire [7:0]  w_cr;
-    wire [10:0] vga_x;
-    wire [10:0] vga_y;
-	 
-	 wire [9:0]  final_vga_r;
-    wire [9:0]  final_vga_g;
-    wire [9:0]  final_vga_b;
+    assign vga_fifo_rdreq = vga_req && (~vga_fifo_rdempty) && (~fifo_aclr);
 
-
-    // =========================================================================
-    // KHỐI LOGIC BỔ TRỢ & PHÉP GÁN ĐIỀU KHIỂN (LOGIC & ASSIGNMENTS)
-    // =========================================================================
-    
-    // Gán mạch nạp Reset cứng và gán Clock ngoại vi
-    assign rst_n    = KEY[0];
-    assign CAM_XCLK = clk_24m_cam; 
-    assign DRAM_CLK = clk_50m_sdram;
-
-    // Mạch dịch bit phát hiện cạnh lên VSYNC tạo tín hiệu kết thúc Frame hình
+    // -------------------------------------------------------------------------
+    // VGA FRAME DONE: rising edge VGA_VS (kết thúc vsync, safe để reset)
+    // -------------------------------------------------------------------------
+    reg [1:0] vs_sync;
     always @(posedge clk_50m_sys or negedge rst_n) begin
+<<<<<<< Updated upstream
         if (!rst_n) vsync_sync_reg <= 3'b0;
         else        vsync_sync_reg <= {vsync_sync_reg[1:0], CAM_VSYNC};
     end
     assign frame_done = (vsync_sync_reg[2] == 1'b0 && vsync_sync_reg[1] == 1'b1);
+=======
+        if (!rst_n) vs_sync <= 2'b11;
+        else        vs_sync <= {vs_sync[0], VGA_VS};
+    end
+    // Rising edge (0→1): VGA_VS trở về HIGH = kết thúc vsync interval
+    assign vga_frame_done = (~vs_sync[1]) && vs_sync[0];
 
-    // Điều khiển nạp/xuất đồng bộ cho hai đầu FIFO ghi/đọc
-    assign sdram_wrreq    = !sdram_rdempty && !w_dma_waitrequest;
-    assign vga_fifo_rdreq = vga_req && (~vga_fifo_rdempty);
+    always @(posedge clk_25m_vga or negedge rst_n) begin
+        if (!rst_n) begin
+            fifo_clr_sync <= 2'b0;
+            fifo_aclr     <= 1'b1;
+            fifo_clr_cnt  <= 4'd0;
+        end else begin
+            fifo_clr_sync <= {fifo_clr_sync[0], vga_frame_done};
+>>>>>>> Stashed changes
 
+            if (fifo_clr_sync[1] && ~fifo_clr_sync[0]) begin
+                // Rising edge (sau CDC): bắt đầu flush
+                fifo_aclr    <= 1'b1;
+                fifo_clr_cnt <= 4'd8;
+            end else if (fifo_clr_cnt != 4'd0) begin
+                fifo_clr_cnt <= fifo_clr_cnt - 1'b1;
+                fifo_aclr    <= 1'b1;
+            end else begin
+                fifo_aclr <= 1'b0;
+            end
+        end
+    end
+
+<<<<<<< Updated upstream
 	 // =========================================================================
     // HỆ THỐNG DEBUG BẰNG ĐÈN LED (Phân tích nguyên nhân kẹt Pipeline)
     // =========================================================================
@@ -237,17 +239,41 @@ module doan_top (
         .fifo_wrreq         (vga_fifo_wrreq),
         .fifo_wrdata        (vga_fifo_wrdata),
         .fifo_wrusedw       (vga_fifo_wrusedw)
+=======
+    // -------------------------------------------------------------------------
+    // SDRAM READ CONTROLLER
+    // -------------------------------------------------------------------------
+    sdram_read_controller u_sdram_read_controller (
+        .clk               (clk_50m_sys),
+        .rst_n             (rst_n),
+        .cam_frame_done    (pio_img_loaded),
+        .vga_frame_done    (vga_frame_done),
+        .cam_write_buffer  (1'b0),
+        .avm_address       (r_dma_addr),
+        .avm_read          (r_dma_read),
+        .avm_waitrequest   (r_dma_waitrequest),
+        .avm_readdata      (r_dma_readdata),
+        .avm_readdatavalid (r_dma_readdatavalid),
+        .fifo_wrreq        (vga_fifo_wrreq),
+        .fifo_wrdata       (vga_fifo_wrdata),
+        .fifo_wrusedw      (vga_fifo_wrusedw)
+>>>>>>> Stashed changes
     );
 
-    // DCFIFO trung chuyển đồng bộ dữ liệu từ Clock Hệ thống sang Clock VGA 25MHz
+    // -------------------------------------------------------------------------
+    // DCFIFO: clk_50m_sys (write) → clk_25m_vga (read)
+    // -------------------------------------------------------------------------
     video_dcfifo u_vga_fifo (
+<<<<<<< Updated upstream
         .aclr    (~rst_n),
+=======
+        .aclr    (~rst_n | fifo_aclr),
+>>>>>>> Stashed changes
         .data    (vga_fifo_wrdata),
         .wrclk   (clk_50m_sys),
         .wrreq   (vga_fifo_wrreq),
         .wrusedw (vga_fifo_wrusedw),
-        .wrfull  (),
-        
+        .wrfull  (vga_fifo_wrfull),
         .rdclk   (clk_25m_vga),
         .rdreq   (vga_fifo_rdreq),
         .q       (vga_fifo_q),
@@ -255,36 +281,47 @@ module doan_top (
         .rdusedw ()
     );
 
-    // Bộ chuyển đổi cấu trúc lấy mẫu hạt màu từ YUV 4:2:2 sang YUV 4:4:4 đầy đủ
-    YUV422_to_444 u_YUV422_to_444 (
-        .iYCbCr  (vga_fifo_q),
-        .i_valid (vga_fifo_rdreq),
-        .oY      (w_y),
-        .oCb     (w_cb),
-        .oCr     (w_cr),
-        .iX      (vga_x[9:0]),
+    // -------------------------------------------------------------------------
+    // RGB565 DECODER - Stage 1 của data pipeline
+    // -------------------------------------------------------------------------
+    wire [9:0] rgb_r, rgb_g, rgb_b;
+    wire       rgb_valid;
+
+    RGB565_Decoder #(.SWAP_BYTES(0)) u_rgb565_dec (
         .iCLK    (clk_25m_vga),
-        .iRST_N  (rst_n)
+        .iRST_N  (rst_n),
+        .i_valid (vga_fifo_rdreq),
+        .iRGB565 (vga_fifo_q),
+        .oRed    (rgb_r),
+        .oGreen  (rgb_g),
+        .oBlue   (rgb_b),
+        .o_valid (rgb_valid)
     );
 
-	 // Khối xử lý ảnh tổng hợp (Bao gồm YUV, Grayscale và Mux)
+    // -------------------------------------------------------------------------
+    // IMAGE PROCESSOR - Stage 2 của data pipeline
+    // -------------------------------------------------------------------------
+    wire [9:0] final_vga_r, final_vga_g, final_vga_b;
+    wire [10:0] vga_x, vga_y;
+
     VGA_Image_Processor u_image_processor (
         .iCLK    (clk_25m_vga),
         .iRST_N  (rst_n),
-        .iMode   (SW[1:0]),      // Chọn chế độ từ SW 0, 1
-        
-        .i_valid (vga_fifo_rdreq),
-        .iY      (w_y),
-        .iCb     (w_cb),
-        .iCr     (w_cr),
-        
-        .oRed    (final_vga_r),  // Đưa ra dây kết nối VGA
+        .iMode   (SW[1:0]),
+        .i_valid (rgb_valid),
+        .iRed    (rgb_r),
+        .iGreen  (rgb_g),
+        .iBlue   (rgb_b),
+        .oRed    (final_vga_r),
         .oGreen  (final_vga_g),
         .oBlue   (final_vga_b)
     );
 
-    // Thực thể Qsys Interconnect System (CPU Nios II, Avalon Bus & SDRAM IP Core)
+    // -------------------------------------------------------------------------
+    // QSYS SYSTEM (Nios II + SDRAM controller + PIO)
+    // -------------------------------------------------------------------------
     system u0 (
+<<<<<<< Updated upstream
         .clk_clk                        (clk_50m_sys),
         .reset_reset_n                  (rst_n),
         
@@ -331,23 +368,65 @@ module doan_top (
         .pio_sccb_start_export  (sccb_start),
         .pio_sccb_done_export   (sccb_done),
 		  .pio_sw_export          (SW)
+=======
+        .clk_clk           (clk_50m_sys),
+        .reset_reset_n     (rst_n),
+
+        // SDRAM read port (byte address: {word_addr, 1'b0})
+        .sdram_read_bridge_address        ({r_dma_addr, 1'b0}),
+        .sdram_read_bridge_read           (r_dma_read),
+        .sdram_read_bridge_waitrequest    (r_dma_waitrequest),
+        .sdram_read_bridge_readdata       (r_dma_readdata),
+        .sdram_read_bridge_readdatavalid  (r_dma_readdatavalid),
+        .sdram_read_bridge_burstcount     (1'b1),
+        .sdram_read_bridge_byteenable     (2'b11),
+        .sdram_read_bridge_write          (1'b0),
+        .sdram_read_bridge_writedata      (16'd0),
+        .sdram_read_bridge_debugaccess    (1'b0),
+
+        // SDRAM write port (Nios II ghi ảnh)
+        .sdram_write_bridge_address       ({w_dma_addr, 1'b0}),
+        .sdram_write_bridge_write         (w_dma_write),
+        .sdram_write_bridge_writedata     (w_dma_writedata),
+        .sdram_write_bridge_waitrequest   (w_dma_waitrequest),
+        .sdram_write_bridge_read          (1'b0),
+        .sdram_write_bridge_readdata      (),
+        .sdram_write_bridge_readdatavalid (),
+        .sdram_write_bridge_burstcount    (1'b1),
+        .sdram_write_bridge_byteenable    (2'b11),
+        .sdram_write_bridge_debugaccess   (1'b0),
+
+        // SDRAM chip
+        .new_sdram_controller_0_wire_addr  (DRAM_ADDR),
+        .new_sdram_controller_0_wire_ba    (DRAM_BA),
+        .new_sdram_controller_0_wire_cas_n (DRAM_CAS_N),
+        .new_sdram_controller_0_wire_cke   (DRAM_CKE),
+        .new_sdram_controller_0_wire_cs_n  (DRAM_CS_N),
+        .new_sdram_controller_0_wire_dq    (DRAM_DQ),
+        .new_sdram_controller_0_wire_ras_n (DRAM_RAS_N),
+        .new_sdram_controller_0_wire_dqm   ({DRAM_UDQM, DRAM_LDQM}),
+        .new_sdram_controller_0_wire_we_n  (DRAM_WE_N),
+
+        // PIO
+        .pio_mode_export      (sys_mode),
+        .img_load_export      (pio_img_loaded),
+        .pio_sw_export        (SW)
+>>>>>>> Stashed changes
     );
 
-    // Bộ điều khiển sinh ma trận đồng bộ quét hình ảnh ra cổng VGA
+    // -------------------------------------------------------------------------
+    // VGA CONTROLLER - Stage 3 của data pipeline
+    // -------------------------------------------------------------------------
     VGA_controller u_vga (
         .iCLK       (clk_25m_vga),
         .iRST_N     (rst_n),
-		  
         .iRed       (final_vga_r),
         .iGreen     (final_vga_g),
         .iBlue      (final_vga_b),
-        
         .oCurrent_X (vga_x),
         .oCurrent_Y (vga_y),
         .oAddress   (),
         .oRequest   (vga_req),
-        
-        // Kết nối thẳng tới các chân I/O vật lý của bộ DAC VGA trên DE1-SoC
         .oVGA_R     (VGA_R),
         .oVGA_G     (VGA_G),
         .oVGA_B     (VGA_B),
@@ -357,5 +436,19 @@ module doan_top (
         .oVGA_BLANK (VGA_BLANK_N),
         .oVGA_CLOCK (VGA_CLK)
     );
+	 
+
+    // -------------------------------------------------------------------------
+    // LED DEBUG
+    // -------------------------------------------------------------------------
+    assign LEDR[0] = ~vga_fifo_rdempty;    // FIFO có data
+    assign LEDR[1] = r_dma_waitrequest;    // SDRAM busy
+    assign LEDR[2] = r_dma_read;           // DMA đang đọc
+    assign LEDR[3] = r_dma_readdatavalid;  // Data valid từ SDRAM
+    assign LEDR[4] = pio_img_loaded;       // Nios II đã tải ảnh
+    assign LEDR[5] = vga_frame_done;       // Frame sync pulse
+    assign LEDR[6] = fifo_aclr;            // FIFO đang được flush
+    assign LEDR[7] = vga_fifo_wrfull;      // FIFO write full (overflow cảnh báo)
+    assign LEDR[9:8] = 2'b0;
 
 endmodule

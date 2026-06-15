@@ -20,7 +20,11 @@
 // Altera Identification hub
 //
 // Parameters
+<<<<<<< Updated upstream
 //   DESIGN_HASH   : 27da249910e74c9ad48f
+=======
+//   DESIGN_HASH   : fe928579cb77f23761a8
+>>>>>>> Stashed changes
 //   COUNT         : 1
 //   ROM_WIDTHS    : 4
 //   LATENCIES     : 0
@@ -39,7 +43,11 @@ module alt_sld_fab_alt_sld_fab_ident
 );
 
 
+<<<<<<< Updated upstream
 wire [127:0] data_0 = { mixed, 12'h0, 32'h0, 80'h27da249910e74c9ad48f };
+=======
+wire [127:0] data_0 = { mixed, 12'h0, 32'h0, 80'hfe928579cb77f23761a8 };
+>>>>>>> Stashed changes
 
 reg [3:0] result_0;
 always @(address_0 or data_0) begin

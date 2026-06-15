@@ -10,8 +10,6 @@
 		.new_sdram_controller_0_wire_ras_n (<connected-to-new_sdram_controller_0_wire_ras_n>), //                            .ras_n
 		.new_sdram_controller_0_wire_we_n  (<connected-to-new_sdram_controller_0_wire_we_n>),  //                            .we_n
 		.pio_mode_export                   (<connected-to-pio_mode_export>),                   //                    pio_mode.export
-		.pio_sccb_done_export              (<connected-to-pio_sccb_done_export>),              //               pio_sccb_done.export
-		.pio_sccb_start_export             (<connected-to-pio_sccb_start_export>),             //              pio_sccb_start.export
 		.pio_sw_export                     (<connected-to-pio_sw_export>),                     //                      pio_sw.export
 		.pio_threshold_export              (<connected-to-pio_threshold_export>),              //               pio_threshold.export
 		.reset_reset_n                     (<connected-to-reset_reset_n>),                     //                       reset.reset_n
@@ -34,6 +32,7 @@
 		.sdram_write_bridge_write          (<connected-to-sdram_write_bridge_write>),          //                            .write
 		.sdram_write_bridge_read           (<connected-to-sdram_write_bridge_read>),           //                            .read
 		.sdram_write_bridge_byteenable     (<connected-to-sdram_write_bridge_byteenable>),     //                            .byteenable
-		.sdram_write_bridge_debugaccess    (<connected-to-sdram_write_bridge_debugaccess>)     //                            .debugaccess
+		.sdram_write_bridge_debugaccess    (<connected-to-sdram_write_bridge_debugaccess>),    //                            .debugaccess
+		.img_load_export                   (<connected-to-img_load_export>)                    //                    img_load.export
 	);
 
