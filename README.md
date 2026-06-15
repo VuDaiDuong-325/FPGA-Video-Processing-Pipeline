@@ -72,13 +72,13 @@ A Python pipeline is used to prepare image data for the FPGA system.
 
 | RGB565 Conversion | Grayscale & Sobel | Sharpen |
 |------------------|------------------|---------|
-| ![RGB565](docs/image2rgb565.png) | ![Gray & Sobel](docs/gray_sobel_detector.png) | ![Sharpen](docs/sharpen_filter.png) |
+| ![RGB565](docs/Python_result/image2rgb565.png) | ![Gray & Sobel](docs/Python_result/gray_sobel_detector.png) | ![Sharpen](docs/Python_result/sharpen_filter.png) |
 
 ### FPGA VGA Output
 
 | RGB | Grayscale | Sobel | Sharpen |
 |-----|----------|-------|---------|
-| ![RGB](docs/rgb_mode.png) | ![Gray](docs/gray_mode.png) | ![Sobel](docs/sobel_mode.png) | ![Sharpen](docs/sharpen_mode.png) |
+| ![RGB](docs/FPGA_result/rgb_mode.png) | ![Gray](docs/FPGA_result/gray_mode.png) | ![Sobel](docs/FPGA_result/sobel_mode.png) | ![Sharpen](docs/FPGA_result/sharpen_mode.png) |
 
 ---
 
