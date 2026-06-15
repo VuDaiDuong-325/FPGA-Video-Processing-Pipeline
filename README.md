@@ -56,15 +56,15 @@ RGB565 Image (.bin)
 
 ### Python Verification
 
-| RGB565 Conversion       | Grayscale & Sobel              | Sharpen                   |
-| ----------------------- | ------------------------------ | ------------------------- |
-| `docs/image2rgb565.png` | `docs/gray&sobel_detector.png` | `docs/sharpen_filter.png` |
+| RGB565 Conversion | Grayscale & Sobel | Sharpen |
+|------------------|------------------|---------|
+| ![RGB565](docs/image2rgb565.png) | ![Gray & Sobel](docs/gray_sobel_detector.png) | ![Sharpen](docs/sharpen_filter.png) |
 
 ### FPGA VGA Output
 
-| RGB                  | Grayscale             | Sobel                  | Sharpen                  |
-| -------------------- | --------------------- | ---------------------- | ------------------------ |
-| `docs/rgb_mode.jfif` | `docs/gray_mode.jfif` | `docs/sobel_mode.jfif` | `docs/sharpen_mode.jfif` |
+| RGB | Grayscale | Sobel | Sharpen |
+|-----|----------|-------|---------|
+| ![RGB](docs/rgb_mode.png) | ![Gray](docs/gray_mode.png) | ![Sobel](docs/sobel_mode.png) | ![Sharpen](docs/sharpen_mode.png) |
 
 ---
 
