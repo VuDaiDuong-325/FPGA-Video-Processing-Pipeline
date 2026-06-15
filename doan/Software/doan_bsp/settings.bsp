@@ -2,15 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-<<<<<<< Updated upstream
-        <BspGeneratedTimeStamp>May 29, 2026 3:17:35 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1780042655579</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>D:\E\1subject\HK6\SoC\doan\doan\Software\doan_bsp</BspGeneratedLocation>
-=======
         <BspGeneratedTimeStamp>Jun 14, 2026 10:31:33 PM</BspGeneratedTimeStamp>
         <BspGeneratedUnixTimeStamp>1781451093451</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\E\1subject\HK6\SoC\doan\test\vduong\test\Software\doan_bsp</BspGeneratedLocation>
->>>>>>> Stashed changes
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
@@ -152,7 +146,7 @@
                 <SettingName>hal.linker.exception_stack_memory_region_name</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>new_sdram_controller_0</Value>
+                <Value>onchip_memory2_0</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Name of the existing memory region that will be divided up to create the 'exception_stack' memory region. The selected region name will be adjusted automatically when the BSP is generated to create the 'exception_stack' memory region.</Description>
@@ -188,7 +182,7 @@
                 <SettingName>hal.linker.interrupt_stack_memory_region_name</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>new_sdram_controller_0</Value>
+                <Value>onchip_memory2_0</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Name of the existing memory region that will be divided up to create the 'interrupt_stack' memory region. The selected region name will be adjusted automatically when the BSP is generated to create the 'interrupt_stack' memory region.</Description>

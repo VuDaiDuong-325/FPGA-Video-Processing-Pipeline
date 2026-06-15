@@ -3,47 +3,123 @@ K3
 13
 cModel Technology
 Z0 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+vGrayscale_to_RGB10
+IggBaBT><Ik>P8AklHg>P;3
+VmKROfa9VCL^gdhX@IY84b2
+Z1 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+w1780128901
+8D:/E/1subject/HK6/SoC/doan/doan/Grayscale_to_RGB10.v
+FD:/E/1subject/HK6/SoC/doan/doan/Grayscale_to_RGB10.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+n@grayscale_to_@r@g@b10
+!i10b 1
+!s100 >Ve6VQfckjV^`RI;8obAA0
+!s85 0
+!s108 1780240714.069000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/Grayscale_to_RGB10.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/Grayscale_to_RGB10.v|
+!s101 -O0
+vov7670_capture
+I_?5J;iW3kEh0I2K0O[6<]2
+VFWVMVeAGaSM<2e[zGXlQD3
+R1
+w1780128538
+8D:/E/1subject/HK6/SoC/doan/doan/ov7670_capture.v
+FD:/E/1subject/HK6/SoC/doan/doan/ov7670_capture.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 D76D6JizD]>MjN0AIo2kE2
+!s85 0
+!s108 1780240713.782000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/ov7670_capture.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/ov7670_capture.v|
+!s101 -O0
+vsdram_double_buffer_controller
+IM2nJeFU?VPn<IS;`Kj5Rm3
+Vj6_WRGUoUGiAAhRI5c<@40
+R1
+w1780129850
+8D:/E/1subject/HK6/SoC/doan/doan/sdram_double_buffer_controller.v
+FD:/E/1subject/HK6/SoC/doan/doan/sdram_double_buffer_controller.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 <H<dGQE:MKAL4NUHS1`Hn3
+!s85 0
+!s108 1780240713.893000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/sdram_double_buffer_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/sdram_double_buffer_controller.v|
+!s101 -O0
+vsdram_read_controller
+I<4_J;_h^@M]>KZBn5UMNj2
+V7dnohC87:YzobV5V_Tl^z1
+R1
+w1780224763
+8D:/E/1subject/HK6/SoC/doan/doan/sdram_read_controller.v
+FD:/E/1subject/HK6/SoC/doan/doan/sdram_read_controller.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 ZadW0Tl1U?NCmG8z0YGi^0
+!s85 0
+!s108 1780240713.958000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/sdram_read_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/sdram_read_controller.v|
+!s101 -O0
 vsys_pll
 IM0kS65ggSBJU4fT=?d6@51
 V?5S<9X?I3Kjnhi_G4cl:?2
-Z1 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+R1
 w1779856677
 8D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo
 FD:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo
 L0 31
-Z2 OV;L;10.1d;51
+R2
 r1
 31
 o-O0
 !s100 5dChoE;b3gZg9VFzAJ3Kl1
-!s108 1780117162.670000
+!s108 1780240705.693000
 !s107 D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo|
 !s90 -reportprogress|300|D:/E/1subject/HK6/SoC/doan/doan/sys_pll_sim/sys_pll.vo|
 !i10b 1
 !s85 0
 !s101 -O0
-vtb
+vtb_doan_top
 !i10b 1
-!s100 6bD;PlchjBO`DDEX`OPN02
-IB>if`;^;;UBUbZ[cfNlBL0
-VV@Xn<HnSRM[I5c1?BH]3a3
+!s100 nBJC9WTkI<N6PKIiTdoD[3
+IC8jjFQXe871za<1C]f=4=0
+Vm8iD]RK:6<I1_F>[ezQeW1
 R1
-w1780117136
-8D:/E/1subject/HK6/SoC/doan/doan/tb.v
-FD:/E/1subject/HK6/SoC/doan/doan/tb.v
-L0 3
+w1780240685
+8D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v
+FD:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v
+L0 11
 R2
 r1
 !s85 0
 31
-!s108 1780117162.797000
-!s107 D:/E/1subject/HK6/SoC/doan/doan/tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/E/1subject/HK6/SoC/doan/doan|D:/E/1subject/HK6/SoC/doan/doan/tb.v|
+!s108 1780240714.260000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/tb_doan_top.v|
 !s101 -O0
-Z3 o-vlog01compat -work work -O0
-Z4 !s92 -vlog01compat -work work +incdir+D:/E/1subject/HK6/SoC/doan/doan -O0
+R3
 vVGA_controller
-IT]?jjiI[0RW=2UEFkC?Sf0
+IzgZ1:k=LzU0jzAV?`E98:0
 VeiiSf61;<D:h=b:A;o?E>1
 R1
 w1780026911
@@ -58,11 +134,30 @@ n@v@g@a_controller
 !i10b 1
 !s100 N_][>Db8jXhg4IAVnG7f30
 !s85 0
-!s108 1780117162.765000
+!s108 1780240714.196000
 !s107 D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/E/1subject/HK6/SoC/doan/doan|D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/VGA_controller.v|
 !s101 -O0
-R4
+vVGA_Image_Processor
+IaQ<gGYfcVN>dWT6?]=XQT1
+Vn<9UhFO6^KbQ`:2jnc=fa1
+R1
+w1780124816
+8D:/E/1subject/HK6/SoC/doan/doan/VGA_Image_Processor.v
+FD:/E/1subject/HK6/SoC/doan/doan/VGA_Image_Processor.v
+L0 7
+R2
+r1
+31
+R3
+n@v@g@a_@image_@processor
+!i10b 1
+!s100 `CC_MQ6J7HmDk^]3HFE??1
+!s85 0
+!s108 1780240714.148000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/VGA_Image_Processor.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/VGA_Image_Processor.v|
+!s101 -O0
 vvga_pll
 ILT7VM_`E0z@bXLZ14chJT0
 VF9<bWkU;@V<E;7IVl9?Ea3
@@ -78,7 +173,47 @@ o-O0
 !i10b 1
 !s100 ncnWoF@^_K==XlJLlOWzh2
 !s85 0
-!s108 1780117162.718000
+!s108 1780240705.807000
 !s107 D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo|
 !s90 -reportprogress|300|D:/E/1subject/HK6/SoC/doan/doan/vga_pll_sim/vga_pll.vo|
+!s101 -O0
+vYUV422_to_444
+I_MA8HE@fBHd8gb[aa1:5b2
+VZVWbfXE9GNfWI^Ta:YV`;0
+R1
+w1780129963
+8D:/E/1subject/HK6/SoC/doan/doan/YUV422_to_444.v
+FD:/E/1subject/HK6/SoC/doan/doan/YUV422_to_444.v
+L0 1
+R2
+r1
+31
+R3
+n@y@u@v422_to_444
+!i10b 1
+!s100 KMR7T1FOdK]]DRROcZ8?o2
+!s85 0
+!s108 1780240713.846000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/YUV422_to_444.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/YUV422_to_444.v|
+!s101 -O0
+vYUV444_to_RGB10
+I3OnKW23RS2EX9h5m52QgF2
+VVEC[AH`jE:C_1^GmzLgBR1
+R1
+w1779900180
+8D:/E/1subject/HK6/SoC/doan/doan/YUV444_to_RGB10.v
+FD:/E/1subject/HK6/SoC/doan/doan/YUV444_to_RGB10.v
+L0 1
+R2
+r1
+31
+R3
+n@y@u@v444_to_@r@g@b10
+!i10b 1
+!s100 TcjCgK8_MeC0@zg`oL?Wk1
+!s85 0
+!s108 1780240714.027000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/YUV444_to_RGB10.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|D:/E/1subject/HK6/SoC/doan/doan/YUV444_to_RGB10.v|
 !s101 -O0

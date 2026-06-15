@@ -1,0 +1,25 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+vsys_pll_0002
+!i10b 1
+!s100 UnjXd@X5a]bJHV<PKBWYn2
+I5B27O>oNPY90gHcEgbd8S0
+Vn_o[g@l4lb8[_oJ1cPUo<2
+Z1 dD:\E\1subject\HK6\SoC\doan\doan\simulation\modelsim
+w1779856667
+8D:/E/1subject/HK6/SoC/doan/doan/sys_pll/sys_pll_0002.v
+FD:/E/1subject/HK6/SoC/doan/doan/sys_pll/sys_pll_0002.v
+L0 2
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1780219531.490000
+!s107 D:/E/1subject/HK6/SoC/doan/doan/sys_pll/sys_pll_0002.v|
+!s90 -reportprogress|300|-vlog01compat|-work|sys_pll|+incdir+D:/E/1subject/HK6/SoC/doan/doan/sys_pll|D:/E/1subject/HK6/SoC/doan/doan/sys_pll/sys_pll_0002.v|
+!s101 -O0
+o-vlog01compat -work sys_pll -O0
+!s92 -vlog01compat -work sys_pll +incdir+D:/E/1subject/HK6/SoC/doan/doan/sys_pll -O0

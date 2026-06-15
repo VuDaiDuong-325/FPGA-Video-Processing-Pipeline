@@ -54,18 +54,10 @@ module VGA_controller (
     reg [10:0] H_Cont, V_Cont;
     reg [9:0]  VGA_R, VGA_G, VGA_B;
 
-<<<<<<< Updated upstream
-    // [SỬA ĐỔI]: Các thanh ghi tạo độ trễ (Pipeline Registers) - Mở rộng thành Shift Register 4-bit
-    reg c_HS, c_VS, c_BLANK;
-    reg [3:0] vga_hs_pipe;
-    reg [3:0] vga_vs_pipe;
-    reg [3:0] vga_blank_pipe;
-=======
     // Tín hiệu điều khiển combinational
     wire c_HS    = ~((H_Cont >= H_FRONT) && (H_Cont < H_FRONT + H_SYNC));
     wire c_VS    = ~((V_Cont >= V_FRONT) && (V_Cont < V_FRONT + V_SYNC));
     wire c_BLANK =  (H_Cont >= H_BLANK)  && (V_Cont >= V_BLANK);
->>>>>>> Stashed changes
 
     // [FIX-1] 3 tầng pipeline (pipe[2:0]), khớp với 3 register stages của data path
     reg [2:0] vga_hs_pipe, vga_vs_pipe, vga_blank_pipe;
@@ -120,62 +112,6 @@ module VGA_controller (
         end
     end
 
-<<<<<<< Updated upstream
-    // [SỬA ĐỔI]: Khối tạo tọa độ pixel hiển thị thực tế & Đẩy tín hiệu vào đường ống dịch bit
-    always @(posedge iCLK or negedge iRST_N) begin
-         if (!iRST_N) begin
-              VGA_X          <= 11'd0;
-              VGA_Y          <= 11'd0;
-              vga_hs_pipe    <= 4'b1111; // Sync tích cực thấp nên reset về 1
-              vga_vs_pipe    <= 4'b1111;
-              vga_blank_pipe <= 4'b0000;
-         end else begin
-              VGA_X          <= oCurrent_X;
-              VGA_Y          <= oCurrent_Y;
-              
-              // Dịch bit liên tục từ phải qua trái để tạo các nấc trễ
-              vga_hs_pipe    <= {vga_hs_pipe[2:0], c_HS};
-              vga_vs_pipe    <= {vga_vs_pipe[2:0], c_VS};
-              vga_blank_pipe <= {vga_blank_pipe[2:0], c_BLANK};
-         end
-    end
-
-    // [SỬA ĐỔI]: Khối chọn màu xuất xưởng (Khớp thời gian hoàn hảo với luồng xử lý ảnh)
-    always @(posedge iCLK or negedge iRST_N) begin
-         if (!iRST_N) begin
-              VGA_R      <= 10'd0;
-              VGA_G      <= 10'd0;
-              VGA_B      <= 10'd0;
-              oVGA_HS    <= 1'b1;
-              oVGA_VS    <= 1'b1;
-              oVGA_BLANK <= 1'b0;
-         end else begin
-              // Đồng bộ các tín hiệu điều khiển lấy từ tầng trễ thứ 4 (vị trí [3] của mảng)
-              oVGA_HS    <= vga_hs_pipe[3];
-              oVGA_VS    <= vga_vs_pipe[3];
-              oVGA_BLANK <= vga_blank_pipe[3];
-
-              // Nếu nằm ngoài vùng hiển thị chủ động thì tắt màu hoàn toàn (Màu đen)
-              // Sử dụng tín hiệu blank đã trễ để đánh giá
-              if (!vga_blank_pipe[3]) begin
-                    VGA_R <= 10'd0;
-                    VGA_G <= 10'd0;
-                    VGA_B <= 10'd0;
-              end else begin
-                    // Test Pattern
-                    if ((VGA_X == 11'd320) || (VGA_Y == 11'd240) || (VGA_X == 11'd180) || (VGA_Y == 11'd120)) begin
-                         VGA_R <= 10'h3FF; // Đỏ max
-                         VGA_G <= 10'h000;
-                         VGA_B <= 10'h000;
-                    end else begin
-                         // Nếu không trúng vạch test thì xuất ảnh từ bộ xử lý ảnh/RAM
-                         VGA_R <= iRed;
-                         VGA_G <= iGreen;
-                         VGA_B <= iBlue;
-                    end
-              end
-         end
-=======
     // Output register - Stage 3 của data pipeline
     // vga_blank_pipe[2] tại posedge này = c_BLANK từ 3 cycles trước = lúc rdreq bắt đầu
     always @(posedge iCLK or negedge iRST_N) begin
@@ -201,7 +137,6 @@ module VGA_controller (
                 VGA_B <= 10'd0;
             end
         end
->>>>>>> Stashed changes
     end
 
 endmodule
