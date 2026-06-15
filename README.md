@@ -58,7 +58,7 @@ RGB565 Image (.bin)
 
 | RGB565 Conversion | Grayscale & Sobel | Sharpen |
 |------------------|------------------|---------|
-| ![RGB565](docs/image2rgb565.png) | ![Gray+Sobel](docs/gray&sobel_detector.png) | ![Sharpen](docs/sharpen_filter.png) |
+| ![RGB565](docs/image2rgb565.png) | ![Gray & Sobel](docs/gray_sobel_detector.png) | ![Sharpen](docs/sharpen_filter.png) |
 
 ### FPGA VGA Output
 
