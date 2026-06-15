@@ -34,6 +34,9 @@ Python (Kaggle / convert.py)
 RGB565 Image (.bin)
           │
           ▼
+download SDRAM (.tcl)
+          │
+          ▼
         SDRAM
           │
           ▼
