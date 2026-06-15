@@ -93,7 +93,7 @@ A Python pipeline is used to prepare image data for the FPGA system.
 A complete demonstration is available in:
 
 ```text
-docs/Run_on_FPGA.mp4
+docs/FPGA_result/Run_on_FPGA.mp4
 ```
 
 ---
