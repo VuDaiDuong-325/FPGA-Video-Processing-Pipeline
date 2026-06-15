@@ -1,8 +1,3 @@
-// =========================================================================
-// PROJECT: STATIC BIN IMAGE → VGA DISPLAY via SDRAM on DE1-SoC RevF
-// FILE NAME: doan_top.v  
-// =========================================================================
-
 module doan_top (
     input  wire        CLOCK_50,
     input  wire [3:0]  KEY,
@@ -62,6 +57,7 @@ module doan_top (
     // PIO TỪ NIOS II
     // -------------------------------------------------------------------------
     wire [1:0]  sys_mode;
+    wire [7:0]  sys_threshold;
     wire        pio_img_loaded;
 
     // -------------------------------------------------------------------------
@@ -89,11 +85,13 @@ module doan_top (
     wire        vga_fifo_rdempty;
     wire        vga_req;
 
+    // [FIX-2] FIFO clear tại frame boundary
     wire        vga_frame_done;
     reg  [1:0]  fifo_clr_sync;   // 2-FF CDC sang clk_25m_vga
     reg         fifo_aclr;
     reg  [3:0]  fifo_clr_cnt;
 
+    // [FIX-2] rdreq chỉ khi FIFO không rỗng VÀ không đang bị flush
     assign vga_fifo_rdreq = vga_req && (~vga_fifo_rdempty) && (~fifo_aclr);
 
     // -------------------------------------------------------------------------
@@ -107,6 +105,7 @@ module doan_top (
     // Rising edge (0→1): VGA_VS trở về HIGH = kết thúc vsync interval
     assign vga_frame_done = (~vs_sync[1]) && vs_sync[0];
 
+    // [FIX-2] FIFO flush: assert aclr 8 cycle 25MHz mỗi frame
     always @(posedge clk_25m_vga or negedge rst_n) begin
         if (!rst_n) begin
             fifo_clr_sync <= 2'b0;
@@ -149,6 +148,7 @@ module doan_top (
 
     // -------------------------------------------------------------------------
     // DCFIFO: clk_50m_sys (write) → clk_25m_vga (read)
+    // [FIX-2] aclr = ~rst_n | fifo_aclr
     // -------------------------------------------------------------------------
     video_dcfifo u_vga_fifo (
         .aclr    (~rst_n | fifo_aclr),
@@ -166,6 +166,7 @@ module doan_top (
 
     // -------------------------------------------------------------------------
     // RGB565 DECODER - Stage 1 của data pipeline
+    // [FIX-4] SWAP_BYTES=0 (default). Đổi =1 nếu màu vẫn sai (byte order ngược)
     // -------------------------------------------------------------------------
     wire [9:0] rgb_r, rgb_g, rgb_b;
     wire       rgb_valid;
@@ -183,6 +184,7 @@ module doan_top (
 
     // -------------------------------------------------------------------------
     // IMAGE PROCESSOR - Stage 2 của data pipeline
+    // [FIX-3] 1 MUX stage duy nhất (rollback stage delay sai)
     // -------------------------------------------------------------------------
     wire [9:0] final_vga_r, final_vga_g, final_vga_b;
     wire [10:0] vga_x, vga_y;
@@ -192,12 +194,15 @@ module doan_top (
         .iRST_N  (rst_n),
         .iMode   (SW[1:0]),
         .i_valid (rgb_valid),
+        .i_x     (vga_x),
+        .i_y     (vga_y),
         .iRed    (rgb_r),
         .iGreen  (rgb_g),
         .iBlue   (rgb_b),
         .oRed    (final_vga_r),
         .oGreen  (final_vga_g),
-        .oBlue   (final_vga_b)
+        .oBlue   (final_vga_b),
+        .o_valid ()
     );
 
     // -------------------------------------------------------------------------
@@ -244,12 +249,14 @@ module doan_top (
 
         // PIO
         .pio_mode_export      (sys_mode),
+        .pio_threshold_export (sys_threshold),
         .img_load_export      (pio_img_loaded),
         .pio_sw_export        (SW)
     );
 
     // -------------------------------------------------------------------------
     // VGA CONTROLLER - Stage 3 của data pipeline
+    // [FIX-1] pipe[2], oRequest = H_Cont >= H_BLANK
     // -------------------------------------------------------------------------
     VGA_controller u_vga (
         .iCLK       (clk_25m_vga),
@@ -270,7 +277,6 @@ module doan_top (
         .oVGA_BLANK (VGA_BLANK_N),
         .oVGA_CLOCK (VGA_CLK)
     );
-	 
 
     // -------------------------------------------------------------------------
     // LED DEBUG
